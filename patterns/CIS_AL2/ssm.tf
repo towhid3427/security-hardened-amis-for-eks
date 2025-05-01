@@ -2,7 +2,7 @@
 # SSM Parameters
 ################################################################################
 resource "aws_ssm_parameter" "cis_amazon_linux_2_kernel_4_benchmark_level_1" {
-  name  = "/cis_ami/${local.name}/CIS_Amazon_Linux_2_Kernel_4_Benchmark_Level_1/ami_id"
+  name  = "/cis_ami/${local.name}/CIS_Amazon_Linux_2_Benchmark_Level_1/ami_id"
   type  = "String"
   value = "placeholder"
 
