@@ -2,25 +2,17 @@
 
 This project provides a fully automated solution to create security-hardened Amazon EKS AMIs that comply with either CIS Level 1 or Level 2 standards.
 
-## 💪 Motivation
-
-Customers have requested an official AWS-provided Amazon EKS AMI that is hardened according to the CIS (Center for Internet Security) benchmark. Currently, customers can use the public GitHub repository (https://github.com/awslabs/amazon-eks-ami) to create their own custom EKS AMI with hardening, but they are asking AWS to prioritize the release of an official CIS-hardened EKS AMI, as example on
-
-https://github.com/awslabs/amazon-eks-ami/issues/245
-
-and
-
-https://github.com/aws/containers-roadmap/issues/1040
-
-There are three types of guidance generally being requested:
+There are three types of guidance generally being requested from AWS Customers:
 
 1. Customers seeking guidance on how to generate a CIS-hardened AMI for EKS.
 2. Customers encountering issues with workloads running on their custom, CIS-hardened AMIs.
 3. Customers requesting the EKS team to prioritize the release of an official CIS-hardened EKS AMI.
 
-This solution address the topics 1 and 2 above.
+**This solution address the topics 1 and 2 above.**
 
-Currently, information is spread across different resources and there isn't a central location that explain how to apply CIS scripts for each of the above AMIs. In other words, there is no existent holistic mechanism that can measure the impact of changes in any of the different sources - CIS Scripts, CIS AMIs and EKS Optimized AMIs.
+## 💪 Motivation
+
+Currently, information is spread across different resources and there isn't a central location that explain how to apply CIS scripts for each of the available AMIs. In other words, there is no existent holistic mechanism that can measure the impact of changes in any of the different sources - CIS Scripts, CIS AMIs and EKS Optimized AMIs.
 
 Please find the link below for existing resources with detailed steps on how to achieve either Level 1 or Level 2 compliance according to each base AMI:
 
@@ -37,7 +29,6 @@ Please find the link below for existing resources with detailed steps on how to 
 | CIS Amazon Linux 2023 Benchmark - Level 2 | No existent resource available so far | [https://aws.amazon.com/blogs/containers/automating-al2023-custom-hardened-ami-updates-for-amazon-eks-managed-nodes/](https://aws.amazon.com/blogs/containers/automating-al2023-custom-hardened-ami-updates-for-amazon-eks-managed-nodes/) |
 
 As we can see from the table above, guidance available are spread across different resources(Workshops/Blog Posts) using different tech and there is no single solution that cover a single process for all the base AMIs available.
-
 
 ## 🤯 Why is this problem space complex?
 - There are more than 200 CIS Scripts/Checks
