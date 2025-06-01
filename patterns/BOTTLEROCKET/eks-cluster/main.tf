@@ -37,6 +37,7 @@ provider "kubernetes" {
 module "eks_cluster" {
   source = "../../modules/eks-cluster"
   name   = local.name
+  cluster_version = local.cluster_version
 }
 
 
