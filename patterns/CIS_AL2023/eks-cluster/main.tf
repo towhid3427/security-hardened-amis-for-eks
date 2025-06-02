@@ -46,6 +46,7 @@ data "aws_ssm_parameter" "cis_amazon_linux_2023_benchmark_level_2" {
 module "eks_cluster" {
   source = "../../modules/eks-cluster"
   name   = local.name
+  cluster_version = local.cluster_version
 }
 
 module "eks_managed_node_group_level_1" {
