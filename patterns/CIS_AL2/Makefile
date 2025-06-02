@@ -49,7 +49,7 @@ apply: init
 create-hardened-ami:
 	@echo "Creating Hardened AMIs..."
 	@if [ ! -d "amazon-eks-ami" ]; then \
-		git clone https://github.com/awslabs/amazon-eks-ami.git; \
+		git clone https://github.com/awslabs/amazon-eks-ami.git --branch v20250519; \
 	fi
 	@packer plugins install github.com/hashicorp/amazon || true
 	@cd amazon-eks-ami && { \
