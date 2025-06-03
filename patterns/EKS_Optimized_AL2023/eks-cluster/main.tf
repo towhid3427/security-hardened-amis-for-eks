@@ -47,6 +47,7 @@ data "aws_ssm_parameter" "eks_optimized_al2023_level_2" {
 module "eks_cluster" {
   source = "../../modules/eks-cluster"
   name   = local.name
+  cluster_version = local.cluster_version
 }
 
 module "eks_managed_node_group_level_1" {
