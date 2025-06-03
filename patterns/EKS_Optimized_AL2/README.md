@@ -157,8 +157,8 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 ```#!/bin/bash
 kubectl get nodes -o wide
 NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE         KERNEL-VERSION                  CONTAINER-RUNTIME
-ip-10-0-31-237.us-west-2.compute.internal   Ready    <none>   2m41s   v1.32.1-eks-5d632ec   10.0.31.237   <none>        Amazon Linux 2   5.10.235-227.919.amzn2.x86_64   containerd://1.7.27
-ip-10-0-7-197.us-west-2.compute.internal    Ready    <none>   2m41s   v1.32.1-eks-5d632ec   10.0.7.197    <none>        Amazon Linux 2   5.10.235-227.919.amzn2.x86_64   containerd://1.7.27
+ip-10-0-39-122.us-west-2.compute.internal   Ready    <none>   6m2s    v1.32.3-eks-473151a   10.0.39.122   <none>        Amazon Linux 2   5.10.236-228.935.amzn2.x86_64   containerd://1.7.27
+ip-10-0-6-254.us-west-2.compute.internal    Ready    <none>   5m53s   v1.32.3-eks-473151a   10.0.6.254    <none>        Amazon Linux 2   5.10.236-228.935.amzn2.x86_64   containerd://1.7.27
 ```
 
 Check if all the pods are running:
@@ -166,16 +166,16 @@ Check if all the pods are running:
 ```#!/bin/bash
 kubectl get pods -A
 NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-ppzmm                       2/2     Running   0          3m54s
-kube-system   aws-node-qhb6r                       2/2     Running   0          3m54s
-kube-system   coredns-599f7d65c5-t57pc             1/1     Running   0          2m37s
-kube-system   coredns-599f7d65c5-wl5bl             1/1     Running   0          2m37s
-kube-system   ebs-csi-controller-b85499879-wsvg6   6/6     Running   0          2m37s
-kube-system   ebs-csi-controller-b85499879-x5ww9   6/6     Running   0          2m37s
-kube-system   ebs-csi-node-c2g2g                   3/3     Running   0          2m37s
-kube-system   ebs-csi-node-zxn8l                   3/3     Running   0          2m37s
-kube-system   kube-proxy-9gd2r                     1/1     Running   0          3m54s
-kube-system   kube-proxy-z7v24                     1/1     Running   0          3m54s
+kube-system   aws-node-2qczp                       2/2     Running   0          6m26s
+kube-system   aws-node-5k47r                       2/2     Running   0          6m17s
+kube-system   coredns-579b75d955-8wzrk             1/1     Running   0          5m
+kube-system   coredns-579b75d955-lw4qt             1/1     Running   0          5m
+kube-system   ebs-csi-controller-645d45577-7nw4v   6/6     Running   0          4m59s
+kube-system   ebs-csi-controller-645d45577-tlczj   6/6     Running   0          4m59s
+kube-system   ebs-csi-node-hjl7r                   3/3     Running   0          4m59s
+kube-system   ebs-csi-node-rl9tt                   3/3     Running   0          4m59s
+kube-system   kube-proxy-7hphm                     1/1     Running   0          6m17s
+kube-system   kube-proxy-897jn                     1/1     Running   0          6m26s
 ```
 
 ## Troubleshooting

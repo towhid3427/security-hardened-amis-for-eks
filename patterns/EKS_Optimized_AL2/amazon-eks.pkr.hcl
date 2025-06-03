@@ -9,9 +9,20 @@ locals {
   }
 }
 
-data "amazon-parameterstore" "eks_optimized_ami_al2" {
-  name   = "/aws/service/eks/optimized-ami/${var.eks_version}/${var.ami_type}/recommended/image_id"
-  region = var.region
+# data "amazon-parameterstore" "eks_optimized_ami_al2" {
+#   name   = "/aws/service/eks/optimized-ami/${var.eks_version}/${var.ami_type}/recommended/image_id"
+#   region = var.region
+# }
+
+data "amazon-ami" "eks_optimized_ami_al2" {
+    filters = {
+        virtualization-type = "hvm"
+        name = "amazon-eks-node-1.32-v20250519"
+        root-device-type = "ebs"
+    }
+    owners = ["602401143452"]
+    most_recent = true
+    region = var.region
 }
 
 ################################################################################
@@ -198,7 +209,7 @@ source "amazon-ebs" "eks_optimized_ami_al2" {
   session_manager_port    = var.session_manager_port
   shutdown_behavior       = var.shutdown_behavior
   skip_profile_validation = var.skip_profile_validation
-  source_ami              = data.amazon-parameterstore.eks_optimized_ami_al2.value
+  source_ami              = data.amazon-ami.eks_optimized_ami_al2.id
 
   dynamic "subnet_filter" {
     for_each = length(var.subnet_filter) > 0 ? var.subnet_filter : []

@@ -71,7 +71,7 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 #!/bin/bash
 kubectl get nodes -o wide
 NAME                                       STATUS   ROLES    AGE   VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                                KERNEL-VERSION   CONTAINER-RUNTIME
-ip-10-0-7-108.us-west-2.compute.internal   Ready    <none>   23m   v1.32.2-eks-677bac1   10.0.7.108    <none>        Bottlerocket OS 1.37.0 (aws-k8s-1.32)   6.1.132          containerd://1.7.27+bottlerocket
+ip-10-0-17-168.us-west-2.compute.internal   Ready    <none>   48m   v1.33.0-eks-987fa8d   10.0.17.168   <none>        Bottlerocket OS 1.39.1 (aws-k8s-1.33)   6.12.23          containerd://2.0.5+bottlerocket
 ```
 
 Check if all the pods are running:
@@ -80,13 +80,13 @@ Check if all the pods are running:
 #!/bin/bash
 kubectl get pods -A
 NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-cptq4                        2/2     Running   0          23m
-kube-system   coredns-5594d78cdc-2f7nb              1/1     Running   0          2m36s
-kube-system   coredns-5594d78cdc-t9wk4              1/1     Running   0          3m42s
-kube-system   ebs-csi-controller-74fb8f9946-jj4n2   6/6     Running   0          6m40s
-kube-system   ebs-csi-controller-74fb8f9946-qsxkn   6/6     Running   0          2m36s
-kube-system   ebs-csi-node-lfpjl                    3/3     Running   0          23m
-kube-system   kube-proxy-mlhbj                      1/1     Running   0          23m
+kube-system   aws-node-7vfj4                        2/2     Running   0          49m
+kube-system   coredns-7bf648ff5d-944wm              1/1     Running   0          29m
+kube-system   coredns-7bf648ff5d-ncb5s              1/1     Running   0          29m
+kube-system   ebs-csi-controller-684478fc48-klnwk   6/6     Running   0          32m
+kube-system   ebs-csi-controller-684478fc48-nz99m   6/6     Running   0          44m
+kube-system   ebs-csi-node-wlkf9                    3/3     Running   0          49m
+kube-system   kube-proxy-6t9cl                      1/1     Running   0          49m
 ```
 
 ## Troubleshooting

@@ -48,7 +48,7 @@ apply: init
 create-hardened-ami:
 	@echo "Creating Hardened AMIs..."
 	@if [ ! -d "amazon-eks-ami" ]; then \
-		git clone https://github.com/awslabs/amazon-eks-ami.git; \
+		git clone https://github.com/awslabs/amazon-eks-ami.git --branch v20250519; \
 	fi
 	@packer plugins install github.com/hashicorp/amazon || true
 	@cd amazon-eks-ami && { \
@@ -66,16 +66,16 @@ create-hardened-ami:
         sed -i -e 's#cache-pause-container#sudo cache-pause-container#g' templates/al2023/provisioners/cache-pause-container.sh; \
 		AMI_ID=$$(aws ec2 describe-images \
 			--owners aws-marketplace \
-			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2023 Benchmark - Level 1*" \
+			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2023 Benchmark - Level 1 - v05*" \
 			--query 'sort_by(Images, &CreationDate)[-1].ImageId' \
 			--region $(AWS_REGION) \
 			--output text); \
-		PACKER_BINARY=packer make k8s=1.32 \
+		PACKER_BINARY=packer make k8s=1.33 \
 			os_distro=al2023 \
 			aws_region=$(AWS_REGION) \
 			source_ami_id=$$AMI_ID \
 			source_ami_owners=679593333241 \
-			source_ami_filter_name="CIS Amazon Linux 2023 Benchmark - Level 1*" \
+			source_ami_filter_name="CIS Amazon Linux 2023 Benchmark - Level 1 - v05**" \
 			subnet_id=$(SUBNET_ID) \
 			associate_public_ip_address=true \
 			remote_folder=/home/ec2-user \
@@ -98,17 +98,17 @@ create-hardened-ami:
 		ami_name="CIS_Amazon_Linux_2023_Benchmark_Level_2-$$timestamp"; \
 		AMI_ID=$$(aws ec2 describe-images \
 			--owners aws-marketplace \
-			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2023 Benchmark - Level 2*" \
+			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2023 Benchmark - Level 2 - v05*" \
 			--query 'sort_by(Images, &CreationDate)[-1].ImageId' \
 			--region $(AWS_REGION) \
 			--output text) && \
 		\
-		PACKER_BINARY=packer make k8s=1.32 \
+		PACKER_BINARY=packer make k8s=1.33 \
 			os_distro=al2023 \
 			aws_region=$(AWS_REGION) \
 			source_ami_id=$$AMI_ID \
 			source_ami_owners=679593333241 \
-			source_ami_filter_name="CIS Amazon Linux 2023 Benchmark - Level 2*" \
+			source_ami_filter_name="CIS Amazon Linux 2023 Benchmark - Level 2 - v05*" \
 			subnet_id=$(SUBNET_ID) \
 			associate_public_ip_address=true \
 			remote_folder=/home/ec2-user \

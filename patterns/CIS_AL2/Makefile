@@ -49,7 +49,7 @@ apply: init
 create-hardened-ami:
 	@echo "Creating Hardened AMIs..."
 	@if [ ! -d "amazon-eks-ami" ]; then \
-		git clone https://github.com/awslabs/amazon-eks-ami.git; \
+		git clone https://github.com/awslabs/amazon-eks-ami.git --branch v20250519; \
 	fi
 	@packer plugins install github.com/hashicorp/amazon || true
 	@cd amazon-eks-ami && { \
@@ -59,7 +59,7 @@ create-hardened-ami:
 		sed -i -e 's#aws --version#sudo /bin/aws --version#g' templates/shared/provisioners/generate-version-info.sh; \
 		AMI_ID=$$(aws ec2 describe-images \
 			--owners aws-marketplace \
-			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2 Kernel 4.14 Benchmark - Level 1*" \
+			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2 Kernel 4.14 Benchmark - Level 1 - v01*" \
 			--query 'sort_by(Images, &CreationDate)[-1].ImageId' \
 			--region $(AWS_REGION) \
 			--output text); \
@@ -67,7 +67,7 @@ create-hardened-ami:
 			aws_region=$(AWS_REGION) \
 			source_ami_id=$$AMI_ID \
 			source_ami_owners=679593333241 \
-			source_ami_filter_name="CIS Amazon Linux 2 Kernel 4.14 Benchmark - Level 1*" \
+			source_ami_filter_name="CIS Amazon Linux 2 Kernel 4.14 Benchmark - Level 1 - v01*" \
 			AMI_VARIANT=amazon-eks-cis \
 			subnet_id=$(SUBNET_ID) \
 			launch_block_device_mappings_volume_size=15 \
@@ -86,7 +86,7 @@ create-hardened-ami:
 		ami_name="CIS_Amazon_Linux_2_Benchmark_Level_2-$$timestamp"; \
 		AMI_ID=$$(aws ec2 describe-images \
 			--owners aws-marketplace \
-			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 2*" \
+			--filters "Name=architecture,Values=x86_64" "Name=name,Values=CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 2 - v04*" \
 			--query 'sort_by(Images, &CreationDate)[-1].ImageId' \
 			--region $(AWS_REGION) \
 			--output text); \
@@ -94,7 +94,7 @@ create-hardened-ami:
 			aws_region=$(AWS_REGION) \
 			source_ami_id=$$AMI_ID \
 			source_ami_owners=679593333241 \
-			source_ami_filter_name="CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 2*" \
+			source_ami_filter_name="CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 2 - v04*" \
 			subnet_id=$(SUBNET_ID) \
 			launch_block_device_mappings_volume_size=15 \
 			associate_public_ip_address=true \
@@ -129,7 +129,7 @@ run-cis-scan:
 		--scan-name $(NAME) \
 		--schedule oneTime={} \
 		--security-level LEVEL_2 \
-		--targets accountIds=$(ACCOUNT_ID),targetResourceTags={eks:cluster-name==$(NAME)} \
+		--targets accountIds=$(ACCOUNT_ID),targetResourceTags={eks:cluster-name=$(NAME)} \
 		--region $(AWS_REGION) || \
 		(echo "CIS scan configuration failed!"; exit 1)
 
