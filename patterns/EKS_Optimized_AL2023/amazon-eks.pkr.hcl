@@ -1,3 +1,11 @@
+packer {
+  required_plugins {
+    amazon = {
+      version = "= 1.3.8"
+      source = "github.com/hashicorp/amazon"
+    }
+  }
+}
 locals {
   timestamp = regex_replace(timestamp(), "[- TZ:]", "")
 
@@ -17,7 +25,7 @@ locals {
 data "amazon-ami" "eks_optimized_ami_al2023" {
     filters = {
         virtualization-type = "hvm"
-        name = "amazon-eks-node-al2023-x86_64-standard-1.33-v20250519"
+        name = "amazon-eks-node-al2023-x86_64-standard-1.33-v20250704"
         root-device-type = "ebs"
     }
     owners = ["602401143452"]
