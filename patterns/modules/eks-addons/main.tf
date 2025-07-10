@@ -1,6 +1,6 @@
 module "eks_blueprints_addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = "~> 1.21" #ensure to update this to the latest/desired version
+  version = "1.21.1" #ensure to update this to the latest/desired version
 
   cluster_name      = var.cluster_name
   cluster_endpoint  = var.cluster_endpoint
