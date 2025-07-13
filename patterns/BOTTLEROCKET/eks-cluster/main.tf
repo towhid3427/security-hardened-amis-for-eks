@@ -43,7 +43,7 @@ module "eks_cluster" {
 
 module "eks_managed_node_group" {
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "~> 20.36" #ensure to update this to the latest/desired version
+  version = "20.37.1" #ensure to update this to the latest/desired version
 
   name            = "BOTTLEROCKETL2"
   cluster_name    = module.eks_cluster.cluster_name
