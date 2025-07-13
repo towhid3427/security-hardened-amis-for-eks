@@ -13,7 +13,7 @@ This pattern provides a fully automated solution to create security-hardened Ama
 
 For Level 1:
 
-- [CIS Amazon Linux 2 Kernel 4.14 Benchmark - Level 1](https://aws.amazon.com/marketplace/pp/prodview-5ihz572adcm7i?sr=0-2&ref_=beagle&applicationId=AWSMPContessa)
+- [CIS Hardened Image Level 1 on Amazon Linux 2 Kernel 5.10](https://aws.amazon.com/marketplace/server/procurement?productId=abcfcbaf-134e-4639-a7b4-fd285b9fcf0a)
 
 For Level 2:
 
