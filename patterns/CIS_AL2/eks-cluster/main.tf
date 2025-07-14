@@ -35,7 +35,7 @@ provider "kubernetes" {
 
 }
 
-data "aws_ssm_parameter" "cis_amazon_linux_2_kernel_4_benchmark_level_1" {
+data "aws_ssm_parameter" "cis_amazon_linux_2_benchmark_level_1" {
   name = "/cis_ami/${local.name}/CIS_Amazon_Linux_2_Benchmark_Level_1/ami_id"
 }
 data "aws_ssm_parameter" "cis_amazon_linux_2_benchmark_level_2" {
@@ -53,7 +53,7 @@ module "eks_managed_node_group_level_1" {
   depends_on = [module.eks_cluster]
 
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "~> 20.36" #ensure to update this to the latest/desired version
+  version = "20.37.1" #ensure to update this to the latest/desired version
 
   name            = "CISAL2K4BL1"
   cluster_name    = module.eks_cluster.cluster_name
@@ -73,7 +73,7 @@ module "eks_managed_node_group_level_1" {
     AmazonInspector2ManagedCisPolicy = "arn:aws:iam::aws:policy/AmazonInspector2ManagedCisPolicy"
   }
 
-  ami_id = data.aws_ssm_parameter.cis_amazon_linux_2_kernel_4_benchmark_level_1.value
+  ami_id = data.aws_ssm_parameter.cis_amazon_linux_2_benchmark_level_1.value
 
   instance_types             = ["m6i.large", "m5.large", "m5zn.large"]
   capacity_type              = "SPOT"
@@ -99,7 +99,7 @@ module "eks_managed_node_group_level_2" {
   depends_on = [module.eks_cluster]
 
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "~> 20.36" #ensure to update this to the latest/desired version
+  version = "20.37.1" #ensure to update this to the latest/desired version
 
   name            = "CISAL2BL2"
   cluster_name    = module.eks_cluster.cluster_name

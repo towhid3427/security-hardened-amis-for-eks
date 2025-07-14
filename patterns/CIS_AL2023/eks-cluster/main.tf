@@ -52,7 +52,7 @@ module "eks_cluster" {
 module "eks_managed_node_group_level_1" {
   depends_on                        = [module.eks_cluster]
   source                            = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "~> 20.36" #ensure to update this to the latest/desired version
+  version = "20.37.1" #ensure to update this to the latest/desired version
   name                              = "CISAL2023BL1"
   cluster_name                      = module.eks_cluster.cluster_name
   cluster_version                   = module.eks_cluster.cluster_version
@@ -97,7 +97,7 @@ module "eks_managed_node_group_level_1" {
 module "eks_managed_node_group_level_2" {
   depends_on = [module.eks_cluster]
   source     = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "~> 20.36" #ensure to update this to the latest/desired version
+  version = "20.37.1" #ensure to update this to the latest/desired version
 
   name                              = "CISAL2023BL2"
   cluster_name                      = module.eks_cluster.cluster_name
