@@ -15,7 +15,6 @@ data "aws_ssm_parameter" "private_subnets" {
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.37.1"
-
   cluster_name                   = var.name
   cluster_version                = var.cluster_version
   cluster_endpoint_public_access = true
