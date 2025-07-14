@@ -60,11 +60,11 @@ Detailed steps are inside each pattern folder, but the overall steps for each pa
 
 **Step 1.** Users run `make run-static-tests` command for static code analysis tests
 
-**Step 2.** Users run `make plan/apply` to deploy VPC resource using Terraform.
+**Step 2.** Users run `make plan` and `make apply` to deploy VPC resource using Terraform.
 
 **Step 3.** Users run `make create-hardened-ami` to create security-hardened Amazon EKS AMIs using Packer using one of the methods outlined below.
 
-**Step 4.** Users run `make cluster-plan/cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
+**Step 4.** Users run `make cluster-plan` and `make cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
 
 **Step 5.** Users run `make run-cis-scan` to trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
 
