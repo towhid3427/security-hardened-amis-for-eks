@@ -3,11 +3,11 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.100.0"
+      version = "6.7.0"
     }
   }
   backend "s3" {
-    bucket  = "BUCKET_NAME"
+    bucket  = "security-hardened-amis-for-eks-terraform-state-file"
     key     = "EKS_Optimized_AL2_nodes"
     region  = "us-west-2"
     encrypt = true

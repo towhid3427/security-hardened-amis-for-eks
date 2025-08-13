@@ -53,11 +53,11 @@ module "eks_cluster" {
 module "eks_managed_node_group_level_1" {
   depends_on = [module.eks_cluster]
   source     = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "20.37.1" #ensure to update this to the latest/desired version
+  version = "21.0.7" #ensure to update this to the latest/desired version
 
   name                              = "EKSOAL2023L1"
   cluster_name                      = module.eks_cluster.cluster_name
-  cluster_version                   = module.eks_cluster.cluster_version
+  kubernetes_version                = module.eks_cluster.cluster_version
   subnet_ids                        = tolist(split(",", data.aws_ssm_parameter.private_subnets.value))
   cluster_primary_security_group_id = module.eks_cluster.cluster_primary_security_group_id
   vpc_security_group_ids = [
@@ -91,11 +91,11 @@ module "eks_managed_node_group_level_1" {
 module "eks_managed_node_group_level_2" {
   depends_on = [module.eks_cluster]
   source     = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "20.37.1" #ensure to update this to the latest/desired version
+  version = "21.0.7" #ensure to update this to the latest/desired version
 
   name                              = "EKSOAL2023L2"
   cluster_name                      = module.eks_cluster.cluster_name
-  cluster_version                   = module.eks_cluster.cluster_version
+  kubernetes_version                = module.eks_cluster.cluster_version
   subnet_ids                        = tolist(split(",", data.aws_ssm_parameter.private_subnets.value))
   cluster_primary_security_group_id = module.eks_cluster.cluster_primary_security_group_id
   vpc_security_group_ids = [

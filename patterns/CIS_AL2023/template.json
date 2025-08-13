@@ -15,6 +15,7 @@
     "binary_bucket_name": null,
     "binary_bucket_region": null,
     "containerd_version": null,
+    "install_containerd_from_s3": null,
     "creator": null,
     "enable_accelerator": null,
     "enable_efa": null,
@@ -213,6 +214,7 @@
         "BINARY_BUCKET_NAME={{user `binary_bucket_name`}}",
         "BINARY_BUCKET_REGION={{user `binary_bucket_region`}}",
         "CONTAINERD_VERSION={{user `containerd_version`}}",
+        "INSTALL_CONTAINERD_FROM_S3={{user `install_containerd_from_s3`}}",
         "KUBERNETES_BUILD_DATE={{user `kubernetes_build_date`}}",
         "KUBERNETES_VERSION={{user `kubernetes_version`}}",
         "RUNC_VERSION={{user `runc_version`}}",
@@ -283,18 +285,6 @@
         "BINARY_BUCKET_NAME={{user `binary_bucket_name`}}",
         "BINARY_BUCKET_REGION={{user `binary_bucket_region`}}",
         "ENABLE_EFA={{user `enable_efa`}}"
-      ]
-    },
-    {
-      "type": "shell",
-      "remote_folder": "{{ user `remote_folder`}}",
-      "inline": [
-          "# Given SELINUX=enforcing on the base AMI CIS Amazon Linux 2023 Benchmark - Level 2",
-          "# Fixing SELinux-related permission issues where a binary isn't executing due to incorrect context",
-          "sudo chcon -t bin_t /usr/bin/nodeadm",
-          "sudo chcon -t bin_t /usr/bin/kubelet",
-          "# Until nftables is supported on EKS we recommend disabling it https://github.com/aws/containers-roadmap/issues/2313",
-          "sudo yum remove nftables -y" 
       ]
     },
     {

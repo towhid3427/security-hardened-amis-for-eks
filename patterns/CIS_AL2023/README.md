@@ -23,13 +23,13 @@ For Level 2:
 
 ## 🚀 How to deploy
 
-**Step 1.** Navigate to the CIS_AL2 pattern directory: `cd patterns/CIS_AL2023`
+**Step 1.** Navigate to the CIS_AL2023 pattern directory: `cd patterns/CIS_AL2023`
 
-**Step 2.** Run `make plan/apply` to deploy VPC resource using Terraform.
+**Step 2.** Run `make plan and make apply` to deploy VPC resource using Terraform.
 
 **Step 3.** Run `make create-hardened-ami` to Create EKS CIS Level1 and Level2 Hardened AMIs using CIS AMIs as a base AMI.
 
-**Step 4.** Run `make cluster-plan/cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
+**Step 4.** Run `make cluster-plan and make cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
 
 **Step 5.** Run `make run-cis-scan` to trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
 
