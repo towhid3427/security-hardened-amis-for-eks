@@ -290,6 +290,18 @@
     {
       "type": "shell",
       "remote_folder": "{{ user `remote_folder`}}",
+      "inline": [
+          "# Given SELINUX=enforcing on the base AMI CIS Amazon Linux 2023 Benchmark - Level 2",
+          "# Fixing SELinux-related permission issues where a binary isn't executing due to incorrect context",
+          "sudo chcon -t bin_t /usr/bin/nodeadm",
+          "sudo chcon -t bin_t /usr/bin/kubelet",
+          "# Until nftables is supported on EKS we recommend disabling it https://github.com/aws/containers-roadmap/issues/2313",
+          "sudo yum remove nftables -y" 
+      ]
+    },
+    {
+      "type": "shell",
+      "remote_folder": "{{ user `remote_folder`}}",
       "script": "{{template_dir}}/../shared/provisioners/cleanup.sh"
     },
     {
