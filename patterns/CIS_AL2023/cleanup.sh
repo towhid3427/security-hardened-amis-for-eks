@@ -7,7 +7,6 @@ sudo rm -rf /var/cache/yum
 # Clean up files to reduce confusion during debug
 sudo rm -rf \
   /etc/hostname \
-  /etc/machine-id \
   /etc/resolv.conf \
   /etc/ssh/ssh_host* \
   /home/ec2-user/.ssh/authorized_keys \
