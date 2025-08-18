@@ -27,4 +27,4 @@ sudo rm -rf \
   /var/log/messages \
   /var/log/audit/*
 
-sudo touch /etc/machine-id
+sudo cp /dev/null /etc/machine-id
