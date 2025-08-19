@@ -19,11 +19,11 @@ References: <https://aws.amazon.com/bottlerocket/>
 
 **Step 1.** Navigate to the Bottlerocket pattern directory: `cd patterns/BOTTLEROCKET`
 
-**Step 2.** Run `make plan/apply` to deploy VPC resource using Terraform.
+**Step 2.** Run `make plan and make apply` to deploy VPC resource using Terraform.
 
 **Step 3.** Run `make build-bottlerocket-cis-bootstrap-image` to build and push CIS bootstrap image.
 
-**Step 4.** Run `make cluster-plan/cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
+**Step 4.** Run `make cluster-plan and cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
 
 **Step 5.** Run `make run-cis-scan` to trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
 

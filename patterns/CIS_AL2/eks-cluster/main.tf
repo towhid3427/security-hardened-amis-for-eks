@@ -53,11 +53,11 @@ module "eks_managed_node_group_level_1" {
   depends_on = [module.eks_cluster]
 
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "20.37.1" #ensure to update this to the latest/desired version
+  version = "21.0.7" #ensure to update this to the latest/desired version
 
   name            = "CISAL2K4BL1"
   cluster_name    = module.eks_cluster.cluster_name
-  cluster_version = module.eks_cluster.cluster_version
+  kubernetes_version = module.eks_cluster.cluster_version
 
   subnet_ids = tolist(split(",", data.aws_ssm_parameter.private_subnets.value))
 
@@ -76,6 +76,7 @@ module "eks_managed_node_group_level_1" {
   ami_id = data.aws_ssm_parameter.cis_amazon_linux_2_benchmark_level_1.value
 
   instance_types             = ["m6i.large", "m5.large", "m5zn.large"]
+  ami_type                   = "AL2_x86_64"
   capacity_type              = "SPOT"
   force_update_version       = true
   enable_bootstrap_user_data = true
@@ -99,11 +100,11 @@ module "eks_managed_node_group_level_2" {
   depends_on = [module.eks_cluster]
 
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "20.37.1" #ensure to update this to the latest/desired version
+  version = "21.0.7" #ensure to update this to the latest/desired version
 
   name            = "CISAL2BL2"
   cluster_name    = module.eks_cluster.cluster_name
-  cluster_version = module.eks_cluster.cluster_version
+  kubernetes_version = module.eks_cluster.cluster_version
   subnet_ids      = tolist(split(",", data.aws_ssm_parameter.private_subnets.value))
 
 
@@ -125,6 +126,7 @@ module "eks_managed_node_group_level_2" {
 
   instance_types             = ["m6i.large", "m5.large", "m5zn.large"]
   capacity_type              = "SPOT"
+  ami_type                   = "AL2_x86_64"
   force_update_version       = true
   enable_bootstrap_user_data = true
   pre_bootstrap_user_data    = <<-EOT

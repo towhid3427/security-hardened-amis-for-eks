@@ -14,10 +14,10 @@ data "aws_ssm_parameter" "private_subnets" {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "20.37.1"
-  cluster_name                   = var.name
-  cluster_version                = var.cluster_version
-  cluster_endpoint_public_access = true
+  version = "21.0.7"
+  name = var.name
+  kubernetes_version = var.cluster_version
+  endpoint_public_access = true
 
   # Give the Terraform identity admin access to the cluster
   # which will allow resources to be deployed into the cluster
@@ -28,8 +28,11 @@ module "eks" {
   #subnet_ids =  data.aws_ssm_parameter.private_subnets.value
   subnet_ids = tolist(split(",", data.aws_ssm_parameter.private_subnets.value))
 
-
-  eks_managed_node_group_defaults = {
+## Causing an error like below
+##   # expected length of name_prefix to be in the range (1 - 38), got .........
+##  https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2053#issuecomment-1317721424
+## This Additional IAM Policy is already configured individually while creating each NodeGroup.
+  eks_managed_node_groups = {
     iam_role_additional_policies = {
       # Not required, but used in the example to access the nodes to inspect mounted volumes
       AmazonSSMManagedInstanceCore     = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
@@ -39,6 +42,6 @@ module "eks" {
 
   tags = var.tags
 
-  cluster_addons = var.cluster_addons
+  addons = var.cluster_addons
 
 }

@@ -1,7 +1,7 @@
 packer {
   required_plugins {
     amazon = {
-      version = "1.3.8"
+      version = "1.3.9"
       source = "github.com/hashicorp/amazon"
     }
   }
@@ -26,7 +26,7 @@ locals {
 data "amazon-ami" "eks_optimized_ami_al2" {
     filters = {
         virtualization-type = "hvm"
-        name = "amazon-eks-node-1.32-v20250704"
+        name = "amazon-eks-node-1.32-v20250801"
         root-device-type = "ebs"
     }
     owners = ["602401143452"]
