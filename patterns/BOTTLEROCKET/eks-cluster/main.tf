@@ -43,11 +43,11 @@ module "eks_cluster" {
 
 module "eks_managed_node_group" {
   source = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "20.37.1" #ensure to update this to the latest/desired version
+  version = "21.0.7" #ensure to update this to the latest/desired version
 
   name            = "BOTTLEROCKETL2"
   cluster_name    = module.eks_cluster.cluster_name
-  cluster_version = module.eks_cluster.cluster_version
+  kubernetes_version = module.eks_cluster.cluster_version
   subnet_ids      = tolist(split(",", data.aws_ssm_parameter.private_subnets.value))
 
   // The following variables are necessary if you decide to use the module outside of the parent EKS module context.

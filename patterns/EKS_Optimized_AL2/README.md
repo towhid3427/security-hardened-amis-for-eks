@@ -24,11 +24,11 @@ More info on Technical details section below.
 
 **Step 2.** Follow steps from the section [CIS Scripts](##🔒-cis-cripts)
 
-**Step 3.** Run `make plan/apply` to deploy VPC resource using Terraform.
+**Step 3.** Run `make plan and make apply` to deploy VPC resource using Terraform.
 
 **Step 4.** Run `make create-hardened-ami` to Create EKS CIS Level1 and Level2 Hardened AMIs using EKS AMIs as a base AMI.
 
-**Step 5.** Run `make cluster-plan/cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
+**Step 5.** Run `make cluster-plan and cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
 
 **Step 6.** Run `make run-cis-scan` to trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
 
