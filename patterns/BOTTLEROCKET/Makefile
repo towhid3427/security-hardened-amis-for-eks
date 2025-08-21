@@ -69,7 +69,8 @@ run-cis-scan:
 		--scan-name $(NAME) \
 		--schedule oneTime={} \
 		--security-level LEVEL_2 \
-		--targets accountIds=$(ACCOUNT_ID),targetResourceTags={eks:cluster-name=$(NAME)} || \
+		--targets accountIds=$(ACCOUNT_ID),targetResourceTags={eks:cluster-name=$(NAME)} \
+		--region $(AWS_REGION) || \
 		(echo "CIS scan configuration failed!"; exit 1)
 
 # Clean up with proper error handling and confirmation
