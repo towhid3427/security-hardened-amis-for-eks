@@ -1,0 +1,1001 @@
+*****************************************************************
+*****************************************************************
+
+ - The entries below countain the result of each benchmark item.
+
+ - To investigate any issues further, open the corresponding CIS Benchmark PDF and navigate to the same recommendation number and name in the document.
+
+ - A copy of the benchmark PDF document can be obtained at the following URL:
+
+   https://workbench.cisecurity.org/benchmarks/12705
+
+*****************************************************************
+*****************************************************************
+ - 1.8 - Ensure updates, patches, and additional security software are installed -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.9 - Ensure system-wide crypto policy is not legacy -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.9 - Ensure usb-storage is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.1.1 - Ensure mounting of squashfs filesystems is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.1.1.2 - Ensure mounting of udf filesystems is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.1.1.3 - Ensure mounting of cramfs filesystems is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.1.4 - Ensure mounting of freevxfs filesystems is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.1.5 - Ensure mounting of jffs2 filesystems is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.1.6 - Ensure mounting of hfs filesystems is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.1.7 - Ensure mounting of hfsplus filesystems is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.2.1 - Ensure /tmp is a separate partition -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.1.2.2 - Ensure nodev option set on /tmp partition -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.2.3 - Ensure noexec option set on /tmp partition -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.1.2.4 - Ensure nosuid option set on /tmp partition -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.3.1 - Ensure separate partition exists for /var -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.3.2 - Ensure nodev option set on /var partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.3.3 - Ensure nosuid option set on /var partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.4.1 - Ensure separate partition exists for /var/tmp -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.4.2 - Ensure noexec option set on /var/tmp partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.4.3 - Ensure nosuid option set on /var/tmp partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.4.4 - Ensure nodev option set on /var/tmp partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.5.1 - Ensure separate partition exists for /var/log -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.5.2 - Ensure nodev option set on /var/log partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.5.3 - Ensure noexec option set on /var/log partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.5.4 - Ensure nosuid option set on /var/log partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.6.1 - Ensure separate partition exists for /var/log/audit -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.6.2 - Ensure noexec option set on /var/log/audit partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.6.3 - Ensure nodev option set on /var/log/audit partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.6.4 - Ensure nosuid option set on /var/log/audit partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.7.1 - Ensure separate partition exists for /home -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.7.2 - Ensure nodev option set on /home partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.7.3 - Ensure nosuid option set on /home partition -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.1.8.1 - Ensure /dev/shm is a separate partition -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.1.8.2 - Ensure nodev option set on /dev/shm partition -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.1.8.3 - Ensure noexec option set on /dev/shm partition -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.1.8.4 - Ensure nosuid option set on /dev/shm partition -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.2.1 - Ensure GPG keys are configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.2.2 - Ensure gpgcheck is globally activated -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.2.3 - Ensure package manager repositories are configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.2.4 - Ensure repo_gpgcheck is globally activated -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.3.1 - Ensure AIDE is installed -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.3.2 - Ensure filesystem integrity is regularly checked -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.3.3 - Ensure cryptographic mechanisms are used to protect the integrity of audit tools -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.4.1 - Ensure permissions on bootloader config are configured -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 1.5.1 - Ensure address space layout randomization (ASLR) is enabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.5.2 - Ensure ptrace_scope is restricted -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.5.3 - Ensure core dump storage is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.5.4 - Ensure core dump backtraces are disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.6.1.1 - Ensure SELinux is installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.6.1.2 - Ensure SELinux is not disabled in bootloader configuration -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.6.1.3 - Ensure SELinux policy is configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.6.1.4 - Ensure the SELinux mode is not disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.6.1.5 - Ensure the SELinux mode is enforcing -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 1.6.1.6 - Ensure no unconfined services exist -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 1.6.1.7 - Ensure SETroubleshoot is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.6.1.8 - Ensure the MCS Translation Service (mcstrans) is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.7.1 - Ensure message of the day is configured properly -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.7.2 - Ensure local login warning banner is configured properly -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.7.3 - Ensure remote login warning banner is configured properly -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 1.7.4 - Ensure permissions on /etc/motd are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.7.5 - Ensure permissions on /etc/issue are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 1.7.6 - Ensure permissions on /etc/issue.net are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.4 - Ensure nonessential services listening on the system are removed or masked -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.1.1 - Ensure time synchronization is in use -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.1.2 - Ensure chrony is configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 2.2.1 - Ensure xorg-x11-server-common is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.2 - Ensure avahi is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.3 - Ensure a print server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.4 - Ensure a dhcp server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.5 - Ensure a dns server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.6 - Ensure an ftp server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.7 - Ensure a tftp server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.8 - Ensure a web server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.9 - Ensure IMAP and POP3 server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.10 - Ensure Samba is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.11 - Ensure HTTP Proxy Server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.12 - Ensure net-snmp is not installed or the snmpd service is not enabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.13 - Ensure telnet-server is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.14 - Ensure dnsmasq is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.2.15 - Ensure mail transfer agent is configured for local-only mode -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 2.2.16 - Ensure nfs-utils is not installed or the  nfs-server service is masked -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 2.2.17 - Ensure rpcbind is not installed or the  rpcbind services are masked -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 2.2.18 - Ensure rsync-daemon is not installed or the rsyncd service is masked -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.3.1 - Ensure telnet client is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.3.2 - Ensure LDAP client is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 2.3.3 - Ensure FTP client is not installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 3.1.1 - Ensure IPv6 status is identified -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 3.1.2 - Ensure DCCP is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 3.1.3 - Ensure SCTP is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.1.4 - Ensure RDS is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.1.5 - Ensure TIPC is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 3.2.1 - Ensure IP forwarding is disabled -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 3.2.2 - Ensure packet redirect sending is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.3.1 - Ensure source routed packets are not accepted -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 3.3.2 - Ensure ICMP redirects are not accepted -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 3.3.3 - Ensure secure ICMP redirects are not accepted -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.3.4 - Ensure suspicious packets are logged -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.3.5 - Ensure broadcast ICMP requests are ignored -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.3.6 - Ensure bogus ICMP responses are ignored -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.3.7 - Ensure Reverse Path Filtering is enabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.3.8 - Ensure TCP SYN Cookies is enabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 3.3.9 - Ensure IPv6 router advertisements are not accepted -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 3.4.1.1 - Ensure nftables is installed -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 3.4.1.2 - Ensure a single firewall configuration utility is in use -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 3.4.2.1 - Ensure firewalld default zone is set -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 3.4.2.2 - Ensure at least one nftables table exists -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 3.4.2.3 - Ensure nftables base chains exist -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 3.4.2.4 - Ensure host based firewall loopback traffic is configured -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 3.4.2.5 - Ensure firewalld drops unnecessary services and ports -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 3.4.2.6 - Ensure nftables established connections are configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 3.4.2.7 - Ensure nftables default deny firewall policy -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 4.1.1 - Ensure cron daemon is installed and enabled -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.2 - Ensure permissions on /etc/crontab are configured -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.3 - Ensure permissions on /etc/cron.hourly are configured -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.4 - Ensure permissions on /etc/cron.daily are configured -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.5 - Ensure permissions on /etc/cron.weekly are configured -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.6 - Ensure permissions on /etc/cron.monthly are configured -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.7 - Ensure permissions on /etc/cron.d are configured -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.8 - Ensure cron is restricted to authorized users -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.1.9 - Ensure at is restricted to authorized users -
+ - N/A - Recommendation is non applicable
+*****************************************************************
+*****************************************************************
+ - 4.2.1 - Ensure permissions on /etc/ssh/sshd_config are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.2.2 - Ensure permissions on SSH private host key files are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.2.3 - Ensure permissions on SSH public host key files are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.2.4 - Ensure SSH access is limited -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.2.5 - Ensure SSH LogLevel is appropriate -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.6 - Ensure SSH PAM is enabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.7 - Ensure SSH root login is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.8 - Ensure SSH HostbasedAuthentication is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.9 - Ensure SSH PermitEmptyPasswords is disabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.2.10 - Ensure SSH PermitUserEnvironment is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.11 - Ensure SSH IgnoreRhosts is enabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.12 - Ensure SSH X11 forwarding is disabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.13 - Ensure SSH AllowTcpForwarding is disabled -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.2.14 - Ensure system-wide crypto policy is not over-ridden -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.2.15 - Ensure SSH warning banner is configured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.16 - Ensure SSH MaxAuthTries is set to 4 or less -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.17 - Ensure SSH MaxStartups is configured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.18 - Ensure SSH MaxSessions is set to 10 or less -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.19 - Ensure SSH LoginGraceTime is set to one minute or less -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.2.20 - Ensure SSH Idle Timeout Interval is configured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.3.1 - Ensure sudo is installed -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.3.2 - Ensure sudo commands use pty -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.3.3 - Ensure sudo log file exists -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.3.4 - Ensure re-authentication for privilege escalation is not disabled globally -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.3.5 - Ensure sudo authentication timeout is configured correctly -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.3.6 - Ensure access to the su command is restricted -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.4.1 - Ensure custom authselect profile is used -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.4.2 - Ensure authselect includes with-faillock -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.5.1 - Ensure password creation requirements are configured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.5.2 - Ensure lockout for failed password attempts is configured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.5.3 - Ensure password reuse is limited -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.5.4 - Ensure password hashing algorithm is SHA-512 -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.6.2 - Ensure system accounts are secured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.6.3 - Ensure default user shell timeout is 900 seconds or less -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.6.4 - Ensure default group for the root account is GID 0 -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.6.5 - Ensure default user umask is 027 or more restrictive -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.6.6 - Ensure root password is set -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.6.1.1 - Ensure password expiration is 365 days or less -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.6.1.2 - Ensure minimum days between password changes is  configured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 4.6.1.3 - Ensure password expiration warning days is 7 or more -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 4.6.1.4 - Ensure inactive password lock is 30 days or less -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 4.6.1.5 - Ensure all users last password change date is in the past -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.3 - Ensure logrotate is configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.1.3 - Ensure all logfiles have appropriate permissions and ownership -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.1.1 - Ensure rsyslog is installed -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.1.2 - Ensure rsyslog service is enabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.1.3 - Ensure journald is configured to send logs to rsyslog -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.1.4 - Ensure rsyslog default file permissions are configured -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.1.5 - Ensure logging is configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.1.1.6 - Ensure rsyslog is configured to send logs to a remote log host -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.1.1.7 - Ensure rsyslog is not configured to receive logs from a remote client -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.1.2.2 - Ensure journald service is enabled -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.1.2.3 - Ensure journald is configured to compress large log files -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.2.4 - Ensure journald is configured to write logfiles to persistent disk -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.2.5 - Ensure journald is not configured to send logs to rsyslog -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.1.2.6 - Ensure journald log rotation is configured per site policy -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.1.2.7 - Ensure journald default file permissions configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.1.2.1.1 - Ensure systemd-journal-remote is installed -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.2.1.2 - Ensure systemd-journal-remote is configured -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.1.2.1.3 - Ensure systemd-journal-remote is enabled -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.1.2.1.4 - Ensure journald is not configured to receive logs from a remote client -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.1.1 - Ensure auditd is installed -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 5.2.1.2 - Ensure auditing for processes that start prior to auditd is enabled -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 5.2.1.3 - Ensure audit_backlog_limit is sufficient -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 5.2.1.4 - Ensure auditd service is enabled -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 5.2.2.1 - Ensure audit log storage size is configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.2.2 - Ensure audit logs are not automatically deleted -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 5.2.2.3 - Ensure system is disabled when audit logs are full -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.2.3.1 - Ensure changes to system administration scope (sudoers) is collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.2 - Ensure actions as another user are always logged -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.3 - Ensure events that modify the sudo log file are collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.4 - Ensure events that modify date and time information are collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.5 - Ensure events that modify the system's network environment are collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.6 - Ensure use of privileged commands are collected -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.2.3.7 - Ensure unsuccessful file access attempts are collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.8 - Ensure events that modify user/group information are collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.9 - Ensure discretionary access control permission modification events are collected -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.2.3.10 - Ensure successful file system mounts are collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.11 - Ensure session initiation information is collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.12 - Ensure login and logout events are collected -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.2.3.13 - Ensure file deletion events by users are collected -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.2.3.14 - Ensure events that modify the system's Mandatory Access Controls are collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.15 - Ensure successful and unsuccessful attempts to use the chcon command are recorded -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.16 - Ensure successful and unsuccessful attempts to use the setfacl command are recorded -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.17 - Ensure successful and unsuccessful attempts to use the chacl command are recorded -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.18 - Ensure successful and unsuccessful attempts to use the usermod command are recorded -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.19 - Ensure kernel module loading unloading and modification is collected -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.3.20 - Ensure the audit configuration is immutable -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.2.3.21 - Ensure the running and on disk configuration is the same -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 5.2.4.1 - Ensure audit log files are mode 0640 or less permissive -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.2 - Ensure only authorized users own audit log files -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.3 - Ensure only authorized groups are assigned ownership of audit log files -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.4 - Ensure the audit log directory is 0750 or more restrictive -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.5 - Ensure audit configuration files are 640 or more restrictive -
+ - REMEDIATED - Recommendation successfully remediated
+*****************************************************************
+*****************************************************************
+ - 5.2.4.6 - Ensure audit configuration files are owned by root -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.7 - Ensure audit configuration files belong to group root -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.8 - Ensure audit tools are 755 or more restrictive -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.9 - Ensure audit tools are owned by root -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 5.2.4.10 - Ensure audit tools belong to group root -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.1 - Ensure permissions on /etc/passwd are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.2 - Ensure permissions on /etc/passwd are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.3 - Ensure permissions on /etc/passwd- are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.4 - Ensure permissions on /etc/group are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.5 - Ensure permissions on /etc/group- are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.6 - Ensure permissions on /etc/shadow are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.7 - Ensure permissions on /etc/shadow- are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.8 - Ensure permissions on /etc/gshadow are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.9 - Ensure permissions on /etc/gshadow- are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.1.10 - Audit system file permissions -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 6.1.11 - Ensure world writable files and directories are secured -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 6.1.12 - Ensure no unowned or ungrouped files or directories exist -
+ - EXCLUDED - Recommendation on the excluded list
+*****************************************************************
+*****************************************************************
+ - 6.1.13 - Ensure SUID and SGID files are reviewed -
+ - MANUAL - Recommendation needs to be remediated manually
+*****************************************************************
+*****************************************************************
+ - 6.2.1 - Ensure accounts in /etc/passwd use shadowed passwords -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.2 - Ensure /etc/shadow password fields are not empty -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.3 - Ensure all groups in /etc/passwd exist in /etc/group -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.4 - Ensure no duplicate UIDs exist -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.5 - Ensure no duplicate GIDs exist -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.6 - Ensure no duplicate user names exist -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.7 - Ensure no duplicate group names exist -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.8 - Ensure root PATH Integrity -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.9 - Ensure root is the only UID 0 account -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.10 - Ensure local interactive user home directories are configured -
+ - PASSED - Remediation not required
+*****************************************************************
+*****************************************************************
+ - 6.2.11 - Ensure local interactive user dot files access is configured -
+ - PASSED - Remediation not required
+*****************************************************************
+
+ ---------------------------TOTALS----------------------------
+ - Total      - Total number of recommendations:         - 243
+ - Skipped    - Recommendations not in selected profile: - 0
+ - NA         - Recommendations that are not applicable: - 9
+ - Excluded   - Recommendations on the excluded list:    - 17
+ - Passed     - Recommendations already remediated:      - 87
+ - Remediated - Recommendations successfully remediated: - 73
+ - Manual     - Recommendations need manual remediation  - 57
+ - Failed     - Recommendations failed remediation:      - 0
+ -------------------------------------------------------------
+            ----------------SUMMARY---------------
+            -  TOTAL RECOMMENDATIONS         - 243
+            -  APPLICABLE RECOMMENDATIONS    - 217
+            -  PASSING RECOMMENDATIONS       - 160
+            -  MANUAL REMEDIATION NEEDED     - 57
+            --------------------------------------

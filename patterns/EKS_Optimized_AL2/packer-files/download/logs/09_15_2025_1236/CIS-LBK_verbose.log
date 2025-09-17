@@ -1,0 +1,3916 @@
+- 09/15/25-12:36:16 - Starting user check
+- 09/15/25-12:36:16 -  Verifying that this Remediation Kit is being run as the root user
+- 09/15/25-12:36:16 -  ### Script will exit if it's not being run as root ###
+- 09/15/25-12:36:16 - User is root - continuing...
+- 09/15/25-12:36:16 - root user verification successful
+
+**************************************************
+- 15-Sep-2025 12:36:16
+- Start Recommendation "1.1.1.1 - Ensure cramfs kernel module is not available"
+- Start check - Ensure mounting of cramfs filesystem is disabled
+- End check - Ensure mounting of cramfs filesystem is disabled
+- Start remediation - Ensure mounting of cramfs filesystem is disabled
+- End remediation - Ensure mounting of cramfs filesystem is disabled
+- Start check - Ensure mounting of cramfs filesystem is disabled
+- End check - Ensure mounting of cramfs filesystem is disabled
+- Result - successfully remediated
+- End Recommendation "1.1.1.1 - Ensure cramfs kernel module is not available"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:17
+- Start Recommendation "1.1.1.2 - Ensure freevxfs kernel module is not available"
+- Start check - Ensure mounting of freevxfs filesystems is disabled
+- End check - Ensure mounting of freevxfs filesystems is disabled
+- Result - No remediation required
+- End Recommendation "1.1.1.2 - Ensure freevxfs kernel module is not available"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:17
+- Start Recommendation "1.1.1.3 - Ensure hfs kernel module is not available"
+- Start check - Ensure mounting of hfs filesystems is disabled
+- End check - Ensure mounting of hfs filesystems is disabled
+- Start remediation - Ensure mounting of hfs filesystems is disabled
+- End remediation - Ensure mounting of hfs filesystems is disabled
+- Start check - Ensure mounting of hfs filesystems is disabled
+- End check - Ensure mounting of hfs filesystems is disabled
+- Result - successfully remediated
+- End Recommendation "1.1.1.3 - Ensure hfs kernel module is not available"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:17
+- Start Recommendation "1.1.1.4 - Ensure hfsplus kernel module is not available"
+- Start check - Ensure mounting of hfsplus filesystems is disabled
+- End check - Ensure mounting of hfsplus filesystems is disabled
+- Start remediation - Ensure mounting of hfsplus filesystems is disabled
+- End remediation - Ensure mounting of hfsplus filesystems is disabled
+- Start check - Ensure mounting of hfsplus filesystems is disabled
+- End check - Ensure mounting of hfsplus filesystems is disabled
+- Result - successfully remediated
+- End Recommendation "1.1.1.4 - Ensure hfsplus kernel module is not available"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:17
+- Start Recommendation "1.1.1.5 - Ensure jffs2 kernel module is not available"
+- Start check - Ensure mounting of jffs2 filesystems is disabled
+- End check - Ensure mounting of jffs2 filesystems is disabled
+- Result - No remediation required
+- End Recommendation "1.1.1.5 - Ensure jffs2 kernel module is not available"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:17
+- Start Recommendation "1.1.1.8 - Ensure usb-storage kernel module is not available"
+- Start check - Disable USB Storage
+- End check - Disable USB Storage
+- Start remediation - Disable USB Storage
+- End remediation - Disable USB Storage
+- Start check - Disable USB Storage
+- End check - Disable USB Storage
+- Result - successfully remediated
+- End Recommendation "1.1.1.8 - Ensure usb-storage kernel module is not available"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.1.1 - Ensure /tmp is a separate partition"
+- Start check - Ensure /tmp is a separate partition
+- /tmp is NOT a separate partition
+- FAIL:
+- /tmp is NOT properly configured
+- End check - Ensure /tmp is a separate partition
+- Start remediation - Ensure /tmp is a separate partition
+- Updating /tmp in /etc/fstab
+- End remediation - Ensure /tmp is a separate partition
+- Start check - Ensure /tmp is a separate partition
+- /tmp is a separate partition
+- /tmp will be mounted at boot time
+- PASS:
+- /tmp is properly configured
+- End check - Ensure /tmp is a separate partition
+- Result - successfully remediated
+- End Recommendation "1.1.2.1.1 - Ensure /tmp is a separate partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.1.2 - Ensure nodev option set on /tmp partition"
+- Start check - Ensure nodev option set on /tmp partition
+- /tmp is a separate partition
+- /tmp has nodev configured
+TARGET SOURCE FSTYPE OPTIONS
+/tmp   tmpfs  tmpfs  rw,nosuid,nodev,noexec,relatime
+- /tmp is configured in /etc/fstab
+- nodev found in mount entry for /tmp in /etc/fstab
+- PASS:
+- /tmp is properly configured
+- End check - Ensure nodev option set on /tmp partition
+- Result - No remediation required
+- End Recommendation "1.1.2.1.2 - Ensure nodev option set on /tmp partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.1.3 - Ensure nosuid option set on /tmp partition"
+- Start check - Ensure nosuid option set on /tmp partition
+- /tmp is a separate partition
+- /tmp has nosuid configured
+TARGET SOURCE FSTYPE OPTIONS
+/tmp   tmpfs  tmpfs  rw,nosuid,nodev,noexec,relatime
+- /tmp is configured in /etc/fstab
+- nosuid found in mount entry for /tmp in /etc/fstab
+- PASS:
+- /tmp is properly configured
+- End check - Ensure nosuid option set on /tmp partition
+- Result - No remediation required
+- End Recommendation "1.1.2.1.3 - Ensure nosuid option set on /tmp partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.1.4 - Ensure noexec option set on /tmp partition"
+- Start check - Ensure noexec option set on /tmp partition
+- /tmp is a separate partition
+- /tmp has noexec configured
+TARGET SOURCE FSTYPE OPTIONS
+/tmp   tmpfs  tmpfs  rw,nosuid,nodev,noexec,relatime
+- /tmp is configured in /etc/fstab
+- noexec found in mount entry for /tmp in /etc/fstab
+- PASS:
+- /tmp is properly configured
+- End check - Ensure noexec option set on /tmp partition
+- Result - No remediation required
+- End Recommendation "1.1.2.1.4 - Ensure noexec option set on /tmp partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.2.1 - Ensure /dev/shm is a separate partition"
+- Start check - Ensure /dev/shm is configured
+- /dev/shm is a separate partition
+- /dev/shm will NOT be mounted at boot time
+- FAIL:
+- /dev/shm is NOT properly configured
+- End check - Ensure /dev/shm is configured
+- Start remediation - Ensure /dev/shm is configured
+- Updating /dev/shm in /etc/fstab
+- End remediation - Ensure /dev/shm is configured
+- Start check - Ensure /dev/shm is configured
+- /dev/shm is a separate partition
+- /dev/shm will be mounted at boot time
+- PASS:
+- /dev/shm is properly configured
+- End check - Ensure /dev/shm is configured
+- Result - successfully remediated
+- End Recommendation "1.1.2.2.1 - Ensure /dev/shm is a separate partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.2.2 - Ensure nodev option set on /dev/shm partition"
+- Start check - Ensure nodev option set on /dev/shm partition
+- /dev/shm is a separate partition
+- /dev/shm has nodev configured
+TARGET   SOURCE FSTYPE OPTIONS
+/dev/shm tmpfs  tmpfs  rw,nosuid,nodev
+- /dev/shm is configured in /etc/fstab
+- nodev found in mount entry for /dev/shm in /etc/fstab
+- PASS:
+- /dev/shm is properly configured
+- End check - Ensure nodev option set on /dev/shm partition
+- Result - No remediation required
+- End Recommendation "1.1.2.2.2 - Ensure nodev option set on /dev/shm partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.2.3 - Ensure nosuid option set on /dev/shm partition"
+- Start check - Ensure nosuid option set on /dev/shm partition
+- /dev/shm is a separate partition
+- /dev/shm has nosuid configured
+TARGET   SOURCE FSTYPE OPTIONS
+/dev/shm tmpfs  tmpfs  rw,nosuid,nodev
+- /dev/shm is configured in /etc/fstab
+- nosuid found in mount entry for /dev/shm in /etc/fstab
+- PASS:
+- /dev/shm is properly configured
+- End check - Ensure nosuid option set on /dev/shm partition
+- Result - No remediation required
+- End Recommendation "1.1.2.2.3 - Ensure nosuid option set on /dev/shm partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.2.4 - Ensure noexec option set on /dev/shm partition"
+- Start check - Ensure noexec option set on /dev/shm partition
+- /dev/shm is a separate partition
+- /dev/shm does NOT have noexec configured
+TARGET   SOURCE FSTYPE OPTIONS
+/dev/shm tmpfs  tmpfs  rw,nosuid,nodev
+- /dev/shm is configured in /etc/fstab
+- noexec found in mount entry for /dev/shm in /etc/fstab
+- FAIL:
+- /dev/shm is NOT properly configured
+- End check - Ensure noexec option set on /dev/shm partition
+- Start remediation - Ensure noexec option set on /dev/shm partition
+- /dev/shm is configured in /etc/fstab
+- Updating /dev/shm in /etc/fstab
+- Remounting /dev/shm with noexec,nodev,nosuid
+- End remediation - Ensure noexec option set on /dev/shm partition
+- Start check - Ensure noexec option set on /dev/shm partition
+- /dev/shm is a separate partition
+- /dev/shm has noexec configured
+TARGET   SOURCE FSTYPE OPTIONS
+/dev/shm tmpfs  tmpfs  rw,nosuid,nodev,noexec
+- /dev/shm is configured in /etc/fstab
+- noexec found in mount entry for /dev/shm in /etc/fstab
+- PASS:
+- /dev/shm is properly configured
+- End check - Ensure noexec option set on /dev/shm partition
+- Result - successfully remediated
+- End Recommendation "1.1.2.2.4 - Ensure noexec option set on /dev/shm partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:18
+- Start Recommendation "1.1.2.3.2 - Ensure nodev option set on /home partition"
+- Start check - Ensure nodev option set on /home partition
+- /home is NOT a separate partition
+- /home is NOT configured in /etc/fstab
+-  : 
+- /home was NOT found in any systemd unit files
+- FAIL:
+- /home is NOT properly configured
+- End check - Ensure nodev option set on /home partition
+- Start remediation - Ensure nodev option set on /home partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /home.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /home in systemd unit files or /etc/fstab
+- End remediation - Ensure nodev option set on /home partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.3.2 - Ensure nodev option set on /home partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:19
+- Start Recommendation "1.1.2.3.3 - Ensure nosuid option set on /home partition"
+- Start check - Ensure nosuid option set on /home partition
+- /home is NOT a separate partition
+- /home is NOT configured in /etc/fstab
+-  : 
+- /home was NOT found in any systemd unit files
+- FAIL:
+- /home is NOT properly configured
+- End check - Ensure nosuid option set on /home partition
+- Start remediation - Ensure nosuid option set on /home partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /home.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /home in systemd unit files or /etc/fstab
+- End remediation - Ensure nosuid option set on /home partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.3.3 - Ensure nosuid option set on /home partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:20
+- Start Recommendation "1.1.2.4.2 - Ensure nodev option set on /var partition"
+- Start check - Ensure nodev option set on /var partition
+- /var is NOT a separate partition
+- /var is NOT configured in /etc/fstab
+-  : 
+- /var is configured in /usr/lib/systemd/system/var-lib-nfs-rpc_pipefs.mount
+- /usr/lib/systemd/system/var-lib-nfs-rpc_pipefs.mount does NOT contain nodev option
+- FAIL:
+- /var is NOT properly configured
+- End check - Ensure nodev option set on /var partition
+- Start remediation - Ensure nodev option set on /var partition
+- Updating /var in /usr/lib/systemd/system/var-lib-nfs-rpc_pipefs.mount
+- Remounting /var with nodev,nosuid
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var in systemd unit files or /etc/fstab
+- End remediation - Ensure nodev option set on /var partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.4.2 - Ensure nodev option set on /var partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:21
+- Start Recommendation "1.1.2.4.3 - Ensure nosuid option set on /var partition"
+- Start check - Ensure nosuid option set on /var partition
+- /var is NOT a separate partition
+- /var is NOT configured in /etc/fstab
+-  : 
+- /var is configured in /usr/lib/systemd/system/var-lib-nfs-rpc_pipefs.mount
+- /usr/lib/systemd/system/var-lib-nfs-rpc_pipefs.mount does NOT contain nosuid option
+- FAIL:
+- /var is NOT properly configured
+- End check - Ensure nosuid option set on /var partition
+- Start remediation - Ensure nosuid option set on /var partition
+- Updating /var in /usr/lib/systemd/system/var-lib-nfs-rpc_pipefs.mount
+- Remounting /var with nodev,nosuid
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var in systemd unit files or /etc/fstab
+- End remediation - Ensure nosuid option set on /var partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.4.3 - Ensure nosuid option set on /var partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:21
+- Start Recommendation "1.1.2.5.2 - Ensure nodev option set on /var/tmp partition"
+- Start check - Ensure nodev option set on /var/tmp partition
+- /var/tmp is NOT a separate partition
+- /var/tmp is NOT configured in /etc/fstab
+-  : 
+- /var/tmp was NOT found in any systemd unit files
+- FAIL:
+- /var/tmp is NOT properly configured
+- End check - Ensure nodev option set on /var/tmp partition
+- Start remediation - Ensure nodev option set on /var/tmp partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/tmp.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/tmp in systemd unit files or /etc/fstab
+- End remediation - Ensure nodev option set on /var/tmp partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.5.2 - Ensure nodev option set on /var/tmp partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:22
+- Start Recommendation "1.1.2.5.3 - Ensure nosuid option set on /var/tmp partition"
+- Start check - Ensure nosuid option set on /var/tmp partition
+- /var/tmp is NOT a separate partition
+- /var/tmp is NOT configured in /etc/fstab
+-  : 
+- /var/tmp was NOT found in any systemd unit files
+- FAIL:
+- /var/tmp is NOT properly configured
+- End check - Ensure nosuid option set on /var/tmp partition
+- Start remediation - Ensure nosuid option set on /var/tmp partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/tmp.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/tmp in systemd unit files or /etc/fstab
+- End remediation - Ensure nosuid option set on /var/tmp partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.5.3 - Ensure nosuid option set on /var/tmp partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:22
+- Start Recommendation "1.1.2.5.4 - Ensure noexec option set on /var/tmp partition"
+- Start check - Ensure noexec option set on /var/tmp partition
+- /var/tmp is NOT a separate partition
+- /var/tmp is NOT configured in /etc/fstab
+-  : 
+- /var/tmp was NOT found in any systemd unit files
+- FAIL:
+- /var/tmp is NOT properly configured
+- End check - Ensure noexec option set on /var/tmp partition
+- Start remediation - Ensure noexec option set on /var/tmp partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/tmp.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/tmp in systemd unit files or /etc/fstab
+- End remediation - Ensure noexec option set on /var/tmp partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.5.4 - Ensure noexec option set on /var/tmp partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:23
+- Start Recommendation "1.1.2.6.2 - Ensure nodev option set on /var/log partition"
+- Start check - Ensure nodev option set on /var/log partition
+- /var/log is NOT a separate partition
+- /var/log is NOT configured in /etc/fstab
+-  : 
+- /var/log was NOT found in any systemd unit files
+- FAIL:
+- /var/log is NOT properly configured
+- End check - Ensure nodev option set on /var/log partition
+- Start remediation - Ensure nodev option set on /var/log partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/log.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/log in systemd unit files or /etc/fstab
+- End remediation - Ensure nodev option set on /var/log partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.6.2 - Ensure nodev option set on /var/log partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:24
+- Start Recommendation "1.1.2.6.3 - Ensure nosuid option set on /var/log partition"
+- Start check - Ensure nosuid option set on /var/log partition
+- /var/log is NOT a separate partition
+- /var/log is NOT configured in /etc/fstab
+-  : 
+- /var/log was NOT found in any systemd unit files
+- FAIL:
+- /var/log is NOT properly configured
+- End check - Ensure nosuid option set on /var/log partition
+- Start remediation - Ensure nosuid option set on /var/log partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/log.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/log in systemd unit files or /etc/fstab
+- End remediation - Ensure nosuid option set on /var/log partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.6.3 - Ensure nosuid option set on /var/log partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:24
+- Start Recommendation "1.1.2.6.4 - Ensure noexec option set on /var/log partition"
+- Start check - Ensure noexec option set on /var/log partition
+- /var/log is NOT a separate partition
+- /var/log is NOT configured in /etc/fstab
+-  : 
+- /var/log was NOT found in any systemd unit files
+- FAIL:
+- /var/log is NOT properly configured
+- End check - Ensure noexec option set on /var/log partition
+- Start remediation - Ensure noexec option set on /var/log partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/log.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/log in systemd unit files or /etc/fstab
+- End remediation - Ensure noexec option set on /var/log partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.6.4 - Ensure noexec option set on /var/log partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:25
+- Start Recommendation "1.1.2.7.2 - Ensure nodev option set on /var/log/audit partition"
+- Start check - Ensure nodev option set on /var/log/audit partition
+- /var/log/audit is NOT a separate partition
+- /var/log/audit is NOT configured in /etc/fstab
+-  : 
+- /var/log/audit was NOT found in any systemd unit files
+- FAIL:
+- /var/log/audit is NOT properly configured
+- End check - Ensure nodev option set on /var/log/audit partition
+- Start remediation - Ensure nodev option set on /var/log/audit partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/log/audit.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/log/audit in systemd unit files or /etc/fstab
+- End remediation - Ensure nodev option set on /var/log/audit partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.7.2 - Ensure nodev option set on /var/log/audit partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:25
+- Start Recommendation "1.1.2.7.3 - Ensure nosuid option set on /var/log/audit partition"
+- Start check - Ensure nosuid option set on /var/log/audit partition
+- /var/log/audit is NOT a separate partition
+- /var/log/audit is NOT configured in /etc/fstab
+-  : 
+- /var/log/audit was NOT found in any systemd unit files
+- FAIL:
+- /var/log/audit is NOT properly configured
+- End check - Ensure nosuid option set on /var/log/audit partition
+- Start remediation - Ensure nosuid option set on /var/log/audit partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/log/audit.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/log/audit in systemd unit files or /etc/fstab
+- End remediation - Ensure nosuid option set on /var/log/audit partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.7.3 - Ensure nosuid option set on /var/log/audit partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.1.2.7.4 - Ensure noexec option set on /var/log/audit partition"
+- Start check - Ensure noexec option set on /var/log/audit partition
+- /var/log/audit is NOT a separate partition
+- /var/log/audit is NOT configured in /etc/fstab
+-  : 
+- /var/log/audit was NOT found in any systemd unit files
+- FAIL:
+- /var/log/audit is NOT properly configured
+- End check - Ensure noexec option set on /var/log/audit partition
+- Start remediation - Ensure noexec option set on /var/log/audit partition
+- For new installations, during installation create a custom partition setup and specify a separate partition for /var/log/audit.
+- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate.
+- Could not remediate /var/log/audit in systemd unit files or /etc/fstab
+- End remediation - Ensure noexec option set on /var/log/audit partition
+- Result - requires manual remediation
+- End Recommendation "1.1.2.7.4 - Ensure noexec option set on /var/log/audit partition"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.2.1 - Ensure GPG keys are configured"
+- Start check - Ensure GPG keys are configured
+- Repo Keys:
+/etc/yum.repos.d/amzn2-core.repo:gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-core.repo:gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-core.repo:gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-extras.repo:gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-extras.repo:gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-extras.repo:gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-extras.repo:gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-extras.repo:gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+/etc/yum.repos.d/amzn2-extras.repo:gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-amazon-linux-2
+- Local GPG Keys:
+system-release-2 Amazon Linux Amazon Linux release files
+- End check - Ensure GPG keys are configured
+- Start Remediation - Ensure GPG keys are configured
+- Update your package manager GPG keys in accordance with site policy.
+- End Remediation - Ensure GPG keys are configured
+- Result - requires manual remediation
+- End Recommendation "1.2.1 - Ensure GPG keys are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.2.2 - Ensure gpgcheck is globally activated"
+- Start check - Ensure gpgcheck is globally activated
+- FAILED:
+
+- 'gpgcheck' is NOT configured correctly in:
+ /etc/yum.repos.d/amzn2-extras.repo:gpgcheck = 1
+/etc/yum.repos.d/amzn2-extras.repo:gpgcheck = 1
+/etc/yum.repos.d/amzn2-extras.repo:gpgcheck = 1
+/etc/yum.repos.d/amzn2-extras.repo:gpgcheck = 1
+/etc/yum.repos.d/amzn2-extras.repo:gpgcheck = 1
+/etc/yum.repos.d/amzn2-extras.repo:gpgcheck = 1
+- Passing values:
+
+- 'gpgcheck' is configured correctly in /etc/yum.conf
+- End check -Ensure gpgcheck is globally activated
+- Start remediation - Ensure gpgcheck is globally activated
+- End remediation - Ensure gpgcheck is globally activated
+- Start check - Ensure gpgcheck is globally activated
+- PASSED:
+
+- 'gpgcheck' is configured correctly in /etc/yum.conf
+- 'gpgcheck' is configured correctly in all files in /etc/yum.repos.d/*
+- End check - Ensure gpgcheck is globally activated
+- Result - successfully remediated
+- End Recommendation "1.2.2 - Ensure gpgcheck is globally activated"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.2.4 - Ensure package manager repositories are configured"
+- Start check - Ensure package manager repositories are configured
+- Repo List:
+
+- End check - Ensure package manager repositories are configured
+- Start Remediation - Ensure package manager repositories are configured
+- Configure your package manager repositories according to site policy.
+- End Remediation - Ensure package manager repositories are configured
+- Result - requires manual remediation
+- End Recommendation "1.2.4 - Ensure package manager repositories are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.2.5 - Ensure updates, patches, and additional security software are installed"
+- Start check - Ensure updates, patches, and additional security software are installed
+- Updates:
+  
+- Reboot:
+  
+- End check - Ensure updates, patches, and additional securi1ty software are installed
+- Start Remediation - Ensure updates, patches, and additional security software are installed
+- Use your package manager to update all packages on the system according to site policy.
+  The following command will install all available updates:
+  # dnf update
+  Once the update process is complete, verify if reboot is required to load changes.
+  dnf needs-restarting -r
+- End Remediation - Ensure updates, patches, and additional security software are installed
+- Result - requires manual remediation
+- End Recommendation "1.2.5 - Ensure updates, patches, and additional security software are installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.3.1 - Ensure authentication required for single user mode"
+- Start - Determine system's package manager 
+- system is rpm based
+- system uses yum package manager
+- End - Determine system's package manager
+- FAILED:
+- improper authentication set for single user mode
+- End check - single user mode authentication
+- PASS:
+- authentication required for single user mode is set correctly
+- End check - single user mode authentication
+- Result - successfully remediated
+- End Recommendation "1.3.1 - Ensure authentication required for single user mode"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.4.2 - Ensure ptrace_scope is restricted"
+- Start check - Ensure ptrace_scope is restricted
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "kernel.yama.ptrace_scope" is incorrectly set to "0" in the running configuration and should have a value of: "1"
+ - "kernel.yama.ptrace_scope" is incorrectly set to "0" in "/usr/lib/sysctl.d/10-default-yama-scope.conf" and should have a value of: "1"
+
+
+- End check - Ensure ptrace_scope is restricted
+- Start remediation - Ensure ptrace_scope is restricted
+
+ - Commenting out "kernel.yama.ptrace_scope" in "/usr/lib/sysctl.d/10-default-yama-scope.conf"
+
+ - Commenting out "kernel.yama.ptrace_scope" in "/lib/sysctl.d/10-default-yama-scope.conf"
+
+ - Setting "kernel.yama.ptrace_scope" to "1" in "/etc/sysctl.d/60-kernel_sysctl.conf"
+
+ - Updating "kernel.yama.ptrace_scope" to "1" in the active kernel parameters
+- End remediation - Ensure ptrace_scope is restricted
+- Start check - Ensure ptrace_scope is restricted
+
+- Audit Result:
+ ** PASS **
+
+ - "kernel.yama.ptrace_scope" is correctly set to "1" in the running configuration
+ - "kernel.yama.ptrace_scope" is correctly set to "1" in "/etc/sysctl.d/60-kernel_sysctl.conf"
+
+
+- End check - Ensure ptrace_scope is restricted
+- Result - successfully remediated
+- End Recommendation "1.4.2 - Ensure ptrace_scope is restricted"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.4.3 - Ensure core dump backtraces are disabled"
+- Start check - Ensure core dump backtraces are disabled
+- FAIL: Core dump backtraces are NOT disabled
+  /etc/systemd/coredump.conf:#ProcessSizeMax=2G
+- End check - Ensure core dump backtraces are disabled
+- Start remediation - Ensure core dump backtraces are disabled
+- Updating 'ProcessSizeMax' entry in /etc/systemd/coredump.conf
+- End remediation - Ensure core dump backtraces are disabled
+- Start check - Ensure core dump backtraces are disabled
+- PASS: Core dump backtraces ARE disabled
+  /etc/systemd/coredump.conf:ProcessSizeMax=0
+- End check - Ensure core dump backtraces are disabled
+- Result - successfully remediated
+- End Recommendation "1.4.3 - Ensure core dump backtraces are disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.4.4 - Ensure core dump storage is disabled"
+- Start check - Ensure core dump storage is disabled
+- FAIL: Core dump storage is NOT disabled
+  /etc/systemd/coredump.conf:#Storage=external
+- End check - Ensure core dump storage is disabled
+- Start remediation - Ensure core dump storage is disabled
+- Updating 'Storage' entry in /etc/systemd/coredump.conf
+- End remediation - Ensure core dump storage is disabled
+- Start check - Ensure core dump storage is disabled
+- PASS: Core dump storage IS disabled
+  /etc/systemd/coredump.conf:Storage=none
+- End check - Ensure core dump storage is disabled
+- Result - successfully remediated
+- End Recommendation "1.4.4 - Ensure core dump storage is disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:26
+- Start Recommendation "1.5.1.1 - Ensure SELinux is installed"
+- Start check - Ensure SELinux is installed
+- PASSED:
+- Package found: - libselinux-2.5-12.amzn2.0.2.x86_64
+- End check - Ensure SELinux is installed
+Recommendation "Ensure SELinux is installed" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.5.1.2 - Ensure SELinux is not disabled in bootloader configuration"
+- Start check - Ensure SELinux is not disabled in bootloader configuration
+- PASSED:
+- SELinux is not disabled in bootloader configuration
+- End check - SELinux Bootloader configuration
+- Result - No remediation required
+- End Recommendation "1.5.1.2 - Ensure SELinux is not disabled in bootloader configuration"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.5.1.3 - Ensure SELinux policy is configured"
+- Start check - Ensure SELinux policy is configured
+- SELinux appears to be disabled in /etc/selinux/config
+- Result - requires manual remediation
+- End Recommendation "1.5.1.3 - Ensure SELinux policy is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.5.1.4 - Ensure the SELinux mode is not disabled"
+- Start check - Ensure the SELinux mode is not disabled
+- FAILED:
+- SELinux state is NOT properly set
+  SELinux state is: Disabled
+- End check - Ensure the SELinux mode is not disabled
+- Start remediation - Ensure the SELinux mode is not disabled
+- Run the following command to set SELinux's running mode:
+  setenforce 0
+- Edit the /etc/selinux/config file to set the SELINUX parameter:
+  SELINUX=permissive
+- End remediation - Ensure the SELinux mode is not disabled
+- Result - requires manual remediation
+- End Recommendation "1.5.1.4 - Ensure the SELinux mode is not disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.5.1.6 - Ensure no unconfined services exist"
+- Start check - Ensure no unconfined processes exist
+- PASS:
+Ensure no unconfined processes exist
+- End check
+- Result - No remediation required
+- End Recommendation "1.5.1.6 - Ensure no unconfined services exist"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.5.1.7 - Ensure the MCS Translation Service (mcstrans) is not installed"
+- PASSED:
+- mcstrans package not found
+- End check - mcstrans
+Recommendation "Ensure the MCS Translation Service (mcstrans) is not installed" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.5.1.8 - Ensure SETroubleshoot is not installed"
+- PASSED:
+- setroubleshoot package not found
+- End check - setroubleshoot
+Recommendation "Ensure SETroubleshoot is not installed" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.6.2 - Ensure local login warning banner is configured properly"
+- Start check - Ensure local login warning banner is configured properly
+- FAILED:
+- /etc/issue contains \S
+Kernel  on an \m
+- End check - Ensure local login warning banner is configured properly
+- Start remediation - Ensure local login warning banner is configured properly
+- End remediation - Ensure local login warning banner is configured properly
+- Start check - Ensure local login warning banner is configured properly
+- PASS:
+- /etc/issue is configured properly
+- End check - Ensure local login warning banner is configured properly
+- Result - successfully remediated
+- End Recommendation "1.6.2 - Ensure local login warning banner is configured properly"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.6.3 - Ensure remote login warning banner is configured properly"
+- Start check - Ensure remote login warning banner is configured properly
+- FAILED:
+- /etc/issue.net contains \S
+Kernel  on an \m
+- End check - Ensure remote login warning banner is configured properly
+- Start remediation - Ensure remote login warning banner is configured properly
+- End remediation - Ensure remote login warning banner is configured properly
+- Start check - Ensure remote login warning banner is configured properly
+- PASS:
+- /etc/issue.net is configured properly
+- End check - Ensure remote login warning banner is configured properly
+- Result - successfully remediated
+- End Recommendation "1.6.3 - Ensure remote login warning banner is configured properly"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.6.4 - Ensure access to /etc/motd is configured"
+- Start check - /etc/motd permissions set to "0644", ownership set to "root", and group set to "root"
+- PASS:
+- /etc/motd permissions set to "0644", ownership set to "root", and group set to "root"
+- End check - /etc/motd permissions and ownership
+- Result - No remediation required
+- End Recommendation "1.6.4 - Ensure access to /etc/motd is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.6.5 - Ensure access to /etc/issue is configured"
+- Start check - Ensure permissions on /etc/issue are configured
+- PASS:
+- /etc/issue permissions set to "644" or below, ownership set to "root", and group set to "root"
+- End check - Ensure permissions on /etc/issue are configured
+- Result - No remediation required
+- End Recommendation "1.6.5 - Ensure access to /etc/issue is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "1.6.6 - Ensure access to /etc/issue.net is configured"
+- Start check - Ensure permissions on /etc/issue.net are configured
+- PASS:
+- /etc/issue.net permissions set to "644" or below, ownership set to "root", and group set to "root"
+- End check - Ensure permissions on /etc/issue.net are configured
+- Result - No remediation required
+- End Recommendation "1.6.6 - Ensure access to /etc/issue.net is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.1.1 - Ensure time synchronization is in use"
+- Start check - Ensure time synchronization is in use
+- Package(s) found: - chrony-4.2-5.amzn2.0.2.x86_64
+package ntp is not installed
+- End check - Ensure time synchronization is in use
+Recommendation "Ensure time synchronization is in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.1.2 - Ensure chrony is configured"
+- Start check - chrony configuration
+- Recommendation "Ensure chrony is configured" Manual remediation required
+- Result - requires manual remediation
+- End Recommendation "2.1.2 - Ensure chrony is configured"
+**************************************************
+
+- Result - requires manual remediation
+- End Recommendation "2.1.2 - Ensure chrony is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.1.3 - Ensure chrony is not run as the root user"
+- Start check - Ensure chrony is not run as the root user
+- PASS:
+- chrony is configured correctly
+- End check - Ensure chrony is not run as the root user
+- Result - No remediation required
+- End Recommendation "2.1.3 - Ensure chrony is not run as the root user"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.1 - Ensure autofs services are not in use"
+- Start check - Disable Automounting
+- Result - Recommendation is non applicable
+- End Recommendation "2.2.1 - Ensure autofs services are not in use"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.2 - Ensure avahi daemon services are not in use"
+- Start check - Ensure Avahi Server is not installed
+- PASSED:
+- avahi packages not found
+- End check - Ensure Avahi Server is not installed
+Recommendation "Ensure avahi daemon services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.3 - Ensure dhcp server services are not in use"
+- Start check - Ensure DHCP Server is not installed
+- PASSED:
+- dhcp package not installed
+- End check - Ensure DHCP Server is not installed
+Recommendation "Ensure dhcp server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.4 - Ensure dns server services are not in use"
+- Start check - Ensure DNS Server is not installed
+- PASSED:
+- dns server package not installed
+- End check - Ensure DNS Server is not installed
+Recommendation "Ensure dns server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.5 - Ensure dnsmasq services are not in use"
+- Start check - Ensure dnsmasq is not installed
+- PASSED:
+- dnsmasq package not installed
+- End check - Ensure dnsmasq is not installed
+Recommendation "Ensure dnsmasq services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.6 - Ensure samba file server services are not in use"
+- Start check - Ensure Samba is not installed
+- PASSED:
+- samba package not found
+- End check - Ensure Samba is not installed
+Recommendation "Ensure samba file server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.7 - Ensure ftp server services are not in use"
+- Start check - Ensure VSFTP Server is not installed
+- PASSED:
+- vsftpd package not installed
+- End check - Ensure VSFTP Server is not installed
+Recommendation "Ensure ftp server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.8 - Ensure message access server services are not in use"
+- Start check - Ensure IMAP and POP3 server are not installed
+- PASSED:
+- dovecot and cyrus-imapd packages not found
+- End check - Ensure IMAP and POP3 server are not installed
+Recommendation "Ensure message access server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.9 - Ensure network file system services are not in use"
+- Result - remediation required
+- End Recommendation "2.2.9 - Ensure network file system services are not in use"
+**************************************************
+
+- Start remediation - masking nfs-server service
+- PASS "Ensure network file system services are not in use" No remediation required
+- Result - nfs-utils is installed but nfs-server service is masked
+- End Recommendation "2.2.9 - Ensure network file system services are not in use"
+**************************************************
+
+- Result - successfully remediated
+- End Recommendation "2.2.9 - Ensure network file system services are not in use"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.10 - Ensure nis server services are not in use"
+- Start check - Ensure NIS Server is not installed
+- PASSED:
+- ypserv package not installed
+- End check - Ensure NIS Server is not installed
+Recommendation "Ensure nis server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.11 - Ensure print server services are not in use"
+- Start check - Ensure CUPS is not enabled
+- PASSED:
+- CUPS not found
+- End check - Ensure CUPS is not enabled
+Recommendation "Ensure print server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:27
+- Start Recommendation "2.2.12 - Ensure rpcbind services are not in use"
+- Result - needs remediation
+- End Recommendation "2.2.12 - Ensure rpcbind services are not in use"
+**************************************************
+
+- Start remediation - masking rpcbind service and/or rpcbind.socket service
+- PASS "Ensure rpcbind services are not in use" No remediation required
+- Result - rpc is installed but rpcbind service and rpcbind.socket service are masked
+- End Recommendation "2.2.12 - Ensure rpcbind services are not in use"
+**************************************************
+
+- Result - successfully remediated
+- End Recommendation "2.2.12 - Ensure rpcbind services are not in use"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.13 - Ensure rsync services are not in use"
+- Start check - Ensure rsync services are not in use
+- PASSED:
+- rsync package not installed
+- End check - Ensure rsync services are not in use
+Recommendation "Ensure rsync services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.14 - Ensure snmp services are not in use"
+- Start check - Ensure SNMP Server is not installed
+- PASSED:
+- net-snmp package not found
+- End check - Ensure SNMP Server is not installed
+Recommendation "Ensure snmp services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.15 - Ensure telnet server services are not in use"
+- Start check - Ensure telnet-server is not installed
+- PASSED:
+- telnet server not installed
+- End check - Ensure telnet-server is not installed
+Recommendation "Ensure telnet server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.16 - Ensure tftp server services are not in use"
+- Start check - Ensure TFTP Server is not installed
+- PASSED:
+- tftp-server package not installed
+- End check - Ensure TFTP Server is not installed
+Recommendation "Ensure tftp server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.17 - Ensure web proxy server services are not in use"
+- Start check - Ensure HTTP Proxy Server is not installed
+- PASSED:
+- squid package not found
+- End check - Ensure HTTP Proxy Server is not installed
+Recommendation "Ensure web proxy server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.18 - Ensure web server services are not in use"
+- Start check - Ensure a web server is not installed
+- PASSED:
+- Web server packages not found
+- End check - Ensure a web server is not installed
+Recommendation "Ensure web server services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.19 - Ensure xinetd services are not in use"
+- Start check - Ensure xinetd is not installed
+- PASSED:
+- xinetd not installed
+- End check - Ensure xinetd is not installed
+Recommendation "Ensure xinetd services are not in use" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.21 - Ensure mail transfer agents are configured for local-only mode"
+- Start check - Ensure mail transfer agents are configured for local-only mode
+- PASSED:
+- mail transfer agent is configured for local-only mode
+
+- MTA does NOT appear to be listening on port 25
+- MTA does NOT appear to be listening on port 465
+- MTA does NOT appear to be listening on port 587
+- End check - Ensure mail transfer agents are configured for local-only mode
+- Result - No remediation required
+- End Recommendation "2.2.21 - Ensure mail transfer agents are configured for local-only mode"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.2.22 - Ensure only approved services are listening on a network interface"
+- Start check - Ensure only approved services are listening on a network interface
+- FAIL:
+- Services that appear to be listing: 
+Netid State  Recv-Q Send-Q                  Local Address:Port  Peer Address:PortProcess                               
+udp   UNCONN 0      0                             0.0.0.0:68         0.0.0.0:*    users:(("dhclient",pid=2108,fd=6))   
+udp   UNCONN 0      0                           127.0.0.1:323        0.0.0.0:*    users:(("chronyd",pid=1878,fd=5))    
+udp   UNCONN 0      0                               [::1]:323           [::]:*    users:(("chronyd",pid=1878,fd=6))    
+udp   UNCONN 0      0      [fe80::831:eff:fe1a:4a8b]%eth0:546           [::]:*    users:(("dhclient",pid=2143,fd=5))   
+tcp   LISTEN 0      100                         127.0.0.1:25         0.0.0.0:*    users:(("master",pid=2300,fd=13))    
+tcp   LISTEN 0      4096                        127.0.0.1:44867      0.0.0.0:*    users:(("containerd",pid=2194,fd=11))
+tcp   LISTEN 0      128                           0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=2459,fd=3))       
+tcp   LISTEN 0      128                              [::]:22            [::]:*    users:(("sshd",pid=2459,fd=4))       
+- End check - Ensure only approved services are listening on a network interface
+- Start remediation - Ensure only approved services are listening on a network interface
+- If a listed service is not required, remove the package containing the service.
+- If the package containing the service is required or part of a dependency, stop and mask the service.
+- End remediation - Ensure only approved services are listening on a network interface
+- Result - requires manual remediation
+- End Recommendation "2.2.22 - Ensure only approved services are listening on a network interface"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.3.1 - Ensure ftp client is not installed"
+- Start check - Ensure FTP Client is not installed
+- PASSED:
+- ftp client package not installed
+- End check - Ensure FTP Client is not installed
+Recommendation "Ensure ftp client is not installed" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.3.3 - Ensure nis client is not installed"
+- Start check - Ensure NIS Client is not installed
+- PASSED:
+- nis client package not found
+- End check - Ensure NIS Client is not installed
+Recommendation "Ensure nis client is not installed" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.3.4 - Ensure telnet client is not installed"
+- Start check - Ensure telnet client is not installed
+- PASSED:
+- telnet package not found
+- End check - Ensure telnet client is not installed
+Recommendation "Ensure telnet client is not installed" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "2.3.5 - Ensure tftp client is not installed"
+- Start check - Ensure TFTP client is not installed
+- PASSED:
+- tftp package not installed
+- End check - Ensure TFTP client is not installed
+Recommendation "Ensure tftp client is not installed" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "3.1.1 - Ensure IPv6 status is identified"
+- Start remediation - Identifying status of IPv6
+- Enable or disable IPv6 in accordance with system requirements and local site policy
+- End remediation - Identifying status of IPv6
+- Result - requires manual remediation
+- End Recommendation "3.1.1 - Ensure IPv6 status is identified"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "3.1.2 - Ensure wireless interfaces are disabled"
+- Start check - Ensure wireless interfaces are disabled.
+- PASS:
+
+nmcli command was NOT found
+- End check - Ensure wireless interfaces are disabled.
+- Result - No remediation required
+- End Recommendation "3.1.2 - Ensure wireless interfaces are disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "3.1.3 - Ensure bluetooth services are not in use"
+- Start check - Ensure bluetooth is services are not in use
+- End check - Ensure bluetooth is services are not in use
+- Result - No remediation required
+- End Recommendation "3.1.3 - Ensure bluetooth services are not in use"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "3.3.3 - Ensure bogus icmp responses are ignored"
+- Start check - Ensure bogus ICMP responses are ignored
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "net.ipv4.icmp_ignore_bogus_error_responses" is not set in an included file
+ ** Note: "net.ipv4.icmp_ignore_bogus_error_responses" May be set in a file that's ignored by load procedure **
+
+
+
+- Correctly set:
+
+ - "net.ipv4.icmp_ignore_bogus_error_responses" is correctly set to "1" in the running configuration
+
+- End check - Ensure bogus ICMP responses are ignored
+- Start remediation - Ensure bogus ICMP responses are ignored
+
+ - Setting "net.ipv4.icmp_ignore_bogus_error_responses" to "1" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+- End remediation - Ensure bogus ICMP responses are ignored
+- Start check - Ensure bogus ICMP responses are ignored
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv4.icmp_ignore_bogus_error_responses" is correctly set to "1" in the running configuration
+ - "net.ipv4.icmp_ignore_bogus_error_responses" is correctly set to "1" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+
+- End check - Ensure bogus ICMP responses are ignored
+- Result - successfully remediated
+- End Recommendation "3.3.3 - Ensure bogus icmp responses are ignored"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "3.3.4 - Ensure broadcast icmp requests are ignored"
+- Start check - Ensure broadcast ICMP requests are ignored
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "net.ipv4.icmp_echo_ignore_broadcasts" is not set in an included file
+ ** Note: "net.ipv4.icmp_echo_ignore_broadcasts" May be set in a file that's ignored by load procedure **
+
+
+
+- Correctly set:
+
+ - "net.ipv4.icmp_echo_ignore_broadcasts" is correctly set to "1" in the running configuration
+
+- End check - Ensure broadcast ICMP requests are ignored
+- Start remediation - Ensure broadcast ICMP requests are ignored
+
+ - Setting "net.ipv4.icmp_echo_ignore_broadcasts" to "1" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+- End remediation - Ensure broadcast ICMP requests are ignored
+- Start check - Ensure broadcast ICMP requests are ignored
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv4.icmp_echo_ignore_broadcasts" is correctly set to "1" in the running configuration
+ - "net.ipv4.icmp_echo_ignore_broadcasts" is correctly set to "1" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+
+- End check - Ensure broadcast ICMP requests are ignored
+- Result - successfully remediated
+- End Recommendation "3.3.4 - Ensure broadcast icmp requests are ignored"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:28
+- Start Recommendation "3.3.5 - Ensure icmp redirects are not accepted"
+- Start check - Ensure ICMP redirects are not accepted
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "net.ipv4.conf.all.accept_redirects" is not set in an included file
+ ** Note: "net.ipv4.conf.all.accept_redirects" May be set in a file that's ignored by load procedure **
+
+ - "net.ipv4.conf.default.accept_redirects" is incorrectly set to "1" in the running configuration and should have a value of: "0"
+ - "net.ipv4.conf.default.accept_redirects" is not set in an included file
+ ** Note: "net.ipv4.conf.default.accept_redirects" May be set in a file that's ignored by load procedure **
+
+ - "net.ipv6.conf.all.accept_redirects" is incorrectly set to "1" in the running configuration and should have a value of: "0"
+ - "net.ipv6.conf.all.accept_redirects" is not set in an included file
+ ** Note: "net.ipv6.conf.all.accept_redirects" May be set in a file that's ignored by load procedure **
+
+ - "net.ipv6.conf.default.accept_redirects" is incorrectly set to "1" in the running configuration and should have a value of: "0"
+ - "net.ipv6.conf.default.accept_redirects" is not set in an included file
+ ** Note: "net.ipv6.conf.default.accept_redirects" May be set in a file that's ignored by load procedure **
+
+
+
+- Correctly set:
+
+ - "net.ipv4.conf.all.accept_redirects" is correctly set to "0" in the running configuration
+
+- End check - Ensure ICMP redirects are not accepted
+- Start remediation - Ensure ICMP redirects are not accepted
+
+ - Setting "net.ipv4.conf.all.accept_redirects" to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - Setting "net.ipv4.conf.default.accept_redirects" to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - Updating "net.ipv4.conf.default.accept_redirects" to "0" in the active kernel parameters
+
+ - Setting "net.ipv6.conf.all.accept_redirects" to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - Updating "net.ipv6.conf.all.accept_redirects" to "0" in the active kernel parameters
+
+ - Setting "net.ipv6.conf.default.accept_redirects" to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - Updating "net.ipv6.conf.default.accept_redirects" to "0" in the active kernel parameters
+- End remediation - Ensure ICMP redirects are not accepted
+- Start check - Ensure ICMP redirects are not accepted
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv4.conf.all.accept_redirects" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.all.accept_redirects" is correctly set to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - "net.ipv4.conf.default.accept_redirects" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.default.accept_redirects" is correctly set to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - "net.ipv6.conf.all.accept_redirects" is correctly set to "0" in the running configuration
+ - "net.ipv6.conf.all.accept_redirects" is correctly set to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - "net.ipv6.conf.default.accept_redirects" is correctly set to "0" in the running configuration
+ - "net.ipv6.conf.default.accept_redirects" is correctly set to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+
+- End check - Ensure ICMP redirects are not accepted
+- Result - successfully remediated
+- End Recommendation "3.3.5 - Ensure icmp redirects are not accepted"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.3.6 - Ensure secure icmp redirects are not accepted"
+- Start check - Ensure secure ICMP redirects are not accepted
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "net.ipv4.conf.all.secure_redirects" is incorrectly set to "1" in the running configuration and should have a value of: "0"
+ - "net.ipv4.conf.all.secure_redirects" is not set in an included file
+ ** Note: "net.ipv4.conf.all.secure_redirects" May be set in a file that's ignored by load procedure **
+
+ - "net.ipv4.conf.default.secure_redirects" is incorrectly set to "1" in the running configuration and should have a value of: "0"
+ - "net.ipv4.conf.default.secure_redirects" is not set in an included file
+ ** Note: "net.ipv4.conf.default.secure_redirects" May be set in a file that's ignored by load procedure **
+
+
+- End check - Ensure secure ICMP redirects are not accepted
+- Start remediation - Ensure secure ICMP redirects are not accepted
+
+ - Setting "net.ipv4.conf.default.secure_redirects" to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - Updating "net.ipv4.conf.default.secure_redirects" to "0" in the active kernel parameters
+
+ - Setting "net.ipv4.conf.all.secure_redirects" to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - Updating "net.ipv4.conf.all.secure_redirects" to "0" in the active kernel parameters
+- End remediation - Ensure secure ICMP redirects are not accepted
+- Start check - Ensure secure ICMP redirects are not accepted
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv4.conf.all.secure_redirects" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.all.secure_redirects" is correctly set to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - "net.ipv4.conf.default.secure_redirects" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.default.secure_redirects" is correctly set to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+
+- End check - Ensure secure ICMP redirects are not accepted
+- Result - successfully remediated
+- End Recommendation "3.3.6 - Ensure secure icmp redirects are not accepted"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.3.7 - Ensure reverse path filtering is enabled"
+- Start check - Ensure Reverse Path Filtering is enabled
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv4.conf.all.rp_filter" is correctly set to "1" in the running configuration
+ - "net.ipv4.conf.all.rp_filter" is correctly set to "1" in "/usr/lib/sysctl.d/50-default.conf"
+
+ - "net.ipv4.conf.default.rp_filter" is correctly set to "1" in the running configuration
+ - "net.ipv4.conf.default.rp_filter" is correctly set to "1" in "/usr/lib/sysctl.d/50-default.conf"
+
+
+- End check - Ensure Reverse Path Filtering is enabled
+- Result - No remediation required
+- End Recommendation "3.3.7 - Ensure reverse path filtering is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.3.8 - Ensure source routed packets are not accepted"
+- Start check - Ensure source routed packets are not accepted
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "net.ipv6.conf.all.accept_source_route" is not set in an included file
+ ** Note: "net.ipv6.conf.all.accept_source_route" May be set in a file that's ignored by load procedure **
+
+ - "net.ipv6.conf.default.accept_source_route" is not set in an included file
+ ** Note: "net.ipv6.conf.default.accept_source_route" May be set in a file that's ignored by load procedure **
+
+
+
+- Correctly set:
+
+ - "net.ipv4.conf.all.accept_source_route" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.all.accept_source_route" is correctly set to "0" in "/usr/lib/sysctl.d/50-default.conf"
+
+ - "net.ipv4.conf.default.accept_source_route" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.default.accept_source_route" is correctly set to "0" in "/usr/lib/sysctl.d/50-default.conf"
+
+ - "net.ipv6.conf.all.accept_source_route" is correctly set to "0" in the running configuration
+ - "net.ipv6.conf.default.accept_source_route" is correctly set to "0" in the running configuration
+
+- End check - Ensure source routed packets are not accepted
+- Start remediation - Ensure source routed packets are not accepted
+
+ - Setting "net.ipv4.conf.all.accept_source_route" to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - Setting "net.ipv4.conf.default.accept_source_route" to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - Setting "net.ipv6.conf.all.accept_source_route" to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - Setting "net.ipv6.conf.default.accept_source_route" to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+- End remediation - Ensure source routed packets are not accepted
+- Start check - Ensure source routed packets are not accepted
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv4.conf.all.accept_source_route" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.all.accept_source_route" is correctly set to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - "net.ipv4.conf.default.accept_source_route" is correctly set to "0" in the running configuration
+ - "net.ipv4.conf.default.accept_source_route" is correctly set to "0" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+ - "net.ipv6.conf.all.accept_source_route" is correctly set to "0" in the running configuration
+ - "net.ipv6.conf.all.accept_source_route" is correctly set to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - "net.ipv6.conf.default.accept_source_route" is correctly set to "0" in the running configuration
+ - "net.ipv6.conf.default.accept_source_route" is correctly set to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+
+- End check - Ensure source routed packets are not accepted
+- Result - successfully remediated
+- End Recommendation "3.3.8 - Ensure source routed packets are not accepted"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.3.10 - Ensure tcp syn cookies is enabled"
+- Start check - Ensure TCP SYN Cookies is enabled
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "net.ipv4.tcp_syncookies" is not set in an included file
+ ** Note: "net.ipv4.tcp_syncookies" May be set in a file that's ignored by load procedure **
+
+
+
+- Correctly set:
+
+ - "net.ipv4.tcp_syncookies" is correctly set to "1" in the running configuration
+
+- End check - Ensure TCP SYN Cookies is enabled
+- Start remediation - Ensure TCP SYN Cookies is enabled
+
+ - Setting "net.ipv4.tcp_syncookies" to "1" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+- End remediation - Ensure TCP SYN Cookies is enabled
+- Start check - Ensure TCP SYN Cookies is enabled
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv4.tcp_syncookies" is correctly set to "1" in the running configuration
+ - "net.ipv4.tcp_syncookies" is correctly set to "1" in "/etc/sysctl.d/60-netipv4_sysctl.conf"
+
+
+- End check - Ensure TCP SYN Cookies is enabled
+- Result - successfully remediated
+- End Recommendation "3.3.10 - Ensure tcp syn cookies is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.3.11 - Ensure ipv6 router advertisements are not accepted"
+- Start check - Ensure IPv6 router advertisements are not accepted
+
+- Audit Result:
+ ** FAIL **
+ - Reason(s) for audit failure:
+
+ - "net.ipv6.conf.all.accept_ra" is incorrectly set to "1" in the running configuration and should have a value of: "0"
+ - "net.ipv6.conf.all.accept_ra" is not set in an included file
+ ** Note: "net.ipv6.conf.all.accept_ra" May be set in a file that's ignored by load procedure **
+
+ - "net.ipv6.conf.default.accept_ra" is incorrectly set to "1" in the running configuration and should have a value of: "0"
+ - "net.ipv6.conf.default.accept_ra" is not set in an included file
+ ** Note: "net.ipv6.conf.default.accept_ra" May be set in a file that's ignored by load procedure **
+
+
+- End check - Ensure IPv6 router advertisements are not accepted
+- Start remediation - Ensure IPv6 router advertisements are not accepted
+
+ - Setting "net.ipv6.conf.all.accept_ra" to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - Updating "net.ipv6.conf.all.accept_ra" to "0" in the active kernel parameters
+
+ - Setting "net.ipv6.conf.default.accept_ra" to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - Updating "net.ipv6.conf.default.accept_ra" to "0" in the active kernel parameters
+- End remediation - Ensure IPv6 router advertisements are not accepted
+- Start check - Ensure IPv6 router advertisements are not accepted
+
+- Audit Result:
+ ** PASS **
+
+ - "net.ipv6.conf.all.accept_ra" is correctly set to "0" in the running configuration
+ - "net.ipv6.conf.all.accept_ra" is correctly set to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+ - "net.ipv6.conf.default.accept_ra" is correctly set to "0" in the running configuration
+ - "net.ipv6.conf.default.accept_ra" is correctly set to "0" in "/etc/sysctl.d/60-netipv6_sysctl.conf"
+
+
+- End check - Ensure IPv6 router advertisements are not accepted
+- Result - successfully remediated
+- End Recommendation "3.3.11 - Ensure ipv6 router advertisements are not accepted"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.4.1.2 - Ensure a single firewall configuration utility is in use"
+- Start check - Ensure a single firewall configuration utility is in use
+
+- Audit Results:
+ ** Fail **
+
+ - Neither FirewallD or NFTables is installed.
+
+- FAILED:
+- Ensure single firewall configuration utility in use
+- End check - Ensure a single firewall configuration utility is in use
+- Start remediation - Ensure single firewall configuration utility in use
+
+ - Neither FirewallD or NFTables is installed.
+- Please refer to the remediation guidance and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- End remediation - Ensure single firewall configuration utility in use
+- Result - requires manual remediation
+- End Recommendation "3.4.1.2 - Ensure a single firewall configuration utility is in use"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.4.2.1 - Ensure firewalld is installed"
+- Start - Check to determine Firewall in use on the system
+- Start - Determine FirewallD status
+- FirewallD is not install on the system
+- End - Determine FirewallD status
+- Start - Determine NFTables status
+- NFTables is not install on the system
+- End - Determine NFTables status
+- Start - Determine IPTables status
+- IPTables is installed on the system
+- End - Determine IPTables status
+- Start - Determine which firewall is in use
+- End - Determine which firewall is in use
+- Firewall determined to be IPTables. Checks for FirewallD and NFTables will be marked as Non Applicable
+- End - Check to determine Firewall in use on the system
+- FirewallD is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.2.1 - Ensure firewalld is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.4.2.2 - Ensure firewalld service enabled and running"
+- FirewallD is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.2.2 - Ensure firewalld service enabled and running"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.4.2.3 - Ensure firewalld drops unnecessary services and ports"
+- FirewallD is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.2.3 - Ensure firewalld drops unnecessary services and ports"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.4.3.1 - Ensure nftables is installed"
+- nftables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.1 - Ensure nftables is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.4.3.2 - Ensure iptables are flushed with nftables"
+- Firewall is: IPt
+- NFTables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.2 - Ensure iptables are flushed with nftables"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:29
+- Start Recommendation "3.4.3.3 - Ensure an nftables table exists"
+- Firewall is: IPt
+- NFTables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.3 - Ensure an nftables table exists"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.3.4 - Ensure nftables base chains exist"
+- Firewall is: IPt
+- NFTables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.4 - Ensure nftables base chains exist"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.3.5 - Ensure nftables loopback traffic is configured"
+- Firewall is: IPt
+- NFTables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.5 - Ensure nftables loopback traffic is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.3.6 - Ensure nftables outbound and established connections are configured"
+- Firewall is: IPt
+- NFTables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.6 - Ensure nftables outbound and established connections are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.3.7 - Ensure nftables default deny firewall policy"
+- Firewall is: IPt
+- NFTables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.7 - Ensure nftables default deny firewall policy"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.3.8 - Ensure nftables service is enabled and active"
+- nftables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.8 - Ensure nftables service is enabled and active"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.3.9 - Ensure nftables rules are permanent"
+- Firewall is: IPt
+- NFTables is not in use on the system, recommendation is not applicable
+- Please refer to the guidance in 'Ensure a single firewall configuration utility is in use' and follow the appropriate section of the benchmark "Configure iptables", "Configure firewalld" or "Configure nftables"
+- Result - requires manual remediation
+- End Recommendation "3.4.3.9 - Ensure nftables rules are permanent"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.1.1 - Ensure iptables packages are installed"
+- Start check - Ensure iptables packages are installed
+- The IPtables packages are not installed on the system
+- End check - Ensure iptables packages are installed
+- Start remediation - Ensure iptables packages are installed
+- iptables is not installed on the system
+- If iptables is the proper firewall package for your environment follow the appropriate section of the benchmark "Configure iptables"
+- End remediation - Ensure iptables packages are installed
+- Result - requires manual remediation
+- End Recommendation "3.4.4.1.1 - Ensure iptables packages are installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.2.1 - Ensure iptables loopback traffic is configured"
+- Firewall is: IPt
+- Start check - Ensure firewalld is either not installed or masked with iptables
+- NO INPUT rule for loopback interface
+- The iptables rules for loopback are NOT configured
+- End check - Ensure firewalld is either not installed or masked with iptables
+- Start remediation - Ensure firewalld is either not installed or masked with iptables
+- Adding iptables INPUT rules for loopback interface
+- Adding iptables INPUT rules for loopback network
+- Adding iptables OUTPUT rules for loopback interface
+- End remediation - Ensure firewalld is either not installed or masked with iptables
+- Start check - Ensure firewalld is either not installed or masked with iptables
+- Found INPUT rule for loopback interface
+- Found INPUT rule for loopback network
+- Found OUTPUT rule for loopback interface
+- The iptables rules for loopback are configured
+- End check - Ensure firewalld is either not installed or masked with iptables
+- Result - successfully remediated
+- End Recommendation "3.4.4.2.1 - Ensure iptables loopback traffic is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.2.2 - Ensure iptables outbound and established connections are configured"
+- Firewall is: IPt
+- Start check - Ensure iptables outbound and established connections are configured
+- NO INPUT TCP Established rule found
+- NO OUTPUT TCP Established rule found
+- Some Rules for new outbound and established connections were missing
+- End check - Ensure iptables outbound and established connections are configured
+- Start remediation - Ensure iptables outbound and established connections are configured
+- Add rules to allow new outbound and established connections according to your local site policies.
+- These example rules can be used if desired:
+ iptables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
+ iptables -A INPUT -p udp -m state --state ESTABLISHED -j ACCEPT
+ iptables -A INPUT -p icmp -m state --state ESTABLISHED -j ACCEPT
+ iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -j ACCEPT
+ iptables -A OUTPUT -p udp -m state --state NEW,ESTABLISHED -j ACCEPT
+ iptables -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT
+- End remediation - Ensure iptables outbound and established connections are configured
+- Result - requires manual remediation
+- End Recommendation "3.4.4.2.2 - Ensure iptables outbound and established connections are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.2.5 - Ensure iptables rules are saved"
+- Firewall is: IPt
+- Start check - Ensure iptables rules are saved
+- Current running IPTables rules:
+Chain INPUT (policy ACCEPT 54 packets, 2808 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     all  --  lo     *       0.0.0.0/0            0.0.0.0/0           
+    0     0 DROP       all  --  *      *       127.0.0.0/8          0.0.0.0/0           
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 43 packets, 7480 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     all  --  *      lo      0.0.0.0/0            0.0.0.0/0           
+- End check - Ensure iptables rules are saved
+- Start remediation - Ensure iptables rules are saved
+- Review the running rules and verify that each are included in the iptables startup config.
+- End remediation - Ensure iptables rules are saved
+- Result - requires manual remediation
+- End Recommendation "3.4.4.2.5 - Ensure iptables rules are saved"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.2.6 - Ensure iptables service is enabled and active"
+- Start check - Ensure iptables is enabled and running
+- IPTables package isn't installed
+- End check - Ensure iptables is enabled and running
+- Start remediation - Ensure iptables is enabled and running
+- Enable and start iptables according to your local site policies.
+- Run the following command to enable and start iptables:
+  systemctl unmask iptables.service
+  systemctl --now enable iptables.service
+- End remediation - Ensure iptables is enabled and running
+- Result - requires manual remediation
+- End Recommendation "3.4.4.2.6 - Ensure iptables service is enabled and active"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.3.1 - Ensure ip6tables loopback traffic is configured"
+IPv6 is enabled on the system
+- Firewall is: IPt
+- IPv6 status is: true
+- Start check - Ensure ip6tables loopback traffic is configured
+- NO INPUT rule for loopback interface
+- The ip6tables rules for loopback are NOT configured
+- End check - Ensure ip6tables loopback traffic is configured
+- Start remediation - Ensure ip6tables loopback traffic is configured
+- Add rules to implement the loopback rules according to your local site policies.
+- These example rules can be used if desired:
+  ip6tables -A INPUT -i lo -j ACCEPT
+  ip6tables -A OUTPUT -o lo -j ACCEPT
+  ip6tables -A INPUT -s ::1 -j DROP
+- End remediation - Ensure ip6tables loopback traffic is configured
+- Result - requires manual remediation
+- End Recommendation "3.4.4.3.1 - Ensure ip6tables loopback traffic is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.3.2 - Ensure ip6tables outbound and established connections are configured"
+- Firewall is: IPt
+- IPv6 status is: true
+- Start check - Ensure ip6tables outbound and established connections are configured
+- NO INPUT TCP Established rule found
+- NO OUTPUT TCP Established rule found
+- Some Rules for new outbound and established connections were missing
+- End check - Ensure ip6tables outbound and established connections are configured
+- Start remediation - Ensure ip6tables outbound and established connections are configured
+- Add rules to allow new outbound and established connections according to your local site policies.
+- These example rules can be used if desired:
+ ip6tables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -j ACCEPT
+ ip6tables -A OUTPUT -p udp -m state --state NEW,ESTABLISHED -j ACCEPT
+ ip6tables -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT
+ ip6tables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
+ ip6tables -A INPUT -p udp -m state --state ESTABLISHED -j ACCEPT
+ ip6tables -A INPUT -p icmp -m state --state ESTABLISHED -j ACCEPT
+- End remediation - Ensure ip6tables outbound and established connections are configured
+- Result - requires manual remediation
+- End Recommendation "3.4.4.3.2 - Ensure ip6tables outbound and established connections are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.3.4 - Ensure ip6tables default deny firewall policy"
+- Firewall is: IPt
+- IPv6 status is: true
+- Start check - Ensure ip6tables default deny firewall policy
+- Some input chains do NOT enforce default deny:
+ Chain INPUT (policy ACCEPT)
+- Some chains do NOT enforce a default deny policy
+- End check - Ensure ip6tables default deny firewall policy
+- Start remediation - Ensure ip6tables default deny firewall policy
+- Update the chains to enforce a default policy of drop.
+- These example rules can be used if desired:
+ ip6tables -P INPUT DROP
+ ip6tables -P OUTPUT DROP
+ ip6tables -P FORWARD DROP
+- End remediation - Ensure ip6tables default deny firewall policy
+- Result - requires manual remediation
+- End Recommendation "3.4.4.3.4 - Ensure ip6tables default deny firewall policy"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.3.5 - Ensure ip6tables rules are saved"
+- Firewall is: IPt
+- IPv6 status is: true
+- Start check - Ensure ip6tables rules are saved
+- Current running ip6tables rules:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+- End check - Ensure ip6tables rules are saved
+- Start remediation - Ensure ip6tables rules are saved
+- Review the running rules and verify that each are included in the ip6tables startup config.
+- Run the following command to review the current running iptables configuration:
+  ip6tables -L
+- Run the following command to save the verified running configuration to the file /etc/sysconfig/ip6tables:
+  service ip6tables save
+- End remediation - Ensure ip6tables rules are saved
+- Result - requires manual remediation
+- End Recommendation "3.4.4.3.5 - Ensure ip6tables rules are saved"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "3.4.4.3.6 - Ensure ip6tables is enabled and active"
+- Firewall is: IPt
+- IPv6 status is: true
+- Start check - Ensure ip6tables is enabled and running
+- IPTables package isn't installed
+- End check - Ensure ip6tables is enabled and running
+- Start remediation - Ensure ip6tables is enabled and running
+- Enable and start ip6tables according to your local site policies.
+- Run the following command to enable and start ip6tables:
+  systemctl unmask ip6tables.service
+  systemctl --now enable ip6tables.service
+- End remediation - Ensure ip6tables is enabled and running
+- Result - requires manual remediation
+- End Recommendation "3.4.4.3.6 - Ensure ip6tables is enabled and active"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "4.1.1.1 - Ensure cron daemon is enabled and active"
+- Determining if "cron" is installed on the system
+- Start check - Ensure cron daemon is enabled and running
+- Start check - Determining if "cron" is enabled and running
+- PASS:
+- "cron" is enabled and running
+- End check - "cron"
+- Result - No remediation required
+- End Recommendation "4.1.1.1 - Ensure cron daemon is enabled and active"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "4.1.1.2 - Ensure permissions on /etc/crontab are configured"
+- Start check - Ensure permissions on /etc/crontab are configured.
+- FAIL:
+- "/etc/crontab" is mode: "644" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/crontab are configured.
+- Start remediation - Ensure permissions on /etc/crontab are configured
+- Removing excess permissions from "/etc/crontab"
+- End remediation - Ensure permissions on /etc/crontab are configured
+- Start check - Ensure permissions on /etc/crontab are configured.
+- PASS:
+- "/etc/crontab" is mode: "600" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/crontab are configured.
+- Result - successfully remediated
+- End Recommendation "4.1.1.2 - Ensure permissions on /etc/crontab are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "4.1.1.3 - Ensure permissions on /etc/cron.hourly are configured"
+- Start check - Ensure permissions on /etc/cron.hourly are configured.
+- FAIL:
+- "/etc/cron.hourly" is mode: "755" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.hourly are configured.
+- Start remediation - Ensure permissions on /etc/cron.hourly are configured
+- Removing excess permissions from "/etc/cron.hourly"
+- End remediation - Ensure permissions on /etc/cron.hourly are configured
+- Start check - Ensure permissions on /etc/cron.hourly are configured.
+- PASS:
+- "/etc/cron.hourly" is mode: "600" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.hourly are configured.
+- Result - successfully remediated
+- End Recommendation "4.1.1.3 - Ensure permissions on /etc/cron.hourly are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "4.1.1.4 - Ensure permissions on /etc/cron.daily are configured"
+- Start check - Ensure permissions on /etc/cron.daily are configured.
+- FAIL:
+- "/etc/cron.daily" is mode: "755" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.daily are configured.
+- Start remediation - Ensure permissions on /etc/cron.daily are configured
+- Removing excess permissions from "/etc/cron.daily"
+- End remediation - Ensure permissions on /etc/cron.daily are configured
+- Start check - Ensure permissions on /etc/cron.daily are configured.
+- PASS:
+- "/etc/cron.daily" is mode: "600" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.daily are configured.
+- Result - successfully remediated
+- End Recommendation "4.1.1.4 - Ensure permissions on /etc/cron.daily are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "4.1.1.5 - Ensure permissions on /etc/cron.weekly are configured"
+- Start check - Ensure permissions on /etc/cron.weekly are configured.
+- FAIL:
+- "/etc/cron.weekly" is mode: "755" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.weekly are configured.
+- Start remediation - Ensure permissions on /etc/cron.weekly are configured
+- Removing excess permissions from "/etc/cron.weekly"
+- End remediation - Ensure permissions on /etc/cron.weekly are configured
+- Start check - Ensure permissions on /etc/cron.weekly are configured.
+- PASS:
+- "/etc/cron.weekly" is mode: "600" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.weekly are configured.
+- Result - successfully remediated
+- End Recommendation "4.1.1.5 - Ensure permissions on /etc/cron.weekly are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:30
+- Start Recommendation "4.1.1.6 - Ensure permissions on /etc/cron.monthly are configured"
+- Start check - Ensure permissions on /etc/cron.monthly are configured.
+- FAIL:
+- "/etc/cron.monthly" is mode: "755" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.monthly are configured.
+- Start remediation - Ensure permissions on /etc/cron.monthly are configured
+- Removing excess permissions from "/etc/cron.monthly"
+- End remediation - Ensure permissions on /etc/cron.monthly are configured
+- Start check - Ensure permissions on /etc/cron.monthly are configured.
+- PASS:
+- "/etc/cron.monthly" is mode: "600" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.monthly are configured.
+- Result - successfully remediated
+- End Recommendation "4.1.1.6 - Ensure permissions on /etc/cron.monthly are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.1.1.7 - Ensure permissions on /etc/cron.d are configured"
+- Start check - Ensure permissions on /etc/cron.d are configured.
+- FAIL:
+- "/etc/cron.d" is mode: "755" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.d are configured.
+- Start remediation - Ensure permissions on /etc/cron.d are configured
+- Removing excess permissions from "/etc/cron.d"
+- End remediation - Ensure permissions on /etc/cron.d are configured
+- Start check - Ensure permissions on /etc/cron.d are configured.
+- PASS:
+- "/etc/cron.d" is mode: "600" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/cron.d are configured.
+- Result - successfully remediated
+- End Recommendation "4.1.1.7 - Ensure permissions on /etc/cron.d are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.1.1.8 - Ensure crontab is restricted to authorized users"
+- Start check - Ensure cron is restricted to authorized users
+- FAIL:
+- /etc/cron.deny does exist
+- /etc/cron.allow doesn't exist
+- End check - Ensure cron is restricted to authorized users.
+- Start remediation - Ensure cron is restricted to authorized users.
+- Removing /etc/cron.deny
+- Creating /etc/cron.allow
+- Removing excess permissions from /etc/cron.allow
+- End remediation - Ensure cron is restricted to authorized users.
+- Start check - Ensure cron is restricted to authorized users
+- PASS:
+- /etc/cron.deny does NOT exist
+- /etc/cron.allow is mode: "600" and has owner and group of: "root root"
+- End check - Ensure cron is restricted to authorized users.
+- Result - successfully remediated
+- End Recommendation "4.1.1.8 - Ensure crontab is restricted to authorized users"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.1.2.1 - Ensure at is restricted to authorized users"
+- Start check - Ensure at is restricted to authorized users
+- FAIL:
+- /etc/at.deny does NOT exist
+- /etc/at.allow doesn't exist
+- End check - Ensure at is restricted to authorized users.
+- Start remediation - Ensure at is restricted to authorized users.
+- Creating /etc/at.allow
+- Removing excess permissions from /etc/at.allow
+- End remediation - Ensure at is restricted to authorized users.
+- Start check - Ensure at is restricted to authorized users
+- PASS:
+- /etc/at.deny does NOT exist
+- /etc/at.allow is mode: "600" and has owner and group of: "root root"
+- End check - Ensure at is restricted to authorized users.
+- Result - successfully remediated
+- End Recommendation "4.1.2.1 - Ensure at is restricted to authorized users"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.1 - Ensure permissions on /etc/ssh/sshd_config are configured"
+- Start check - Ensure permissions on /etc/ssh/sshd_config are configured.
+- PASS:
+- "/etc/ssh/sshd_config" is mode: "600" and has owner and group of: "root root"
+- End check - Ensure permissions on /etc/ssh/sshd_config are configured.
+- Result - No remediation required
+- End Recommendation "4.2.1 - Ensure permissions on /etc/ssh/sshd_config are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.2 - Ensure permissions on SSH private host key files are configured"
+- Start check - Ensure permissions on SSH private host key files are configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+ - File: "/etc/ssh/ssh_host_rsa_key"
+ - Correct: mode (0640), owner (root), and group owner (ssh_keys) configured
+ - File: "/etc/ssh/ssh_host_ecdsa_key"
+ - Correct: mode (0640), owner (root), and group owner (ssh_keys) configured
+ - File: "/etc/ssh/ssh_host_ed25519_key"
+ - Correct: mode (0640), owner (root), and group owner (ssh_keys) configured
+
+- End check - Ensure permissions on SSH private host key files are configured
+- Result - No remediation required
+- End Recommendation "4.2.2 - Ensure permissions on SSH private host key files are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.3 - Ensure permissions on SSH public host key files are configured"
+- Start check - Ensure permissions on SSH public host key files are configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+ - File: "/etc/ssh/ssh_host_rsa_key.pub"
+ - Correct: mode (0644), owner (root), and group owner (root) configured
+ - File: "/etc/ssh/ssh_host_ecdsa_key.pub"
+ - Correct: mode (0644), owner (root), and group owner (root) configured
+ - File: "/etc/ssh/ssh_host_ed25519_key.pub"
+ - Correct: mode (0644), owner (root), and group owner (root) configured
+
+- End check - Ensure permissions on SSH public host key files are configured
+- Result - No remediation required
+- End Recommendation "4.2.3 - Ensure permissions on SSH public host key files are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.4 - Ensure sshd access is configured"
+- Start check - Ensure sshd access is configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- No entry found in sshd -T -C output
+- No entry found in an ssh configuration file
+
+- End check - Ensure sshd access is configured
+- Start remediation - Ensure sshd access is configured
+- Restricting which users can remotely access the system via SSH will help ensure that only authorized users access the system. Therefore, it is recommended that the sshd configuration be reviewed and determine the action to be taken in accordance with site policy.
+- Start remediation - Ensure sshd access is configured
+- Start check - Ensure sshd access is configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- No entry found in sshd -T -C output
+- No entry found in an ssh configuration file
+
+- End check - Ensure sshd access is configured
+- Result - requires manual remediation
+- End Recommendation "4.2.4 - Ensure sshd access is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.5 - Ensure sshd Banner is configured"
+- Start check - Ensure SSH warning banner is configured
+- FAIL:
+- No entry found in sshd -T -C output
+- Commented entry found in sshd_config: #Banner none
+- End check - Ensure SSH warning banner is configured
+- Start remediation - Ensure SSH warning banner is configured
+- Updating Banner entry in /etc/ssh/sshd_config
+- End remediation - Ensure SSH warning banner is configured
+- Start check - Ensure SSH warning banner is configured
+- PASS:
+- Entry found in sshd -T -C output: banner /etc/issue.net
+- Entry found in sshd_config: Banner /etc/issue.net
+- End check - Ensure SSH warning banner is configured
+- Result - successfully remediated
+- End Recommendation "4.2.5 - Ensure sshd Banner is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.6 - Ensure sshd Ciphers are configured"
+- Start check - Ensure only strong Ciphers are used
+- PASS:
+- No weak ciphers found in sshd -T -C output
+- No weak ciphers found in sshd_config
+- End check - Ensure only strong Ciphers are used
+- Result - No remediation required
+- End Recommendation "4.2.6 - Ensure sshd Ciphers are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.7 - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured"
+- Start check - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- Incorrect ClientAliveInterval entry found in sshd -T -C output:
+clientaliveinterval 0
+- NO entry found in sshd_config for ClientAliveInterval
+- NO entry found in sshd_config for ClientAliveCountMax
+
+ - * Correctly set * :
+
+- Correct ClientAliveCountMax entry found in sshd -T -C output:
+clientalivecountmax 3
+
+- End check - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+- Start remediation - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+- Adding ClientAliveInterval entry to /etc/ssh/sshd_config
+- Adding ClientAliveCountMax entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+- Start check - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct ClientAliveInterval entry found in sshd -T -C output:
+clientaliveinterval 15
+- Correct ClientAliveCountMax entry found in sshd -T -C output:
+clientalivecountmax 3
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:ClientAliveInterval 15 # Added by CIS Build Kit remediation/
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:ClientAliveCountMax 3 # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+- Result - successfully remediated
+- End Recommendation "4.2.7 - Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.10 - Ensure sshd HostbasedAuthentication is disabled"
+- Start check - Ensure sshd HostbasedAuthentication is disabled
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- NO entry found in sshd_config for HostbasedAuthentication
+
+ - * Correctly set * :
+
+- Correct HostbasedAuthentication entry found in sshd -T -C output:
+hostbasedauthentication no
+
+- End check - Ensure sshd HostbasedAuthentication is disabled
+- Start remediation - Ensure sshd HostbasedAuthentication is disabled
+- Adding HostbasedAuthentication entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd HostbasedAuthentication is disabled
+- Start check - Ensure sshd HostbasedAuthentication is disabled
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct HostbasedAuthentication entry found in sshd -T -C output:
+hostbasedauthentication no
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:HostbasedAuthentication no # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd HostbasedAuthentication is disabled
+- Result - successfully remediated
+- End Recommendation "4.2.10 - Ensure sshd HostbasedAuthentication is disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.11 - Ensure sshd IgnoreRhosts is enabled"
+- Start check - Ensure sshd IgnoreRhosts is enabled
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- NO entry found in sshd_config for IgnoreRhosts
+
+ - * Correctly set * :
+
+- Correct IgnoreRhosts entry found in sshd -T -C output:
+ignorerhosts yes
+
+- End check - Ensure sshd IgnoreRhosts is enabled
+- Start remediation - Ensure sshd IgnoreRhosts is enabled
+- Adding IgnoreRhosts entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd IgnoreRhosts is enabled
+- Start check - Ensure sshd IgnoreRhosts is enabled
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct IgnoreRhosts entry found in sshd -T -C output:
+ignorerhosts yes
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:IgnoreRhosts yes # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd IgnoreRhosts is enabled
+- Result - successfully remediated
+- End Recommendation "4.2.11 - Ensure sshd IgnoreRhosts is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.12 - Ensure sshd KexAlgorithms is configured"
+- Start check - Ensure only strong Key Exchange algorithms are used
+- FAIL:
+- Weak algorithm found: kexalgorithms curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
+- No weak algorithm found in sshd_config
+- End check - Ensure only strong Key Exchange algorithms are used
+- Start remediation - Ensure only strong Key Exchange algorithms are used
+- Weak ciphers that are used for authentication to the cryptographic module cannot be relied upon to provide confidentiality or integrity, and system data may be compromised. Therefore, it is recommended that the sshd configuration be reviewed and determine the action to be taken in accordance with site policy.
+- Start remediation - Ensure only strong Key Exchange algorithms are used
+- Result - requires manual remediation
+- End Recommendation "4.2.12 - Ensure sshd KexAlgorithms is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:31
+- Start Recommendation "4.2.13 - Ensure sshd LoginGraceTime is configured"
+- Start check - Ensure sshd LoginGraceTime is configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- Incorrect LoginGraceTime entry found in sshd -T -C output:
+logingracetime 120
+- NO entry found in sshd_config for LoginGraceTime
+
+- End check - Ensure sshd LoginGraceTime is configured
+- Start remediation - Ensure sshd LoginGraceTime is configured
+- Adding LoginGraceTime entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd LoginGraceTime is configured
+- Start check - Ensure sshd LoginGraceTime is configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct LoginGraceTime entry found in sshd -T -C output:
+logingracetime 60
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:LoginGraceTime 60 # Added by CIS Build Kit remediation
+
+- End check - Ensure sshd LoginGraceTime is configured
+- Result - successfully remediated
+- End Recommendation "4.2.13 - Ensure sshd LoginGraceTime is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.14 - Ensure sshd LogLevel is configured"
+- Start check - Ensure sshd LogLevel is configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- NO entry found in sshd_config for LogLevel
+
+ - * Correctly set * :
+
+- Correct LogLevel entry found in sshd -T -C output:
+loglevel INFO
+
+- End check - Ensure sshd LogLevel is configured
+- Start remediation - Ensure sshd LogLevel is configured
+- Adding LogLevel entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd LogLevel is configured
+- Start check - Ensure sshd LogLevel is configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct LogLevel entry found in sshd -T -C output:
+loglevel VERBOSE
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:LogLevel VERBOSE # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd LogLevel is configured
+- Result - successfully remediated
+- End Recommendation "4.2.14 - Ensure sshd LogLevel is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.15 - Ensure sshd MACs are configured"
+- Start check - Ensure only strong MAC algorithms are used
+- FAIL:
+- Weak MAC found: macs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+- No weak MACs found in sshd_config
+- End check - Ensure only strong MAC algorithms are used
+- Start remediation - Ensure only strong MAC algorithms are used
+- Weak algorithms continue to have a great deal of attention as a weak spot that can be exploited with expanded computing power. Therefore, it is recommended that the sshd configuration be reviewed and determine the action to be taken in accordance with site policy.
+- Start remediation - Ensure only strong MAC algorithms are used
+- Result - requires manual remediation
+- End Recommendation "4.2.15 - Ensure sshd MACs are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.16 - Ensure sshd MaxAuthTries is configured"
+- Start check - Ensure sshd MaxAuthTries is configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- Incorrect MaxAuthTries entry found in sshd -T -C output:
+maxauthtries 6
+- NO entry found in sshd_config for MaxAuthTries
+
+- End check - Ensure sshd MaxAuthTries is configured
+- Start remediation - Ensure sshd MaxAuthTries is configured
+- Adding MaxAuthTries entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd MaxAuthTries is configured
+- Start check - Ensure sshd MaxAuthTries is configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct MaxAuthTries entry found in sshd -T -C output:
+maxauthtries 4
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:MaxAuthTries 4 # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd MaxAuthTries is configured
+- Result - successfully remediated
+- End Recommendation "4.2.16 - Ensure sshd MaxAuthTries is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.17 - Ensure sshd MaxSessions is configured"
+- Start check - Ensure sshd MaxSessions is configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- NO entry found in sshd_config for MaxSessions
+
+ - * Correctly set * :
+
+- Correct MaxSessions entry found in sshd -T -C output:
+maxsessions 10
+
+- End check - Ensure sshd MaxSessions is configured
+- Start remediation - Ensure sshd MaxSessions is configured
+- Adding MaxSessions entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd MaxSessions is configured
+- Start check - Ensure sshd MaxSessions is configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct MaxSessions entry found in sshd -T -C output:
+maxsessions 10
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:MaxSessions 10 # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd MaxSessions is configured
+- Result - successfully remediated
+- End Recommendation "4.2.17 - Ensure sshd MaxSessions is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.18 - Ensure sshd MaxStartups is configured"
+- Start check - Ensure sshd MaxStartups is configured
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- Incorrect MaxStartups entry found in sshd -T -C output:
+maxstartups 10:30:100
+- NO entry found in sshd_config for MaxStartups
+
+- End check - Ensure sshd MaxStartups is configured
+- Start remediation - Ensure sshd MaxStartups is configured
+- Adding MaxStartups entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd MaxStartups is configured
+- Start check - Ensure sshd MaxStartups is configured
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct MaxStartups entry found in sshd -T -C output:
+maxstartups 10:30:60
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:MaxStartups 10:30:60 # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd MaxStartups is configured
+- Result - successfully remediated
+- End Recommendation "4.2.18 - Ensure sshd MaxStartups is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.19 - Ensure sshd PermitEmptyPasswords is disabled"
+- Start check - Ensure sshd PermitEmptyPasswords is disabled
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- NO entry found in sshd_config for PermitEmptyPasswords
+
+ - * Correctly set * :
+
+- Correct PermitEmptyPasswords entry found in sshd -T -C output:
+permitemptypasswords no
+
+- End check - Ensure sshd PermitEmptyPasswords is disabled
+- Start remediation - Ensure sshd PermitEmptyPasswords is disabled
+- Adding PermitEmptyPasswords entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd PermitEmptyPasswords is disabled
+- Start check - Ensure sshd PermitEmptyPasswords is disabled
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct PermitEmptyPasswords entry found in sshd -T -C output:
+permitemptypasswords no
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:PermitEmptyPasswords no # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd PermitEmptyPasswords is disabled
+- Result - successfully remediated
+- End Recommendation "4.2.19 - Ensure sshd PermitEmptyPasswords is disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.20 - Ensure sshd PermitRootLogin is disabled"
+- Start check - Ensure sshd PermitRootLogin is disabled
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- Incorrect PermitRootLogin entry found in sshd -T -C output:
+permitrootlogin yes
+- NO entry found in sshd_config for PermitRootLogin
+
+- End check - Ensure sshd PermitRootLogin is disabled
+- Start remediation - Ensure sshd PermitRootLogin is disabled
+- Adding PermitRootLogin entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd PermitRootLogin is disabled
+- Start check - Ensure sshd PermitRootLogin is disabled
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct PermitRootLogin entry found in sshd -T -C output:
+permitrootlogin no
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:PermitRootLogin no # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd PermitRootLogin is disabled
+- Result - successfully remediated
+- End Recommendation "4.2.20 - Ensure sshd PermitRootLogin is disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.21 - Ensure sshd PermitUserEnvironment is disabled"
+- Start check - Ensure sshd PermitUserEnvironment is disabled
+
+- Audit Result:
+  ** FAIL **
+ - * Reasons for audit failure * :
+
+- NO entry found in sshd_config for PermitUserEnvironment
+
+ - * Correctly set * :
+
+- Correct PermitUserEnvironment entry found in sshd -T -C output:
+permituserenvironment no
+
+- End check - Ensure sshd PermitUserEnvironment is disabled
+- Start remediation - Ensure sshd PermitUserEnvironment is disabled
+- Adding PermitUserEnvironment entry to /etc/ssh/sshd_config
+- End remediation - Ensure sshd PermitUserEnvironment is disabled
+- Start check - Ensure sshd PermitUserEnvironment is disabled
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct PermitUserEnvironment entry found in sshd -T -C output:
+permituserenvironment no
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:PermitUserEnvironment no # Added by CIS Build Kit remediation/
+
+- End check - Ensure sshd PermitUserEnvironment is disabled
+- Result - successfully remediated
+- End Recommendation "4.2.21 - Ensure sshd PermitUserEnvironment is disabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.2.22 - Ensure sshd UsePAM is enabled"
+- Start check - Ensure sshd UsePAM is enabled
+
+- Audit Result:
+  *** PASS ***
+- * Correctly set * :
+
+- Correct UsePAM entry found in sshd -T -C output:
+usepam yes
+- Entry found in sshd_config:
+/etc/ssh/sshd_config:UsePAM yes
+
+- End check - Ensure sshd UsePAM is enabled
+- Result - No remediation required
+- End Recommendation "4.2.22 - Ensure sshd UsePAM is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.3.1 - Ensure sudo is installed"
+- Start check - Ensure sudo is installed
+- PASSED:
+- sudo package was found
+- End check - Ensure sudo is installed
+- Result - No remediation required
+- End Recommendation "4.3.1 - Ensure sudo is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.3.2 - Ensure sudo commands use pty"
+- Start check - Ensure sudo commands use pty
+- FAIL:
+- sudo use_pty configuration NOT found.
+- End check - Ensure sudo commands use pty
+- Start remediation - Ensure sudo commands use pty.
+- Inserting use_pty into /etc/sudoers.d/cis_sudoers.conf
+- End remediation - Ensure sudo commands use pty.
+- Start check - Ensure sudo commands use pty
+- PASS:
+- sudo use_pty configuration found:
+- /etc/sudoers.d/cis_sudoers.conf:Defaults use_pty
+- End check - Ensure sudo commands use pty
+- Result - successfully remediated
+- End Recommendation "4.3.2 - Ensure sudo commands use pty"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.3.3 - Ensure sudo log file exists"
+- Start check - Ensure sudo log file exists
+- FAIL:
+- sudo logfile configuration NOT found.
+- End check - Ensure sudo log file exists
+- Start remediation - Ensure sudo log file exists.
+- Inserting logfile="/var/log/sudo.log" into /etc/sudoers.d/cis_sudoers.conf
+- End remediation - Ensure sudo log file exists.
+- Start check - Ensure sudo log file exists
+- PASS:
+- sudo logfile configuration found:
+- /etc/sudoers.d/cis_sudoers.conf:Defaults logfile="/var/log/sudo.log"
+- End check - Ensure sudo log file exists
+- Result - successfully remediated
+- End Recommendation "4.3.3 - Ensure sudo log file exists"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.3.5 - Ensure re-authentication for privilege escalation is not disabled globally"
+- Start check - Ensure re-authentication for privilege escalation is not disabled globally
+- PASSED:
+- sudo !authenticate configuration NOT found.
+- End check - Ensure re-authentication for privilege escalation is not disabled globally
+- Result - No remediation required
+- End Recommendation "4.3.5 - Ensure re-authentication for privilege escalation is not disabled globally"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.3.6 - Ensure sudo authentication timeout is configured correctly"
+- Start check - Ensure sudo authentication timeout is configured correctly
+- PASSED:
+- sudo authentication timeout configuration configured correctly
+- End check - Ensure sudo authentication timeout is configured correctly
+- Result - No remediation required
+- End Recommendation "4.3.6 - Ensure sudo authentication timeout is configured correctly"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.3.7 - Ensure access to the su command is restricted"
+- FAILED:
+- access to the su command is not properly restricted
+- End check - Ensure access to the su command is restricted
+- Start remediation - Ensure access to the su command is restricted
+- Create an empty group that will be specified for use of the su command. The group should be named according to site policy.
+  # groupadd sugroup
+- Add the following line to the /etc/pam.d/su file, specifying the empty group:
+  auth required pam_wheel.so use_uid group=sugroup
+- End remediation - Ensure access to the su command is restricted
+- Result - requires manual remediation
+- End Recommendation "4.3.7 - Ensure access to the su command is restricted"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.4.1.1 - Ensure latest version of pam is installed"
+- Start check - Ensure latest version of pam installed
+- PASSED:
+- pam package was found
+- End check - Ensure pam is installed
+- Result - No remediation required
+- End Recommendation "4.4.1.1 - Ensure latest version of pam is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.4.1.2 - Ensure libpwquality is installed"
+- Start check - Ensure libpwquality is installed
+- PASSED:
+- libpwquality package was found
+- End check - Ensure libpwquality is installed
+- Result - No remediation required
+- End Recommendation "4.4.1.2 - Ensure libpwquality is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation - Ensure pam_faillock module is enabled "4.4.2.1.1 - Ensure pam_faillock module is enabled"
+- Start check - Ensure pam_faillock module is enabled
+- FAIL: pam_faillock module is NOT enabled
+ - pam_faillock module is not set in /etc/pam.d/password-auth
+- End check - Ensure pam_faillock module is enabled
+- Start remediation - Ensure pam_faillock module is enabled
+- Manual remediation is required: Refer to Recommendation 4.4.2.1 - Ensure active authselect profile includes pam modules
+- End remediation - Ensure pam_faillock module is enabled
+- Result - requires manual remediation
+- End Recommendation "4.4.2.1.1 - Ensure pam_faillock module is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation - Ensure password failed attempts lockout is configured "4.4.2.1.2 - Ensure password failed attempts lockout is configured"
+- Start check - Ensure password failed attempts lockout is configured
+FAIL:
+
+ - password failed attempts is incorrectly configured in /etc/security/faillock.conf
+- Start remediation - Ensure password failed attempts lockout configured
+- End remediation - Ensure password failed attempts lockout is configured
+- Start check - Ensure password failed attempts lockout is configured
+-PASS:
+
+ - password failed attemmpts lockout is correctly configured
+- Result - successfully remediated
+- End Recommendation "4.4.2.1.2 - Ensure password failed attempts lockout is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:32
+- Start Recommendation "4.4.2.1.3 - Ensure password unlock time is configured"
+- Start check - Ensure lockout for failed password attempts is configured
+- FAIL:
+- Failing values:
+
+  preauth unlock_time= not set in /etc/pam.d/password-auth
+  authfail unlock_time= not set in /etc/pam.d/password-auth
+  preauth unlock_time= not set in /etc/pam.d/system-auth
+  authfail unlock_time= not set in /etc/pam.d/system-auth
+- End check - Ensure lockout for failed password attempts is configured
+- Start remediation - Ensure lockout for failed password attempts is configured
+- Adding auth preauth line to /etc/pam.d/password-auth
+- Adding auth authfail line to /etc/pam.d/password-auth
+- Adding auth preauth line to /etc/pam.d/system-auth
+- Adding auth authfail line to /etc/pam.d/system-auth
+- End remediation - Ensure lockout for failed password attempts is configured
+- Start check - Ensure lockout for failed password attempts is configured
+- PASS:
+- Passing values:
+
+  auth        required      pam_faillock.so preauth silent audit deny=5 unlock_time=900 even_deny_root
+  auth        [default=die]      pam_faillock.so authfail audit deny=5 unlock_time=900 even_deny_root
+  auth        required      pam_faillock.so preauth silent audit deny=5 unlock_time=900 even_deny_root
+  auth        [default=die]      pam_faillock.so authfail audit deny=5 unlock_time=900 even_deny_root
+- End check - Ensure lockout for failed password attempts is configured
+Recommendation "Ensure password unlock time is configured" successfully remediated
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure pam_pwquality module is enabled "4.4.2.2.1 - Ensure pam_pwquality module is enabled"
+- Start check - Ensure pam_pwquality module is enabled
+- FAIL: pam_pwquality module is NOT enabled
+- End check - Ensure pam_pwquality module is enabled
+- Start remediation - Ensure pam_pwquality module is enabled
+- Manual remediation is required - review the changes to ensure the authselect profile meets site policy
+- End remediation - Ensure pam_pwquality module is enabled
+- Result - requires manual remediation
+- End Recommendation "4.4.2.2.1 - Ensure pam_pwquality module is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.4.2.2.2 - Ensure password number of changed characters is configured"
+- Start check - Ensure the number of changed characters in a new password is configured
+- FAIL:
+
+- Commented entry found in pwquality.conf: # difok = 5
+- End check - Ensure the number of changed characters in a new password is configured
+- Start remediation - Ensure the number of changed characters in a new password is configured
+- Updating difok entry in /etc/security/pwquality.conf
+- End remediation - Ensure the number of changed characters in a new password is configured
+- Start check - Ensure the number of changed characters in a new password is configured
+- PASS:
+
+- Entry found in pwquality.conf: difok = 2
+- End check - Ensure the number of changed characters in a new password is configured
+- Result - successfully remediated
+- End Recommendation "4.4.2.2.2 - Ensure password number of changed characters is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.4.2.2.3 - Ensure password length is configured"
+- Start check - Ensure password creation requirements are configured
+- FAIL:
+- Incorrect password length setting found in /etc/security/pwquality.conf: # minlen = 9
+- Incorrect minclass setting found in /etc/security/pwquality.conf: # minclass = 0
+- Incorrect dcredit, ucredit, ocredit and lcredit settings found in /etc/security/pwquality.conf:
+# dcredit = 1
+# ucredit = 1
+# lcredit = 1
+# ocredit = 1
+- retry and try_first pass found in /etc/pam.d/system-auth :
+  password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+- retry and try_first pass found in /etc/pam.d/password-auth :
+  password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+- End check - Ensure permissions on /etc/cron.d are configured.
+- Start remediation - Ensure password creation requirements are configured
+- Updating minlen entry in /etc/security/pwquality.conf
+- Updating minclass entry in /etc/security/pwquality.conf
+- End remediation - Ensure password creation requirements are configured
+- Start check - Ensure password creation requirements are configured
+- PASS:
+- Correct password length setting found in /etc/security/pwquality.conf: minlen = 14
+- Correct minclass setting found in /etc/security/pwquality.conf: minclass = 4
+- retry and try_first pass found in /etc/pam.d/system-auth :
+  password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+- retry and try_first pass found in /etc/pam.d/password-auth :
+  password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+- End check - Ensure permissions on /etc/cron.d are configured.
+- Result - successfully remediated
+- End Recommendation "4.4.2.2.3 - Ensure password length is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure password complexity is configured "4.4.2.2.4 - Ensure password complexity is configured"
+- Start check - Ensure password complexity is configured 
+- FAIL:
+
+- Correct minclass setting found in /etc/security/pwquality.conf: minclass = 4
+- End check - Ensure password complexity is configured
+- Start remediation - Ensure password complexity is configured 
+- End remediation - Ensure password complexity is configured 
+- Start check - Ensure password complexity is configured 
+- FAIL:
+
+- Correct minclass setting found in /etc/security/pwquality.conf: minclass = 4
+- End check - Ensure password complexity is configured
+- Result - successfully remediated
+- End Recommendation "4.4.2.2.4 - Ensure password complexity is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.4.2.2.5 - Ensure password same consecutive characters is configured"
+- Start check - Ensure maximum number of same consecutive characters in a password is configured
+- FAIL:
+
+- Commented entry found in pwquality.conf: # maxrepeat = 0
+- End check - Ensure maximum number of same consecutive characters in a password is configured
+- Start remediation - Ensure maximum number of same consecutive characters in a password is configured
+- Updating maxrepeat entry in /etc/security/pwquality.conf
+- End remediation - Ensure maximum number of same consecutive characters in a password is configured
+- Start check - Ensure maximum number of same consecutive characters in a password is configured
+- PASS:
+
+- Entry found in pwquality.conf: maxrepeat = 3
+- End check - Ensure maximum number of same consecutive characters in a password is configured
+- Result - successfully remediated
+- End Recommendation "4.4.2.2.5 - Ensure password same consecutive characters is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.4.2.2.6 - Ensure password maximum sequential characters is configured"
+- Start check - Ensure password maximum sequential characters is configured
+- FAIL:
+
+- NO Entry found in pwquality.conf for maxsequence
+- End check - Ensure password maximum sequential characters is configured
+- Start remediation - Ensure password maximum sequential characters is configured
+- Adding maxsequence entry to /etc/security/pwquality.conf
+- End remediation - Ensure password maximum sequential characters is configured
+- Start check - Ensure password maximum sequential characters is configured
+- PASS:
+
+- Entry found in pwquality.conf: maxsequence = 3
+- End check - Ensure password maximum sequential characters is configured
+- Result - successfully remediated
+- End Recommendation "4.4.2.2.6 - Ensure password maximum sequential characters is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.4.2.2.7 - Ensure password dictionary check is enabled"
+- Start check - Ensure preventing the use of dictionary words for passwords is configured
+- FAIL:
+
+- NO Entry found in pwquality.conf for dictcheck
+- End check - Ensure preventing the use of dictionary words for passwords is configured
+- Start remediation - Ensure preventing the use of dictionary words for passwords is configured
+- Adding dictcheck entry to /etc/security/pwquality.conf
+- End remediation - Ensure preventing the use of dictionary words for passwords is configured
+- Start check - Ensure preventing the use of dictionary words for passwords is configured
+- PASS:
+
+- Entry found in pwquality.conf: dictcheck = 1
+- End check - Ensure preventing the use of dictionary words for passwords is configured
+- Result - successfully remediated
+- End Recommendation "4.4.2.2.7 - Ensure password dictionary check is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure pam_pwhistory module is enabled "4.4.2.3.1 - Ensure pam_pwhistory module is enabled"
+- Start check - Ensure pam_pwhistory module is enabled
+- FAIL: pam_pwhistory module is NOT enabled
+
+ - pam_pwhistory module is not set in /etc/pam.d/password-auth
+ - pam_pwhistory module is not set in /etc/pam.d/system-auth
+- End check - Ensure pam_pwhistory module is enabled
+- Start remediation - Ensure pam_pwhistory module is enabled
+- Adding 'password   required   pam_pwhistory.so remember=24 enforce_for_root try_first_pass use_authtok' to /etc/pam.d/password-auth
+- Adding 'password   required   pam_pwhistory.so remember=24 enforce_for_root try_first_pass use_authtok' to /etc/pam.d/system-auth
+- Start check - Ensure pam_pwhistory module is enabled
+- PASS: pam_pwhistory module is enabled
+- End check - Ensure pam_pwhistory module is enabled
+- Result - successfully remediated
+- End Recommendation "4.4.2.3.1 - Ensure pam_pwhistory module is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure password history remember is configured "4.4.2.3.2 - Ensure password history remember is configured"
+- Start check - Ensure password history remember is configured
+- PASS:
+
+ - password history remember= is correctly configured in /etc/pam.d/system-auth
+ - password history remember= is correctly configured in /etc/pam.d/password-auth
+- End check - Ensure password history remember is configured
+- Result - No remediation required
+- End Recommendation "4.4.2.3.2 - Ensure password history remember is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation -Ensure password history is enforced for the root user "4.4.2.3.3 - Ensure password history is enforced for the root user"
+- Start check - Ensure password history is enforced for the root user
+- PASS:
+
+- Entry found in /etc/pam.d/system-auth: enforce_for_root
+- Entry found in /etc/pam.d/password-auth: enforce_for_root
+- End check - Ensure password history is enforced for the root user
+- Result - No remediation required
+- End Recommendation "4.4.2.3.3 - Ensure password history is enforced for the root user"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure pam_pwhistory includes use_authtok "4.4.2.3.4 - Ensure pam_pwhistory includes use_authtok"
+- End remediation - Ensure pam_pwhistory includes use_authtok
+- Start check - Ensure pam_pwhistory includes use_authtok
+- pam_pwhistory includes use_authtok in /etc/pam.d/password-auth
+- pam_pwhistory includes use_authtok in /etc/pam.d/system-auth
+-PASS: 'use_authtok' setting found on pam_pwhistory.so module lines
+Recommendation "Ensure pam_pwhistory includes use_authtok" No remediation required
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure pam_unix does not include nullok "4.4.2.4.1 - Ensure pam_unix does not include nullok"
+- Start check - Ensure pam_unix does not include nullok
+- FAIL: pam_unix includes nullok
+- The following lines include nullok:
+/etc/pam.d/password-auth:auth        sufficient    pam_unix.so try_first_pass nullok
+/etc/pam.d/password-auth:password    sufficient    pam_unix.so try_first_pass use_authtok nullok sha512 shadow
+/etc/pam.d/system-auth:auth        sufficient    pam_unix.so try_first_pass nullok
+/etc/pam.d/system-auth:password    sufficient    pam_unix.so try_first_pass use_authtok nullok sha512 shadow
+- End check - Ensure pam_unix does not include nullok
+- Start remediation - Ensure pam_unix includes nullock
+- Removing 'nullok' entries from /etc/pam.d/password-auth
+- Removing 'nullok' entries from /etc/pam.d/system-auth
+- End remediation - Ensure pam_unix includes nullock
+- Start check - Ensure pam_unix does not include nullok
+- PASS: pam_unix does not include nullok
+- End check - Ensure pam_unix does not include nullok
+- Result - successfully remediated
+- End Recommendation "4.4.2.4.1 - Ensure pam_unix does not include nullok"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure pam_unix does not include remember "4.4.2.4.2 - Ensure pam_unix does not include remember"
+- Start check - Ensure pam_unix does not include remember
+- PASS: pam_unix does not include remember
+- End check - Ensure pam_unix does not include remember
+- Result - No remediation required
+- End Recommendation "4.4.2.4.2 - Ensure pam_unix does not include remember"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - includes a strong password hashing algorithm "4.4.2.4.3 - Ensure pam_unix includes a strong password hashing algorithm"
+- Start check - Ensure pam_unix includes a strong password hashing algorithm
+- PASS: password hashing algorithm is correctly set to use either sha512 or yescrypt
+- End check - Ensure pam_unix includes a strong password hashing algorithm
+- Result - No remediation required
+- End Recommendation "4.4.2.4.3 - Ensure pam_unix includes a strong password hashing algorithm"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure pam_unix includes use_authtok "4.4.2.4.4 - Ensure pam_unix includes use_authtok"
+- Start check - Ensure pam_unix includes use_authtok
+- PASS: use_authtok is set correctly
+- End check - Ensure pam_unix includes use_authtok
+- Result - No remediation required
+- End Recommendation "4.4.2.4.4 - Ensure pam_unix includes use_authtok"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.1.1 - Ensure strong password hashing algorithm is configured"
+- Start check - Ensure password hashing algorithm is SHA-512
+- password    sufficient    pam_unix.so try_first_pass use_authtok  sha512 shadow found in /etc/pam.d/system-auth
+- password    sufficient    pam_unix.so try_first_pass use_authtok  sha512 shadow found in /etc/pam.d/password-auth
+- crypt_style = sha512 found in /etc/libuser.conf
+- ENCRYPT_METHOD SHA512  found in /etc/login.defs
+- PASS:
+- All password hashing settings are configured in /etc/pam.d/system-auth, /etc/pam.d/password-auth, /etc/libuser.conf, and /etc/login.defs
+- End check - Ensure password hashing algorithm is SHA-512
+- Result - No remediation required
+- End Recommendation "4.5.1.1 - Ensure strong password hashing algorithm is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.1.2 - Ensure password expiration is 365 days or less"
+- Start check - Ensure password expiration is 365 days or less
+- FAIL:
+- /etc/login.defs does NOT contain PASS_MAX_DAYS
+- End check - Ensure password expiration is 365 days or less
+- Start remediation - Ensure password expiration is 365 days or less
+- The password for root needs to be updated before setting expiration.  Please update root's password and set an expitation for root
+- Updating PASS_MAX_DAYS entry in /etc/login.defs
+- End remediation - Ensure password expiration is 365 days or less
+- Result - requires manual remediation
+- End Recommendation "4.5.1.2 - Ensure password expiration is 365 days or less"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.1.3 - Ensure password expiration warning days is 7 or more"
+- Start check - Ensure minimum days between password changes is configured
+- PASS:
+- /etc/login.defs and all users have password warnings set correctly
+- End check - Ensure password expiration warning days is 7 or more
+- Result - No remediation required
+- End Recommendation "4.5.1.3 - Ensure password expiration warning days is 7 or more"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.1.4 - Ensure inactive password lock is 30 days or less"
+- Start check - Ensure inactive password lock is 30 days or less
+- FAIL:
+- INACTIVE set to: -1
+- End check - Ensure inactive password lock is 30 days or less
+- Start remediation - Ensure inactive password lock is 30 days or less
+- The root account has not been logged into in the last 20 days.
+- Before setting inactive_password_lock you should log into the root account
+- Setting default useradd INACTIVE value to 30
+- End remediation - Ensure inactive password lock is 30 days or less
+- Result - requires manual remediation
+- End Recommendation "4.5.1.4 - Ensure inactive password lock is 30 days or less"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.1.5 - Ensure all users last password change date is in the past"
+- Start check - Ensure all users last password change date is in the past
+- PASS: - All users' last password change dates are in the past
+- End check - Ensure all users' last password change dates are in the past
+- Result - No remediation required
+- End Recommendation "4.5.1.5 - Ensure all users last password change date is in the past"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.2.1 - Ensure default group for the root account is GID 0"
+- Start check - Ensure default group for the root account is GID 0
+- PASS:
+- Root default group GID is: 0
+- End check - Ensure default group for the root account is GID 0
+- Result - No remediation required
+- End Recommendation "4.5.2.1 - Ensure default group for the root account is GID 0"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation - Ensure root user umask is configured "4.5.2.2 - Ensure root user umask is configured"
+- Start check - Ensure root user umask is configured
+- PASS: root user umask is configured correctly
+- End check - Ensure root user umask is configured
+- Result - No remediation required
+- End Recommendation "4.5.2.2 - Ensure root user umask is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.2.3 - Ensure system accounts are secured"
+- Start check - Ensure system accounts are secured
+- PASS:
+- All system accounts have a non-interactive shell and are locked
+- End check - Ensure system accounts are secured
+- Result - No remediation required
+- End Recommendation "4.5.2.3 - Ensure system accounts are secured"
+**************************************************
+
+- Start check - Ensure root password is set
+- FAIL: - 
+The root password is NOT set
+- End check - Ensure root password is set.
+- Start remediation - Ensure root password is set.
+- Set the root password manually using the command "passwd root" 
+- End remediation - Ensure root password is set.
+- Result - requires manual remediation
+- End Recommendation "4.5.2.4 - Ensure root password is set"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.3.2 - Ensure default user shell timeout is configured"
+- Start check - Ensure default user shell timeout is configured
+- FAIL:
+- TMOUT is NOT configured in any file.
+- End check - Ensure default user shell timeout is configured
+- Start remediation - Ensure system accounts are secured
+- Inserting TMOUT value in: "/etc/profile.d/cis_profile.sh"
+- Start check - Ensure default user shell timeout is configured
+- PASS:
+- TMOUT is correctly configured in: "/etc/profile.d/cis_profile.sh"
+- End check - Ensure default user shell timeout is configured
+- Result - successfully remediated
+- End Recommendation "4.5.3.2 - Ensure default user shell timeout is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "4.5.3.3 - Ensure default user umask is configured"
+- Start check - Ensure default user umask is configured
+- End check - Ensure default user umask is configured
+- Start remediation - Ensure default user umask is configured
+- End remediation - Ensure default user umask is configured
+- Start check - Ensure default user umask is configured
+- End check - Ensure default user umask is configured
+- Result - requires manual remediation
+- End Recommendation "4.5.3.3 - Ensure default user umask is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "5.1.3 - Ensure logrotate is configured"
+- Recommendation "Ensure logrotate is configured" Manual remediation required - Review /etc/logrotate.conf and /etc/logrotate.d/* and verify logs are rotated according to site policy
+- Result - requires manual remediation
+- End Recommendation "5.1.3 - Ensure logrotate is configured"
+**************************************************
+
+- Result - requires manual remediation
+- End Recommendation "5.1.3 - Ensure logrotate is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:33
+- Start Recommendation "5.1.4 - Ensure all logfiles have appropriate access configured"
+
+- Start check - Ensure all logfiles have appropriate permissions and ownership
+
+- FAIL:
+
+- File: "/var/log/grubby_prune_debug" mode: "644"
+
+- File: "/var/log/chrony/tracking.log" mode: "644"
+
+- File: "/var/log/chrony/tracking.log" ownership: "chrony:chrony"
+
+- File: "/var/log/chrony/measurements.log" mode: "644"
+
+- File: "/var/log/chrony/measurements.log" ownership: "chrony:chrony"
+
+- File: "/var/log/chrony/statistics.log" mode: "644"
+
+- File: "/var/log/chrony/statistics.log" ownership: "chrony:chrony"
+
+- File: "/var/log/dmesg.old" mode: "644"
+
+- File: "/var/log/amazon/ssm/amazon-ssm-agent.log" mode: "644"
+
+- File: "/var/log/amazon/ssm/errors.log" mode: "644"
+
+- File: "/var/log/dmesg" mode: "644"
+
+- File: "/var/log/cloud-init.log" mode: "644"
+
+
+- Start remediation - Ensure all logfiles have appropriate permissions and ownership
+- changing mode on "/var/log/grubby_prune_debug"
+- changing mode on "/var/log/chrony/tracking.log"
+- changing owner on "/var/log/chrony/tracking.log"
+- changing group on "/var/log/chrony/tracking.log"
+- changing mode on "/var/log/chrony/measurements.log"
+- changing owner on "/var/log/chrony/measurements.log"
+- changing group on "/var/log/chrony/measurements.log"
+- changing mode on "/var/log/chrony/statistics.log"
+- changing owner on "/var/log/chrony/statistics.log"
+- changing group on "/var/log/chrony/statistics.log"
+- changing mode on "/var/log/dmesg.old"
+- changing mode on "/var/log/amazon/ssm/amazon-ssm-agent.log"
+- changing mode on "/var/log/amazon/ssm/errors.log"
+- changing mode on "/var/log/dmesg"
+- changing mode on "/var/log/cloud-init.log"
+- End remediation - Ensure all logfiles have appropriate permissions and ownership
+
+- Start check - Ensure all logfiles have appropriate permissions and ownership
+
+- PASS
+- All files in "/var/log/" have appropriate permissions and ownership
+
+- Result - successfully remediated
+- End Recommendation "5.1.4 - Ensure all logfiles have appropriate access configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.1.1 - Ensure rsyslog is installed"
+- Start check - Ensure rsyslog is installed
+- PASS:
+- rsyslog package was found
+- End check - Ensure rsyslog is installed
+- Result - No remediation required
+- End Recommendation "5.1.1.1 - Ensure rsyslog is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.1.2 - Ensure rsyslog service is enabled"
+- Start check - Ensure rsyslog Service is enabled and running
+- PASS:
+rsyslog enabled status: enabled
+rsyslog active status:    Active: active (running) since Mon 2025-09-15 12:35:56 UTC; 37s ago
+- End check - Ensure rsyslog Service is enabled and running
+- Result - No remediation required
+- End Recommendation "5.1.1.2 - Ensure rsyslog service is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.1.3 - Ensure journald is configured to send logs to rsyslog"
+- Start check - Ensure journald is not configured to send logs to rsyslog
+- rsyslog is being used instead of systemd-journald.
+- End check - Ensure journald is configured to send logs to rsyslog
+- Start remediation - Ensure journald is configured to send logs to rsyslog
+- Fixing ForwardToSyslog entry in /etc/systemd/journald.conf
+- End remediation - Ensure journald is configured to send logs to rsyslog
+- Start check - Ensure journald is not configured to send logs to rsyslog
+- rsyslog is being used instead of systemd-journald.
+- End check - Ensure journald is configured to send logs to rsyslog
+- Result - successfully remediated
+- End Recommendation "5.1.1.3 - Ensure journald is configured to send logs to rsyslog"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.1.4 - Ensure rsyslog default file permissions are configured"
+- Start check - Ensure rsyslog default file permissions configured
+- FAIL:
+- $FileCreateMode was NOT found in /etc/rsyslog.conf or /etc/rsyslog.d/*.conf
+- End check - Ensure rsyslog default file permissions configured
+- Start remediation - Ensure rsyslog is installed
+- Adding $FileCreateMode entry in /etc/rsyslog.conf
+- End remediation - Ensure rsyslog is installed
+- Start check - Ensure rsyslog default file permissions configured
+- PASS:
+- $FileCreateMode entry found: /etc/rsyslog.conf:$FileCreateMode 0640
+- End check - Ensure rsyslog default file permissions configured
+- Result - successfully remediated
+- End Recommendation "5.1.1.4 - Ensure rsyslog default file permissions are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.1.5 - Ensure logging is configured"
+- Start check - Ensure logging is configured
+- Result - requires manual remediation
+- Review the contents of /etc/rsyslog.conf and /etc/rsyslog.d/*.conf files to ensure appropriate logging is set.
+- In addition, run the following command and verify that the log files are logging information as expected:
+  # ls -l /var/log/
+- End check - Ensure logging is configured
+- Start remediation - Ensure logging is configured
+- Edit /etc/rsyslog.conf and /etc/rsyslog.d/*.conf files as appropriate for your environment.
+- Once logging is configured for your environment run the following command to reload the rsyslogd configuration:
+  # systemctl restart rsyslog
+- End remediation - Ensure logging is configured
+- Result - requires manual remediation
+- End Recommendation "5.1.1.5 - Ensure logging is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.1.6 - Ensure rsyslog is configured to send logs to a remote log host"
+- Start check - Ensure rsyslog Service is enabled and running
+- FAIL:
+
+ - ForwardToSyslog=yes is found in /etc/systemd/journald.conf
+ Both rsyslog.service and systemd-journald.service are running.
+- End check - Ensure rsyslog Service is enabled and running
+- Start remediation - Ensure rsyslog is installed
+- Making modifications to destination of log files could have significant unintended consequences or result in log files being lost or mis-directed.
+- Therefore, it is recommended that the rsyslog configuration be reviewed and determine the action to be taken in accordance with site policy.
+- End remediation - Ensure rsyslog is installed
+- Result - requires manual remediation
+- End Recommendation "5.1.1.6 - Ensure rsyslog is configured to send logs to a remote log host"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.1.7 - Ensure rsyslog is not configured to receive logs from a remote client"
+- Start check - Ensure remote rsyslog messages are only accepted on designated log hosts
+- PASS:
+$ModLoad imtcp was NOT found in /etc/rsyslog.conf or /etc/rsyslog.d/*.conf
+$InputTCPServerRun was NOT found in /etc/rsyslog.conf or /etc/rsyslog.d/*.conf
+- End check - Ensure remote rsyslog messages are only accepted on designated log hosts
+- Result - No remediation required
+- End Recommendation "5.1.1.7 - Ensure rsyslog is not configured to receive logs from a remote client"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.2 - Ensure journald service is enabled"
+- Start remediation - Ensure journald service is enabled
+- PASS:
+- systemd-journald.service is enabled
+- End check - Ensure journald service is enabled
+- Result - No remediation required
+- End Recommendation "5.1.2.2 - Ensure journald service is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.3 - Ensure journald is configured to compress large log files"
+- Start check - Ensure journald is configured to compress large log files
+- FAIL:
+- /etc/systemd/journald.conf contains: #Compress=yes
+- End check - Ensure journald is configured to compress large log files
+- Start remediation - Ensure journald is configured to compress large log files
+- Fixing Compress entry in /etc/systemd/journald.conf
+- Restarting systemd-journald
+- End remediation - Ensure journald is configured to compress large log files
+- Start check - Ensure journald is configured to compress large log files
+- PASS:
+- /etc/systemd/journald.conf contains: Compress=yes
+- End check - Ensure journald is configured to compress large log files
+- Result - successfully remediated
+- End Recommendation "5.1.2.3 - Ensure journald is configured to compress large log files"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.4 - Ensure journald is configured to write logfiles to persistent disk"
+- Start check - Ensure journald is configured to write logfiles to persistent disk
+- FAIL:
+- /etc/systemd/journald.conf contains: #Storage=auto
+- End check - Ensure journald is configured to write logfiles to persistent disk
+- Start remediation - Ensure journald is configured to write logfiles to persistent disk
+- Fixing Storage entry in /etc/systemd/journald.conf
+- Restarting systemd-journald
+- End remediation - Ensure journald is configured to write logfiles to persistent disk
+- Start check - Ensure journald is configured to write logfiles to persistent disk
+- PASS:
+- /etc/systemd/journald.conf contains: Storage=persistent
+- End check - Ensure journald is configured to write logfiles to persistent disk
+- Result - successfully remediated
+- End Recommendation "5.1.2.4 - Ensure journald is configured to write logfiles to persistent disk"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.5 - Ensure journald is not configured to send logs to rsyslog"
+- Start check - Ensure journald is not configured to send logs to rsyslog
+- FAIL:
+- /etc/systemd/journald.conf contains: ForwardToSyslog=yes
+- End check - Ensure journald is not configured to send logs to rsyslog
+- Start remediation - Ensure journald is not configured to send logs to rsyslog
+- Review /etc/systemd/journald.conf and verify that logs are being forwarded according to organizational requirements.
+- End remediation - Ensure journald is not configured to send logs to rsyslog
+- Result - requires manual remediation
+- End Recommendation "5.1.2.5 - Ensure journald is not configured to send logs to rsyslog"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.6 - Ensure journald log rotation is configured per site policy"
+- Start check - Ensure journald log rotation is configured per site policy
+- FAIL:
+- Some journald log rotation settings are NOT configured:
+- CORRECT:
+
+- INCORRECT:
+
+SystemMaxUse
+SystemKeepFree
+RuntimeMaxUse
+RuntimeKeepFree
+MaxFileSec
+- End check - Ensure journald log rotation is configured per site policy
+- Start remediation - Ensure journald log rotation is configured per site policy
+- Review /etc/systemd/journald.conf and verify logs are rotated according to site policy.
+- End remediation - Ensure journald log rotation is configured per site policy
+- Result - requires manual remediation
+- End Recommendation "5.1.2.6 - Ensure journald log rotation is configured per site policy"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.1.1 - Ensure systemd-journal-remote is installed"
+- rsyslog is being used instead of systemd-journald.
+- Recommendation Ensure systemd-journal-remote is installed is NA
+- End Recommendation "5.1.2.1.1 - Ensure systemd-journal-remote is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.1.2 - Ensure systemd-journal-remote is configured"
+- Start check - Ensure systemd-journal-remote is configured
+- Currently configured settings are:
+
+- End check - Ensure systemd-journal-remote is configured
+- Start remediation - Ensure systemd-journal-remote is configured
+- Edit the /etc/systemd/journal-upload.conf file and ensure the following lines are set per your environment:
+  URL=192.168.50.42
+  ServerKeyFile=/etc/ssl/private/journal-upload.pem
+  ServerCertificateFile=/etc/ssl/certs/journal-upload.pem
+  TrustedCertificateFile=/etc/ssl/ca/trusted.pem
+- Restart the service:
+  # systemctl restart systemd-journal-upload
+- End remediation - Ensure systemd-journal-remote is configured
+- Result - requires manual remediation
+- End Recommendation "5.1.2.1.2 - Ensure systemd-journal-remote is configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.1.3 - Ensure systemd-journal-remote is enabled"
+- rsyslog is being used instead of systemd-journald.
+- Recommendation Ensure systemd-journal-remote is enabled is NA
+- End Recommendation "5.1.2.1.3 - Ensure systemd-journal-remote is enabled"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.1.2.1.4 - Ensure journald is not configured to receive logs from a remote client"
+- Start Check - Ensure journald is not configured to recieve logs from a remote client
+- PASS:
+- systemd-journal-remote.socket service is disabled
+- End check - Ensure journald is not configured to recieve logs from a remote client
+- Result - No remediation required
+- End Recommendation "5.1.2.1.4 - Ensure journald is not configured to receive logs from a remote client"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:36:34
+- Start Recommendation "5.3.1 - Ensure AIDE is installed"
+- Start check - Ensure AIDE is installed
+- FAILED:
+- aide package NOT installed on the system
+- End check - Ensure AIDE is installed
+- Start remediation - Ensure AIDE is installed
+Installing AIDE packages
+Initializing AIDE, this may take a few minutes
+- Start check - Ensure AIDE is installed
+- PASSED:
+- aide package found
+- End check - Ensure AIDE is installed
+- Result - successfully remediated
+- End Recommendation "5.3.1 - Ensure AIDE is installed"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "5.3.2 - Ensure filesystem integrity is regularly checked"
+- Start check - Ensure filesystem integrity is regularly checked
+- FAIL:
+- Filesystem integrity is NOT being checked
+- End check - Ensure filesystem integrity is regularly checked
+- Start remediation - Ensure filesystem integrity is regularly checked
+- Configure either cron or install and enable aide
+- End remediation - Ensure filesystem integrity is regularly checked
+- Result - requires manual remediation
+- End Recommendation "5.3.2 - Ensure filesystem integrity is regularly checked"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "6.1.1 - Ensure permissions on /etc/passwd are configured"
+- Start check - permissions and ownership on "/etc/passwd"
+- PASS:
+- /etc/passwd permissions set to "0644", ownership set to "root", and group set to "root"
+- End check - /etc/passwd permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.1 - Ensure permissions on /etc/passwd are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "6.1.2 - Ensure permissions on /etc/passwd- are configured"
+- Start check - permissions and ownership on "/etc/passwd-"
+- PASS:
+- /etc/passwd- permissions set to "0644", ownership set to "root", and group set to "root"
+- End check - /etc/passwd- permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.2 - Ensure permissions on /etc/passwd- are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "6.1.3 - Ensure permissions on /etc/group are configured"
+- Start check - permissions and ownership on "/etc/group"
+- PASS:
+- /etc/group permissions set to "0644", ownership set to "root", and group set to "root"
+- End check - /etc/group permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.3 - Ensure permissions on /etc/group are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "6.1.4 - Ensure permissions on /etc/group- are configured"
+- Start check - permissions and ownership on "/etc/group-"
+- PASS:
+- /etc/group- permissions set to "0644", ownership set to "root", and group set to "root"
+- End check - /etc/group- permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.4 - Ensure permissions on /etc/group- are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "6.1.5 - Ensure permissions on /etc/shadow are configured"
+- Start check - permissions and ownership on "/etc/shadow"
+- PASS:
+- /etc/shadow permissions set to "0000", ownership set to "root", and group set to "root"
+- End check - /etc/shadow permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.5 - Ensure permissions on /etc/shadow are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "6.1.6 - Ensure permissions on /etc/shadow- are configured"
+- Start check - permissions and ownership on "/etc/shadow-"
+- PASS:
+- /etc/shadow- permissions set to "0000", ownership set to "root", and group set to "root"
+- End check - /etc/shadow- permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.6 - Ensure permissions on /etc/shadow- are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:20
+- Start Recommendation "6.1.7 - Ensure permissions on /etc/gshadow are configured"
+- Start check - permissions and ownership on "/etc/gshadow"
+- PASS:
+- /etc/gshadow permissions set to "0000", ownership set to "root", and group set to "root"
+- End check - /etc/gshadow permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.7 - Ensure permissions on /etc/gshadow are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:21
+- Start Recommendation "6.1.8 - Ensure permissions on /etc/gshadow- are configured"
+- Start check - permissions and ownership on "/etc/gshadow-"
+- PASS:
+- /etc/gshadow- permissions set to "0000", ownership set to "root", and group set to "root"
+- End check - /etc/gshadow- permissions and ownership
+- Result - No remediation required
+- End Recommendation "6.1.8 - Ensure permissions on /etc/gshadow- are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:21
+- Start Recommendation "6.1.9 - Ensure permissions on /etc/shells are configured"
+- Start check - Ensure permissions on /etc/shells are configured
+
+- Audit Result:
+  ** PASS **
+ - * Correctly configured * :
+
+- /etc/shells permissions set to "0644", ownership set to "root", and group set to "root"
+
+- End check - Ensure permissions on /etc/shells are configured
+- Result - No remediation required
+- End Recommendation "6.1.9 - Ensure permissions on /etc/shells are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:21
+- Start Recommendation "6.1.10 - Ensure permissions on /etc/security/opasswd are configured"
+- Start check - Ensure permissions on /etc/opasswd are configured
+
+- Audit Result:
+  ** PASS **
+ - * Correctly configured * :
+
+- /etc/security/opasswd permissions set to "0600", ownership set to "root", and group set to "root"
+- /etc/security/opasswd.old was not found on the system
+
+- End check - Ensure permissions on /etc/opasswd are configured
+- Result - No remediation required
+- End Recommendation "6.1.10 - Ensure permissions on /etc/security/opasswd are configured"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:21
+- Start Recommendation "6.1.13 - Ensure SUID and SGID files are reviewed"
+- Start check - Ensure SUID and SGID files are reviewed
+
+- Audit Result: **FAIL**
+
+ - List of "14" SUID executable files:
+/usr/bin/chage
+/usr/bin/gpasswd
+/usr/bin/newgrp
+/usr/bin/mount
+/usr/bin/su
+/usr/bin/umount
+/usr/bin/crontab
+/usr/bin/sudo
+/usr/bin/passwd
+/usr/sbin/unix_chkpwd
+/usr/sbin/pam_timestamp_check
+/usr/sbin/usernetctl
+/usr/sbin/mount.nfs
+/usr/libexec/dbus-1/dbus-daemon-launch-helper
+ - end of list -
+
+ - List of "8" SGID executable files:
+/usr/bin/wall
+/usr/bin/write
+/usr/bin/ssh-agent
+/usr/sbin/netreport
+/usr/sbin/postqueue
+/usr/sbin/postdrop
+/usr/libexec/utempter/utempter
+/usr/libexec/openssh/ssh-keysign
+ - end of list -
+
+- Review the preceding list(s) of SUID and/or SGID files to
+- ensure that no rogue programs have been introduced onto the system.
+
+
+- End check - Ensure SUID and SGID files are reviewed
+- Start remediation - Ensure SUID and SGID files are reviewed
+- Review the files returned and confirm the integrity of these binaries.
+- Ensure that no rogue SUID or SGID programs have been introduced into the system.
+- End remediation - Ensure SUID and SGID files are reviewed
+Recommendation "Ensure SUID and SGID files are reviewed" requires manual remediation
+- Start check - Ensure accounts in /etc/passwd use shadowed passwords
+- PASS: - All users in /etc/passwd use a shadowed password.
+- End check - Ensure accounts in /etc/passwd use shadowed passwords.
+- Result - No remediation required
+- End Recommendation "6.2.1 - Ensure accounts in /etc/passwd use shadowed passwords"
+**************************************************
+
+- Start check - Ensure /etc/shadow password fields are not empty
+- PASS: - All acounts in '/etc/shadow' have a password or are locked.
+- End check - Ensure /etc/shadow password fields are not empty
+- Result - No remediation required
+- End Recommendation "6.2.2 - Ensure /etc/shadow password fields are not empty"
+**************************************************
+
+- Start check - Ensure all groups in /etc/passwd exist in /etc/group
+- PASS: - All groups in /etc/passwd exist in /etc/group.
+- End check - Ensure all groups in /etc/passwd exist in /etc/group.
+- Result - No remediation required
+- End Recommendation "6.2.3 - Ensure all groups in /etc/passwd exist in /etc/group"
+**************************************************
+
+- Start check - Ensure no duplicate GIDs exist
+- PASS: - No duplicate UIDs exist.
+- End check - Ensure no duplicate UIDs exist.
+- Result - No remediation required
+- End Recommendation "6.2.4 - Ensure no duplicate UIDs exist"
+**************************************************
+
+- Start check - Ensure no duplicate GIDs exist
+- PASS: - No duplicate GIDs exist.
+- End check - Ensure no duplicate GIDs exist.
+- Result - No remediation required
+- End Recommendation "6.2.5 - Ensure no duplicate GIDs exist"
+**************************************************
+
+- Start check - Ensure no duplicate user names exist
+- PASS: - No duplicate user names exist.
+- End check - Ensure no duplicate user names exist.
+- Result - No remediation required
+- End Recommendation "6.2.6 - Ensure no duplicate user names exist"
+**************************************************
+
+- Start check - Ensure no duplicate group names exist
+- PASS: - No duplicate group names exist.
+- End check - Ensure no duplicate group names exist.
+- Result - No remediation required
+- End Recommendation "6.2.7 - Ensure no duplicate group names exist"
+**************************************************
+
+- Start check - Ensure root PATH Integrity
+- End check - Ensure root PATH Integrity.
+- Start remediation - Ensure root PATH Integrity
+- Making modifications to the root users PATH could have significant unintended consequences or result in outages and unhappy users. Therefore, it is recommended that the current PATH contents be reviewed and determine the action to be taken in accordance with site policy. -
+- End remediation - Ensure root PATH Integrity
+- Result - requires manual remediation
+- End Recommendation "6.2.8 - Ensure root path integrity"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:21
+- Start Recommendation "6.2.9 - Ensure root is the only UID 0 account"
+- Start check - Ensure root is the only UID 0 account
+- PASS: - Root is the only UID 0 account.
+- End check - Ensure root is the only UID 0 account.
+- Result - No remediation required
+- End Recommendation "6.2.9 - Ensure root is the only UID 0 account"
+**************************************************
+
+
+**************************************************
+- 15-Sep-2025 12:37:21
+- Start Recommendation "6.2.10 - Ensure local interactive user home directories are configured"
+- Start check - Ensure local interactive user home directories are mode 750 or more restrictive
+- End check - Ensure local interactive user home directories are mode 750 or more restrictive
+Recommendation "Ensure local interactive user home directories are configured" No remediation required
+- Start check - Ensure users' dot files are not group or world writable
+- PASS: - Group or world writable dot files were not found in any user home directory.
+- End check - Ensure users' dot files are not group or world writable
+- Result - No remediation required
+- End Recommendation "6.2.11 - Ensure local interactive user dot files access is configured"
+**************************************************
+

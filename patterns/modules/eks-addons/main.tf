@@ -7,14 +7,14 @@ module "eks_blueprints_addons" {
   cluster_version   = var.cluster_version
   oidc_provider_arn = var.oidc_provider_arn
 
-  eks_addons = {
-    aws-ebs-csi-driver = {
-      most_recent = true
-    }
-    coredns = {
-      most_recent = true
-    }
-  }
+#  eks_addons = {
+#    aws-ebs-csi-driver = {
+#      most_recent = true
+#    }
+#    coredns = {
+#      most_recent = true
+#    }
+#  }
 
   observability_tag = null
 

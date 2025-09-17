@@ -1,0 +1,735 @@
+{
+  "builds": [
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752034220,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0ebf6a74f2bd37bd1",
+      "packer_run_uuid": "bd926439-3a77-5fbc-9558-9b39afbffd28",
+      "custom_data": {
+        "source_ami_id": "ami-029acbe2978750702",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250519"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752034521,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0002d99ac64a93f45",
+      "packer_run_uuid": "0809ce7d-e295-8a92-3ed1-00b5a723beae",
+      "custom_data": {
+        "source_ami_id": "ami-029acbe2978750702",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250519"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752034873,
+      "files": null,
+      "artifact_id": "us-west-2:ami-01c1db082eae49b3a",
+      "packer_run_uuid": "84d8aafb-71e5-d2ca-c51b-317ba4746824",
+      "custom_data": {
+        "source_ami_id": "ami-065c4735fcd971664",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250704"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752035158,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0898b91fe8d2a0a02",
+      "packer_run_uuid": "1dc483ee-3d3e-4711-9081-2e851ca41f9f",
+      "custom_data": {
+        "source_ami_id": "ami-065c4735fcd971664",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250704"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752038739,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0fee2e7472e09127c",
+      "packer_run_uuid": "4bb0f0e0-134c-3d1e-7844-763170d35374",
+      "custom_data": {
+        "source_ami_id": "ami-0a99aaeb5f28d6a20",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250627"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752039049,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0809fb96d8114490b",
+      "packer_run_uuid": "8eb73906-58ce-0098-feb5-7d7c5642cb59",
+      "custom_data": {
+        "source_ami_id": "ami-0a99aaeb5f28d6a20",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250627"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752041453,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0cbfab68f393d34f9",
+      "packer_run_uuid": "89a856eb-0624-3036-b611-ae1d0ca12539",
+      "custom_data": {
+        "source_ami_id": "ami-029acbe2978750702",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250519"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752041762,
+      "files": null,
+      "artifact_id": "us-west-2:ami-00cb1fe1fbb7fac71",
+      "packer_run_uuid": "d4c271fd-e84c-4f44-e731-59ffb7719f77",
+      "custom_data": {
+        "source_ami_id": "ami-029acbe2978750702",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250519"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752103005,
+      "files": null,
+      "artifact_id": "us-west-2:ami-001cbeb70ca7f74e1",
+      "packer_run_uuid": "cffeeb71-16f1-70fb-36fd-8c32ee091a06",
+      "custom_data": {
+        "source_ami_id": "ami-0a99aaeb5f28d6a20",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250627"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752103320,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0e409679a656cf254",
+      "packer_run_uuid": "5bf57473-c9b4-f6cc-51d3-b1c4828310bd",
+      "custom_data": {
+        "source_ami_id": "ami-0a99aaeb5f28d6a20",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250627"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752104412,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0ed78185bf7e61032",
+      "packer_run_uuid": "d8919c9c-4141-6daa-e780-3a4434ccae29",
+      "custom_data": {
+        "source_ami_id": "ami-029acbe2978750702",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250519"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752104713,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0ab272984c5dc7680",
+      "packer_run_uuid": "88f06668-6613-b19f-34c1-9cb44e6c746c",
+      "custom_data": {
+        "source_ami_id": "ami-029acbe2978750702",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250519"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752106071,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0b2350344950cb854",
+      "packer_run_uuid": "6035d376-442c-a504-bc61-e0786eb76c77",
+      "custom_data": {
+        "source_ami_id": "ami-065c4735fcd971664",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250704"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1752106358,
+      "files": null,
+      "artifact_id": "us-west-2:ami-050a70042c77065e8",
+      "packer_run_uuid": "b57c5f5e-dfae-d9a4-df96-f1b76de3f5d3",
+      "custom_data": {
+        "source_ami_id": "ami-065c4735fcd971664",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250704"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754269920,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0211254537f0cf2e4",
+      "packer_run_uuid": "874e951e-a10b-cfd1-7b42-fbb1ddafae82",
+      "custom_data": {
+        "source_ami_id": "ami-0dfc96a2851459758",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250715"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754270205,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0b2ea99b976352b00",
+      "packer_run_uuid": "43eb145d-9676-574e-3b11-dec026c90550",
+      "custom_data": {
+        "source_ami_id": "ami-0dfc96a2851459758",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250715"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754278012,
+      "files": null,
+      "artifact_id": "us-west-2:ami-06e52ed50c4e7c5ea",
+      "packer_run_uuid": "110db4ab-ce5e-2850-5c8d-6de50d2342f3",
+      "custom_data": {
+        "source_ami_id": "ami-0dfc96a2851459758",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250715"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754278322,
+      "files": null,
+      "artifact_id": "us-west-2:ami-08271a86ee525e503",
+      "packer_run_uuid": "dc2df311-f69f-30ae-935b-48a7511edd19",
+      "custom_data": {
+        "source_ami_id": "ami-0dfc96a2851459758",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250715"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754445470,
+      "files": null,
+      "artifact_id": "us-west-2:ami-09c34b6c4b5a0aad6",
+      "packer_run_uuid": "796b2012-2470-b418-5652-2c14dd81916b",
+      "custom_data": {
+        "source_ami_id": "ami-0dfc96a2851459758",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250715"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754445789,
+      "files": null,
+      "artifact_id": "us-west-2:ami-04857e5dce2eef95b",
+      "packer_run_uuid": "42310121-268d-3824-7827-8a4bff0be5f5",
+      "custom_data": {
+        "source_ami_id": "ami-0dfc96a2851459758",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250715"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754448380,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0959706930217b87f",
+      "packer_run_uuid": "e591999b-3712-7ed7-d72e-93f7efa25fe9",
+      "custom_data": {
+        "source_ami_id": "ami-0286508d0b2597860",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250801"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754448680,
+      "files": null,
+      "artifact_id": "us-west-2:ami-099ba8397b038d59f",
+      "packer_run_uuid": "742ec11e-b7eb-43d7-32f0-e408a7f7c2e3",
+      "custom_data": {
+        "source_ami_id": "ami-0286508d0b2597860",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250801"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754877836,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0e3976bd6cf2666f5",
+      "packer_run_uuid": "e1b568cc-88aa-b03e-12a7-703670e30701",
+      "custom_data": {
+        "source_ami_id": "ami-0286508d0b2597860",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250801"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1754878150,
+      "files": null,
+      "artifact_id": "us-west-2:ami-00803e9c612d7a144",
+      "packer_run_uuid": "92b00267-cdae-fda9-2f19-eea415222559",
+      "custom_data": {
+        "source_ami_id": "ami-0286508d0b2597860",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250801"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756773290,
+      "files": null,
+      "artifact_id": "us-west-2:ami-062cabfd0f770eb69",
+      "packer_run_uuid": "ccfae9b5-24ac-d0a2-8d31-a3ed7faeb76b",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756773603,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0211f8794fd0ab428",
+      "packer_run_uuid": "2e75587b-62e1-1dd7-66b9-f050ec8333df",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756781787,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0461a39f07559b019",
+      "packer_run_uuid": "f8c92a3b-82c0-f919-fef5-d5ed91a27645",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756782067,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0f548bc08cd248970",
+      "packer_run_uuid": "43c6c95d-83f4-43fa-c8cc-1c24516b710d",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756786753,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0ac4737cee3f3ab16",
+      "packer_run_uuid": "831b0530-96ec-3798-db92-2e425ae4d9de",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756787727,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0590d63c5dbab955f",
+      "packer_run_uuid": "7e45d70b-4faa-e8b8-5c06-dc42733a8dc7",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756788027,
+      "files": null,
+      "artifact_id": "us-west-2:ami-040367770d9ce2186",
+      "packer_run_uuid": "e297cab4-e598-dfdf-e936-82b909ec0d97",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756790459,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0cee2f55448f63e5c",
+      "packer_run_uuid": "328153ee-b9fd-3a63-5f7b-dc572b6db7f0",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756790792,
+      "files": null,
+      "artifact_id": "us-west-2:ami-00096a901269fed8d",
+      "packer_run_uuid": "93dd4254-b068-cd11-05ee-0136674e8365",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756792666,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0af7fc6f942ba7402",
+      "packer_run_uuid": "4dc04f37-60ac-8123-1430-40b3d57e150d",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756792944,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0d3418663e156e2e8",
+      "packer_run_uuid": "b7328861-b6fa-65ef-3a50-3179cc730940",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756796754,
+      "files": null,
+      "artifact_id": "us-west-2:ami-09ae7103213767ae2",
+      "packer_run_uuid": "fa9901f1-4182-6e29-5cac-8661a3acce94",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756796755,
+      "files": null,
+      "artifact_id": "us-west-2:ami-05d9c01022e0a0f78",
+      "packer_run_uuid": "87294074-c868-79c0-a75a-d8fe6ee126db",
+      "custom_data": {
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756798548,
+      "files": null,
+      "artifact_id": "us-west-2:ami-045075ee9fcf2b8ce",
+      "packer_run_uuid": "cc21dd96-33f9-cd7c-b27e-c2f545145f20",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250902073057",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756798552,
+      "files": null,
+      "artifact_id": "us-west-2:ami-062b75d637914bde3",
+      "packer_run_uuid": "3b9ccfca-7bda-1701-d420-858a40904bc4",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250902073057",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756799822,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0916441342c33f444",
+      "packer_run_uuid": "75f2ff94-ee8b-da13-7df8-f60900d27529",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250902075225",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756800578,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0ea2ad9e4e70998de",
+      "packer_run_uuid": "fa33e3f9-3fd8-17f2-560a-723d3714b935",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250902080444",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756801218,
+      "files": null,
+      "artifact_id": "us-west-2:ami-014c6967486c93c81",
+      "packer_run_uuid": "78f3de67-b198-f9eb-2de2-8ce4b4e7c8c5",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250902081507",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756857897,
+      "files": null,
+      "artifact_id": "us-west-2:ami-09a772db280bc2a4b",
+      "packer_run_uuid": "fc2a7deb-a259-317d-32d2-8b8e65b9b58c",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250903000020",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756858825,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0595f0fda4938dcf5",
+      "packer_run_uuid": "65f397cc-39e0-4eec-7fd2-c6e0c7387135",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250903001446",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756860165,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0b051894cd72ae13d",
+      "packer_run_uuid": "980b62e9-09be-03c5-1a27-d6b5cd25b8fc",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250903003750",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756860193,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0e00d048bcf3b326a",
+      "packer_run_uuid": "f598065e-9fbf-5107-0ba1-f1c53ad67a86",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250903003748",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756861129,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0987420ec5dc6c756",
+      "packer_run_uuid": "6af235c4-0a0e-b112-0c13-f142f0b78ef4",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250903005338",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756861144,
+      "files": null,
+      "artifact_id": "us-west-2:ami-01a9409a8eb8cec69",
+      "packer_run_uuid": "53c9096b-3df2-41c2-4bf5-d8fbcd3fc484",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250903005338",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756863905,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0e7615328154f5f83",
+      "packer_run_uuid": "58c53119-72c1-928f-b172-4dc1d096efe8",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250903013952",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1756864000,
+      "files": null,
+      "artifact_id": "us-west-2:ami-04042d81a08dcdf15",
+      "packer_run_uuid": "f5780e3c-bacc-cc1d-593b-9d50b270d25c",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250903013952",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1757896775,
+      "files": null,
+      "artifact_id": "us-west-2:ami-030609c5eeabb82ae",
+      "packer_run_uuid": "9fdf9398-5c53-6611-ba04-4705285a89a4",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250915003438",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1757896789,
+      "files": null,
+      "artifact_id": "us-west-2:ami-0c27fd3305f6fbbf4",
+      "packer_run_uuid": "7b7f6ad2-46d2-327c-55e7-a9a070eee3ad",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250915003440",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1757903275,
+      "files": null,
+      "artifact_id": "us-west-2:ami-03d6ded1a897c22cb",
+      "packer_run_uuid": "b411dda5-5b04-4f40-1adc-2e04c280af55",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250915022259",
+        "source_ami_id": "ami-0d38da7c8872af366",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1757904641,
+      "files": null,
+      "artifact_id": "ap-southeast-2:ami-06d4077e11747e3fd",
+      "packer_run_uuid": "5be4bfdb-66e3-89be-d9de-d454b721e3e7",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250915024543",
+        "source_ami_id": "ami-0b6e48b6059b4dfc0",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1757910562,
+      "files": null,
+      "artifact_id": "ap-southeast-2:ami-04f0fdbb4fd49f541",
+      "packer_run_uuid": "a36b650f-3d55-885f-1639-0d0fa643098a",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250915042444",
+        "source_ami_id": "ami-0b6e48b6059b4dfc0",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1758004226,
+      "files": null,
+      "artifact_id": "ap-southeast-2:ami-0f9a921ed23a0af96",
+      "packer_run_uuid": "f781b2a6-a105-e1d9-234c-50bb82d8ff5b",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250916062534",
+        "source_ami_id": "ami-0b6e48b6059b4dfc0",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1758065133,
+      "files": null,
+      "artifact_id": "ap-southeast-2:ami-00c63aa445ccc8d81",
+      "packer_run_uuid": "c25ea096-b09f-6bba-6ff9-d674621a8788",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250916232037",
+        "source_ami_id": "ami-0b6e48b6059b4dfc0",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1758066145,
+      "files": null,
+      "artifact_id": "ap-southeast-1:ami-0b8e244fb617d99d7",
+      "packer_run_uuid": "2be9c8b0-c3a4-ce0e-143a-540666536d1b",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_1-20250916233743",
+        "source_ami_id": "ami-0c3492957d3a87748",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    },
+    {
+      "name": "eks_optimized_ami_al2023",
+      "builder_type": "amazon-ebs",
+      "build_time": 1758066161,
+      "files": null,
+      "artifact_id": "ap-southeast-1:ami-0c770bd7d920cbeb9",
+      "packer_run_uuid": "1134573a-2a7c-240b-e4e1-d0097b40dbeb",
+      "custom_data": {
+        "hardened_ami_name": "EKS_Optimized_AL2023_CIS_Benchmark_Level_2-20250916233743",
+        "source_ami_id": "ami-0c3492957d3a87748",
+        "source_ami_name": "amazon-eks-node-al2023-x86_64-standard-1.33-v20250821"
+      }
+    }
+  ],
+  "last_run_uuid": "1134573a-2a7c-240b-e4e1-d0097b40dbeb"
+}
