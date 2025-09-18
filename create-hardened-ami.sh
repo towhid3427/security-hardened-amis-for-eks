@@ -285,7 +285,7 @@ case "$choice" in
                        echo -e "${RED}Invalid region. Please try again.${NC}"
                     fi
                 done 
-                echo -e "${RED}Planning destruction of all Infrastructure in ${aws_region}...${NC}"
+                echo -e "${RED}Planning destruction of all Infrastructure in ${aws_region} created using this terraform...${NC}"
                 terraform plan -destroy -var="aws_region=${aws_region}"
                 confirm_operation "stack deletion"
                 echo -e "${RED}Destroying all Infrastructure in ${aws_region}...${NC}"
@@ -497,7 +497,7 @@ case "$choice" in
                        echo -e "${RED}Invalid region. Please try again.${NC}"
                     fi
                 done                    
-                echo -e "${RED}Planning destruction of all Infrastructure in ${aws_region}...${NC}"
+                echo -e "${RED}Planning destruction of all Infrastructure in ${aws_region} created using this terraform...${NC}"
                 terraform plan -destroy -var="aws_region=${aws_region}"
                 confirm_operation "stack deletion"
                 echo -e "${RED}Destroying all Infrastructure in ${aws_region}...${NC}"
