@@ -115,3 +115,9 @@ variable "bootstrap_extra_args" {
   type        = string
   default     = "" # Empty string as default if no bootstrap extra settings are needed
 }
+
+variable "pre_bootstrap_user_data" {
+  description = "Extra bootstrap settings for CIS AMIs nodes"
+  type        = string
+  default     = "" # Empty string as default if no bootstrap extra settings are needed
+}

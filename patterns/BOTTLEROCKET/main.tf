@@ -13,6 +13,7 @@ module "vpc" {
 ################################################################################
 resource "aws_ecr_repository" "bottlerocket_cis_bootstrap_image" {
   name                 = var.ecr_repository_name
+  region = var.aws_region
   image_tag_mutability = "MUTABLE"
   image_scanning_configuration {
    scan_on_push = true

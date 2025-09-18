@@ -137,7 +137,7 @@ get_state_values() {
     local s3_key=$(grep -A 5 'backend "s3"' versions.tf | grep 'key' | awk -F'"' '{print $2}')
     local s3_region=$(grep -A 5 'backend "s3"' versions.tf | grep 'region' | awk -F'"' '{print $2}')
 
-    echo "Debug: S3 Bucket: $s3_bucket, Key: $s3_key, Region: $s3_region"
+    #echo "Debug: S3 Bucket: $s3_bucket, Key: $s3_key, Region: $s3_region"
 
 
     if [ -z "$s3_bucket" ] || [ -z "$s3_key" ] || [ -z "$s3_region" ]; then
@@ -174,15 +174,14 @@ get_state_values() {
         select(.aws_region != null)
      ')
 
-    echo "Debug: Extracted state values: $state_values"
+    #echo "Debug: Extracted state values: $state_values"
 
     if [ -n "$state_values" ] && [ "$state_values" != "null" ]; then
         state_aws_region=$(echo "$state_values" | jq -r '.aws_region')
 
         if [ -n "$state_aws_region" ] && 
            [ "$state_aws_region" != "null" ]; then
-            echo -e "${GREEN}Found in state:${NC}"
-            echo -e "${GREEN}Region: ${state_aws_region}${NC}"
+            #echo -e "${GREEN}Region Found in state file: ${state_aws_region}${NC}"
             echo -e "${BLUE}State file location: s3://${s3_bucket}/${s3_key}${NC}"
             return 0
         fi
@@ -271,10 +270,10 @@ case "$choice" in
                 # For entire stack cleanup, we only need the region
                 echo -e "${BLUE}Checking state for AWS region...${NC}"
                 if get_state_values; then
-                    aws_region="$state_aws_region"
-                    echo -e "${GREEN}Using region from state: ${aws_region}${NC}"
+                    echo -e "${GREEN}Available region in state: $state_aws_region ${NC}"
                 else
-                    echo -e "${RED}Error: No AWS region found in state file. Cannot proceed with cleanup.${NC}"
+                    echo -e "${RED}Error: No AWS region found in state file. Cannot proceed with cleanup.${NC}"                   
+                fi
                 # Get aws_region first
                 while true; do
                     echo -n "Enter AWS region (default: ${DEFAULT_AWS_REGION}): "
@@ -285,9 +284,7 @@ case "$choice" in
                     else
                        echo -e "${RED}Invalid region. Please try again.${NC}"
                     fi
-                done                    
-                fi
-
+                done 
                 echo -e "${RED}Planning destruction of all Infrastructure in ${aws_region}...${NC}"
                 terraform plan -destroy -var="aws_region=${aws_region}"
                 confirm_operation "stack deletion"
@@ -297,32 +294,32 @@ case "$choice" in
 
             2)
                 # For AMI resource cleanup, we need region
-                echo -e "${BLUE}Checking state for required values...${NC}"
-                if ! get_state_values; then
-                    echo -e "${RED}Error: Required values not found in state file.${NC}"
-                    echo -e "${YELLOW}Please ensure AMI resources were created before attempting cleanup.${NC}"
-                    echo -e "${YELLOW}If you're sure about cleanup, create a new AMI first to generate state values.${NC}"
-                    exit 1
+                echo -e "${BLUE}Checking state for AWS region...${NC}"
+                if get_state_values; then
+                    echo -e "${GREEN}Available region in state: $state_aws_region ${NC}"
+                else
+                    echo -e "${RED}Error: No AWS region found in state file. Cannot proceed with cleanup.${NC}"                   
                 fi
-
-                # Validate state values
-                if ! validate_aws_region "$state_aws_region"; then
-                    echo -e "${RED}Error: Invalid region in state file: ${state_aws_region}${NC}"
-                    exit 1
-                fi
-
-                aws_region="$state_aws_region"
-                echo -e "${GREEN}Using values from state:${NC}"
-                echo -e "${GREEN}Region: ${aws_region}${NC}"
+                # Get aws_region first
+                while true; do
+                    echo -n "Enter AWS region (default: ${DEFAULT_AWS_REGION}): "
+                    read -r aws_region
+                    aws_region=${aws_region:-$DEFAULT_AWS_REGION}
+                    if validate_aws_region "$aws_region"; then
+                       break
+                    else
+                       echo -e "${RED}Invalid region. Please try again.${NC}"
+                    fi
+                done 
 
                 if [ "$cleanup_choice" == "2" ]; then
-                    echo -e "${RED}Planning destruction of Level 1 AMI resources...${NC}"
+                    echo -e "${RED}Planning destruction of CIS Bootstrape Image resources. This will not delete the ECR Repository / Image..${NC}"
                     terraform plan -destroy \
                         -var="cis_bootstrape_image=true" \
                         -var="aws_region=$aws_region" \
                         -target=null_resource.docker_build_push-image-only
                     confirm_operation "CIS Bootstrape Image"
-                    echo -e "${RED}Destroying CIS Bootstrape Image resources...${NC}"
+                    echo -e "${RED}Destroying CIS Bootstrape Image resources. This will not delete the ECR Repository / Image....${NC}"
                     terraform destroy \
                         -var="cis_bootstrape_image=true" \
                         -var="aws_region=$aws_region" \
@@ -362,7 +359,7 @@ case "$choice" in
             aws_region=${aws_region:-$DEFAULT_AWS_REGION}
             if validate_aws_region "$aws_region"; then
                 echo -e "${GREEN}Planning infrastructure creation in ${aws_region}...${NC}"
-                initialize_terraform
+                #initialize_terraform
                 terraform plan -var="aws_region=${aws_region}"
                 confirm_operation "infrastructure creation"
                 echo -e "${GREEN}Creating infrastructure in ${aws_region}...${NC}"
@@ -407,7 +404,7 @@ case "$choice" in
         case "$ami_level" in
             1)
                 echo -e "${GREEN}Planning CIS Level 1 Hardened AMI creation in ${aws_region}...${NC}"
-                initialize_terraform
+                #initialize_terraform
                 terraform plan \
                     -var="create_ami_level1=true" \
                     -var="public_subnet_id=$subnet_id" \
@@ -424,7 +421,7 @@ case "$choice" in
                 ;;
             2)
                 echo -e "${GREEN}Planning CIS Level 2 Hardened AMI creation in ${aws_region}...${NC}"
-                initialize_terraform
+                #initialize_terraform
                 terraform plan \
                     -var="create_ami_level2=true" \
                     -var="public_subnet_id=$subnet_id" \
@@ -441,7 +438,7 @@ case "$choice" in
                 ;;
             3)
                 echo -e "${GREEN}Creating Both CIS Level 1 and CIS Level 2 Hardened AMIs in ${aws_region}...${NC}"
-                initialize_terraform
+                #initialize_terraform
                 terraform plan \
                     -var="create_ami_level1=true" \
                     -var="create_ami_level2=true" \
@@ -451,7 +448,7 @@ case "$choice" in
                     -target=null_resource.only_create_hardened_ami_level_2
                 confirm_operation "Both Level 1 and Level 2 AMI creation"
                 echo -e "${GREEN}Creating Both CIS Level 1 and CIS Level 2 Hardened AMIs in ${aws_region}...${NC}"
-                initialize_terraform
+                #initialize_terraform
                 terraform apply \
                     -var="create_ami_level1=true" \
                     -var="create_ami_level2=true" \
@@ -485,10 +482,10 @@ case "$choice" in
                 # For entire stack cleanup, we only need the region
                 echo -e "${BLUE}Checking state for AWS region...${NC}"
                 if get_state_values; then
-                    aws_region="$state_aws_region"
-                    echo -e "${GREEN}Using region from state: ${aws_region}${NC}"
+                    echo -e "${GREEN}Available region in state: $state_aws_region ${NC}"
                 else
-                    echo -e "${RED}Error: No AWS region found in state file. Cannot proceed with cleanup. Need AWS Region.${NC}"
+                    echo -e "${RED}Error: No AWS region found in state file. Cannot proceed with cleanup.${NC}"                   
+                fi
                 # Get aws_region first
                 while true; do
                     echo -n "Enter AWS region (default: ${DEFAULT_AWS_REGION}): "
@@ -500,8 +497,6 @@ case "$choice" in
                        echo -e "${RED}Invalid region. Please try again.${NC}"
                     fi
                 done                    
-                fi
-
                 echo -e "${RED}Planning destruction of all Infrastructure in ${aws_region}...${NC}"
                 terraform plan -destroy -var="aws_region=${aws_region}"
                 confirm_operation "stack deletion"
@@ -510,26 +505,24 @@ case "$choice" in
                 ;;
 
             2|3|4)
-                # For AMI resource cleanup, we need both region and subnet ID
+                # For AMI resource cleanup, we need region.
                 echo -e "${BLUE}Checking state for required values...${NC}"
-                if ! get_state_values; then
-                    echo -e "${RED}Error: Required values not found in state file.${NC}"
-                    echo -e "${YELLOW}Please ensure AMI resources were created before attempting cleanup.${NC}"
-                    echo -e "${YELLOW}If you're sure about cleanup, create a new AMI first to generate state values.${NC}"
-                    exit 1
+                if get_state_values; then
+                    echo -e "${GREEN}Available region in state: $state_aws_region ${NC}"
+                else
+                    echo -e "${RED}Error: No AWS region found in state file. Cannot proceed with cleanup.${NC}"                   
                 fi
-
-                # Validate state values
-                if ! validate_aws_region "$state_aws_region"; then
-                    echo -e "${RED}Error: Invalid region in state file: ${state_aws_region}${NC}"
-                    exit 1
-                fi
-
-                aws_region="$state_aws_region"
-                subnet_id="$state_subnet_id"
-                echo -e "${GREEN}Using values from state:${NC}"
-                echo -e "${GREEN}Region: ${aws_region}${NC}"
-                echo -e "${GREEN}Subnet ID: ${subnet_id}${NC}"
+                # Get aws_region first
+                while true; do
+                    echo -n "Enter AWS region (default: ${DEFAULT_AWS_REGION}): "
+                    read -r aws_region
+                    aws_region=${aws_region:-$DEFAULT_AWS_REGION}
+                    if validate_aws_region "$aws_region"; then
+                       break
+                    else
+                       echo -e "${RED}Invalid region. Please try again.${NC}"
+                    fi
+                done 
 
                 if [ "$cleanup_choice" == "2" ]; then
                     echo -e "${RED}Planning destruction of CIS Level 1 AMI resources...${NC}"
