@@ -121,3 +121,14 @@ variable "pre_bootstrap_user_data" {
   type        = string
   default     = "" # Empty string as default if no bootstrap extra settings are needed
 }
+
+variable "cloudinit_pre_nodeadm" {
+  description = "List of cloud-init scripts to run before nodeadm initialization"
+  type = list(object({
+    content      = string
+    content_type = optional(string)
+    filename     = optional(string)
+    merge_type   = optional(string)
+  }))
+  default = []
+}

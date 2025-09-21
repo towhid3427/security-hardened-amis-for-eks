@@ -359,7 +359,7 @@ case "$choice" in
             aws_region=${aws_region:-$DEFAULT_AWS_REGION}
             if validate_aws_region "$aws_region"; then
                 echo -e "${GREEN}Planning infrastructure creation in ${aws_region}...${NC}"
-                #initialize_terraform
+                initialize_terraform
                 terraform plan -var="aws_region=${aws_region}"
                 confirm_operation "infrastructure creation"
                 echo -e "${GREEN}Creating infrastructure in ${aws_region}...${NC}"
@@ -404,7 +404,7 @@ case "$choice" in
         case "$ami_level" in
             1)
                 echo -e "${GREEN}Planning CIS Level 1 Hardened AMI creation in ${aws_region}...${NC}"
-                #initialize_terraform
+                initialize_terraform
                 terraform plan \
                     -var="create_ami_level1=true" \
                     -var="public_subnet_id=$subnet_id" \
@@ -421,7 +421,7 @@ case "$choice" in
                 ;;
             2)
                 echo -e "${GREEN}Planning CIS Level 2 Hardened AMI creation in ${aws_region}...${NC}"
-                #initialize_terraform
+                initialize_terraform
                 terraform plan \
                     -var="create_ami_level2=true" \
                     -var="public_subnet_id=$subnet_id" \
@@ -438,7 +438,7 @@ case "$choice" in
                 ;;
             3)
                 echo -e "${GREEN}Creating Both CIS Level 1 and CIS Level 2 Hardened AMIs in ${aws_region}...${NC}"
-                #initialize_terraform
+                initialize_terraform
                 terraform plan \
                     -var="create_ami_level1=true" \
                     -var="create_ami_level2=true" \
@@ -448,7 +448,7 @@ case "$choice" in
                     -target=null_resource.only_create_hardened_ami_level_2
                 confirm_operation "Both Level 1 and Level 2 AMI creation"
                 echo -e "${GREEN}Creating Both CIS Level 1 and CIS Level 2 Hardened AMIs in ${aws_region}...${NC}"
-                #initialize_terraform
+                initialize_terraform
                 terraform apply \
                     -var="create_ami_level1=true" \
                     -var="create_ami_level2=true" \
