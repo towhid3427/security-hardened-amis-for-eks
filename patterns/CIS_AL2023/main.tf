@@ -316,7 +316,7 @@ resource "null_resource" "run_cis_scan" {
 # Create Hardened AMI EKS_Optimized_AL2023_Level_1 Only
 ################################################################################
 resource "null_resource" "only_create_hardened_ami_level_1" {
-  depends_on = [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1, module.packer_role]
+  depends_on = [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1, null_resource.update_template, module.packer_role]
   count = var.create_ami_level1 ? 1 : 0
 
   triggers = {
