@@ -48,21 +48,19 @@ resource "null_resource" "update_template" {
   }
   provisioner "local-exec" {
     command = <<-EOT
-      # Clean up: Remove amazon-eks-ami directory
-      rm -rf amazon-eks-ami || true
-      # Clone repository
-      git clone https://github.com/awslabs/amazon-eks-ami.git --branch ${var.branch}
-
-      # Run the template update script
-      bash ${path.module}/update-template-json.sh
+      if [ ! -d "amazon-eks-ami" ]; then
+        git clone https://github.com/awslabs/amazon-eks-ami.git --branch ${var.branch}
+      fi
+      cd amazon-eks-ami
+      echo "Waiting for PR https://github.com/awslabs/amazon-eks-ami/pull/1922"
+      cp ../template.json templates/al2023/template.json
+      cp ../cleanup.sh templates/shared/provisioners/cleanup.sh
     EOT
-
-    interpreter = ["bash", "-c"]
   }
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_1
+# Create Hardened AMI EKS_Optimized_AL2023_Level_1, null_resource.update_template, module.packer_role
 ################################################################################
 resource "null_resource" "create_hardened_ami_level_1" {
   depends_on = [module.vpc, aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1, null_resource.update_template, module.packer_role]
@@ -75,10 +73,7 @@ resource "null_resource" "create_hardened_ami_level_1" {
 
   provisioner "local-exec" {
     command = <<-EOT
-      if [ ! -d "amazon-eks-ami" ]; then
-        git clone https://github.com/awslabs/amazon-eks-ami.git --branch ${var.branch}
-      fi
-      
+
       packer plugins install github.com/hashicorp/amazon || true
       
       cd amazon-eks-ami
@@ -123,10 +118,10 @@ resource "null_resource" "create_hardened_ami_level_1" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_2
+# Create Hardened AMI EKS_Optimized_AL2023_Level_2, null_resource.update_template, module.packer_role
 ################################################################################
 resource "null_resource" "create_hardened_ami_level_2" {
-  depends_on = [module.vpc, aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_2, null_resource.update_template, module.packer_role ]
+  depends_on = [module.vpc, aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_2, null_resource.update_template, module.packer_role]
 
   triggers = {
     always_run = timestamp()
@@ -135,10 +130,6 @@ resource "null_resource" "create_hardened_ami_level_2" {
 
   provisioner "local-exec" {
     command = <<-EOT
-
-      if [ ! -d "amazon-eks-ami" ]; then
-        git clone https://github.com/awslabs/amazon-eks-ami.git --branch ${var.branch}
-      fi
       
       packer plugins install github.com/hashicorp/amazon || true
 
@@ -221,10 +212,10 @@ module "eks_managed_node_group_level_1" {
     {
       content_type = "text/x-shellscript; charset=\"us-ascii\""
       content      = <<-EOT
-            #!/usr/bin/env bash
-            #kubelet runs on port 10250 so need to update iptables 
-            iptables -I INPUT -p tcp -m tcp --dport 10250 -j ACCEPT
-          EOT
+        #!/usr/bin/env bash
+        #kubelet runs on port 10250 so need to update iptables 
+        iptables -I INPUT -p tcp -m tcp --dport 10250 -j ACCEPT
+      EOT
     }
   ]
 }
@@ -313,7 +304,7 @@ resource "null_resource" "run_cis_scan" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_1 Only
+# Create Hardened AMI EKS_Optimized_AL2023_Level_1 Only, null_resource.update_template, , module.packer_role
 ################################################################################
 resource "null_resource" "only_create_hardened_ami_level_1" {
   depends_on = [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1, null_resource.update_template, module.packer_role]
@@ -372,7 +363,7 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_2 Only
+# Create Hardened AMI EKS_Optimized_AL2023_Level_2 Only null_resource.update_template, module.packer_role
 ################################################################################
 resource "null_resource" "only_create_hardened_ami_level_2" {
   depends_on = [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_2, null_resource.update_template, module.packer_role]
@@ -385,10 +376,6 @@ resource "null_resource" "only_create_hardened_ami_level_2" {
 
   provisioner "local-exec" {
     command = <<-EOT
-      if [ ! -d "amazon-eks-ami" ]; then
-        git clone https://github.com/awslabs/amazon-eks-ami.git --branch ${var.branch}
-      fi
-      
       packer plugins install github.com/hashicorp/amazon || true
 
       cd amazon-eks-ami
