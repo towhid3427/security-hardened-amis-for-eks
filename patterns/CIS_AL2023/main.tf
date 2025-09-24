@@ -40,7 +40,7 @@ module "packer_role" {
 }
 
 ################################################################################
-# Resource to clone repo and update template This will Run The Shell Script update-template-json.sh To Update the template.json file
+# Resource to clone repo and update template.json and Cleanup.sh
 ################################################################################
 resource "null_resource" "update_template" {
   triggers = {
@@ -60,7 +60,7 @@ resource "null_resource" "update_template" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_1, null_resource.update_template, module.packer_role
+# Create Hardened AMI EKS_Optimized_AL2023_Level_1
 ################################################################################
 resource "null_resource" "create_hardened_ami_level_1" {
   depends_on = [module.vpc, aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1, null_resource.update_template, module.packer_role]
@@ -118,7 +118,7 @@ resource "null_resource" "create_hardened_ami_level_1" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_2, null_resource.update_template, module.packer_role
+# Create Hardened AMI EKS_Optimized_AL2023_Level_2
 ################################################################################
 resource "null_resource" "create_hardened_ami_level_2" {
   depends_on = [module.vpc, aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_2, null_resource.update_template, module.packer_role]
@@ -304,7 +304,7 @@ resource "null_resource" "run_cis_scan" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_1 Only, null_resource.update_template, , module.packer_role
+# Create Hardened AMI EKS_Optimized_AL2023_Level_1 Only
 ################################################################################
 resource "null_resource" "only_create_hardened_ami_level_1" {
   depends_on = [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1, null_resource.update_template, module.packer_role]
@@ -363,7 +363,7 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_2 Only null_resource.update_template, module.packer_role
+# Create Hardened AMI EKS_Optimized_AL2023_Level_2 Only
 ################################################################################
 resource "null_resource" "only_create_hardened_ami_level_2" {
   depends_on = [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_2, null_resource.update_template, module.packer_role]
