@@ -55,6 +55,30 @@ resource "null_resource" "update_template" {
       echo "Waiting for PR https://github.com/awslabs/amazon-eks-ami/pull/1922"
       cp ../template.json templates/al2023/template.json
       cp ../cleanup.sh templates/shared/provisioners/cleanup.sh
+      echo "sudo chmod 755 /usr/bin/kubelet" >> templates/al2023/provisioners/install-worker.sh
+      # Function to apply sed commands based on OS
+      apply_sed_commands() {
+      OS=$(uname)
+      if [ "$OS" = "Darwin" ]; then
+          # Mac OS X commands
+          echo "Applying changes for MacOS..."
+          sed -i '' "s/chmod +x \$binary/chmod 755 \$binary/g" templates/al2023/provisioners/install-worker.sh
+          sed -i '' 's#aws --version#sudo /bin//aws --version#g' templates/shared/provisioners/generate-version-info.sh
+          sed -i '' 's#aws #sudo /bin//aws #g' templates/shared/runtime/bin/cache-pause-container
+          sed -i '' 's#/tmp#/home/ec2-user#g' templates/al2023/variables-default.json
+          sed -i '' 's#cache-pause-container#sudo cache-pause-container#g' templates/al2023/provisioners/cache-pause-container.sh
+      else
+          # Linux commands
+          echo "Applying changes for Linux..."
+          sed -i "s/chmod +x \$binary/chmod 755 \$binary/g" templates/al2023/provisioners/install-worker.sh
+          sed -i 's#aws --version#sudo /bin//aws --version#g' templates/shared/provisioners/generate-version-info.sh
+          sed -i 's#aws #sudo /bin//aws #g' templates/shared/runtime/bin/cache-pause-container
+          sed -i 's#/tmp#/home/ec2-user#g' templates/al2023/variables-default.json
+          sed -i 's#cache-pause-container#sudo cache-pause-container#g' templates/al2023/provisioners/cache-pause-container.sh
+      fi
+}
+      # First apply the sed commands
+      apply_sed_commands
     EOT
   }
 }
@@ -80,8 +104,6 @@ resource "null_resource" "create_hardened_ami_level_1" {
       timestamp=$(date +%s)
       ami_name="CIS_Amazon_Linux_2023_Benchmark_Level_1-$timestamp"
  
-      echo "sudo chmod 755 /usr/bin/kubelet" >> templates/al2023/provisioners/install-worker.sh
-
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
         --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_1}" \
@@ -137,8 +159,6 @@ resource "null_resource" "create_hardened_ami_level_2" {
       timestamp=$(date +%s)
       ami_name="CIS_Amazon_Linux_2023_Benchmark_Level_2-$timestamp"
 
-      echo "sudo chmod 755 /usr/bin/kubelet" >> templates/al2023/provisioners/install-worker.sh
-      
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
         --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_2}" \
@@ -325,8 +345,6 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
       timestamp=$(date +%s)
       ami_name="CIS_Amazon_Linux_2023_Benchmark_Level_1-$timestamp"
 
-      echo "sudo chmod 755 /usr/bin/kubelet" >> templates/al2023/provisioners/install-worker.sh
-
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
         --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_1}" \
@@ -381,9 +399,7 @@ resource "null_resource" "only_create_hardened_ami_level_2" {
       cd amazon-eks-ami
       timestamp=$(date +%s)
       ami_name="CIS_Amazon_Linux_2023_Benchmark_Level_2-$timestamp"
-  
-      echo "sudo chmod 755 /usr/bin/kubelet" >> templates/al2023/provisioners/install-worker.sh
-      
+        
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
         --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_2}" \
