@@ -1,6 +1,6 @@
 module "eks_managed_node_group" {
   source  = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "21.1.5"
+  version = "21.3.1"
 
   name                              = var.name
   cluster_name                      = var.cluster_name

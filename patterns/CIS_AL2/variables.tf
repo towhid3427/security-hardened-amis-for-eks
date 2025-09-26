@@ -37,7 +37,7 @@ variable "public_subnet_id" {
 variable "branch" {
   description = "EKS AMI Branch TAG" ## For Example: https://github.com/awslabs/amazon-eks-ami/releases/tag/v20250904 ## Check and Update During Monthly Release.
   type        = string
-  default     = "v20250904"
+  default     = "v20250920"
 }
 
 variable "CIS_AMI_NAME_LEVEL_1" {
