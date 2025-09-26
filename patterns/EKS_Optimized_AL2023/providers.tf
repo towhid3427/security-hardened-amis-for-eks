@@ -3,16 +3,6 @@ provider "aws" {
   region = var.aws_region
 }
 
-terraform {
-  required_version = ">= 1.3"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "6.14.1"
-    }
-  }
-}
-
 # AuthN so Helm Can Install Charts
 provider "helm" {
   kubernetes {
@@ -35,7 +25,6 @@ provider "kubernetes" {
     command     = "aws"
     args        = ["eks", "get-token", "--cluster-name", module.eks_cluster.cluster_name]
   }
-
 }
 
 # Get AWS account ID
