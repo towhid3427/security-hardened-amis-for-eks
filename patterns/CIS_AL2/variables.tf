@@ -43,11 +43,11 @@ variable "branch" {
 variable "CIS_AMI_NAME_LEVEL_1" {
   description = "CIS AMI Name which will be use to Search the CIS AMI from Market Place" ## Check and Update During Monthly Release.
   type        = string
-  default     = "CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 1 - v07*"
+  default     = "CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 1 - v08*"
 }
 
 variable "CIS_AMI_NAME_LEVEL_2" {
-  description = "CIS AMI Name which will be use to Search the CIS AMI from Market Place" ## Check and Update During Monthly Release v07 if needed.
+  description = "CIS AMI Name which will be use to Search the CIS AMI from Market Place" ## Check and Update During Monthly Release.
   type        = string
-  default     = "CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 2 - v07*"
+  default     = "CIS Amazon Linux 2 Kernel 5.10 Benchmark - Level 2 - v08*"
 }
