@@ -14,21 +14,7 @@ There are three types of guidance generally being requested from AWS Customers:
 
 Currently, information is spread across different resources and there isn't a central location that explain how to apply CIS scripts for each of the available AMIs. In other words, there is no existent holistic mechanism that can measure the impact of changes in any of the different sources - CIS Scripts, CIS AMIs and EKS Optimized AMIs.
 
-Please find the link below for existing resources with detailed steps on how to achieve either Level 1 or Level 2 compliance according to each base AMI:
-
-| Base AMI | Level 1 | Level 2 |
-| --- | --- | --- |
-| EKS Optimized AL2 | [EKS Security Workshop](https://catalog.workshops.aws/eks-security-immersionday/en-US/10-regulatory-compliance/cis-al2-eks) and [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) | [EKS Security Workshop](https://catalog.workshops.aws/eks-security-immersionday/en-US/10-regulatory-compliance/cis-al2-eks) and [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) |
-| EKS Optimized AL 2023 | [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) | [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) |
-| Bottlerocket AMI | Out of the box compliant | [ https://aws.amazon.com/blogs/containers/validating-amazon-eks-optimized-bottlerocket-ami-against-the-cis-benchmark/]( https://aws.amazon.com/blogs/containers/validating-amazon-eks-optimized-bottlerocket-ami-against-the-cis-benchmark/) and [EKS Security Workshop](https://catalog.workshops.aws/eks-security-immersionday/en-US/10-regulatory-compliance/2-cis-bottlerocket-eks) |
-| CIS Amazon Linux 2 Benchmark | N/A | [https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/](https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/) |
-| CIS Amazon Linux 2 Kernel 4.14 Benchmark | [https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/](https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/) | N/A |
-| CIS EKS-Optimized Amazon Linux 2 Level 1 Image | Out of the box compliant | No existent resource available so far |
-| CIS EKS-Optimized Amazon Linux 2 Level 2 Image | N/A | Out of the box compliant |
-| CIS Amazon Linux 2023 Benchmark - Level 1 | No existent resource available so far | No existent resource available so far |
-| CIS Amazon Linux 2023 Benchmark - Level 2 | No existent resource available so far | [https://aws.amazon.com/blogs/containers/automating-al2023-custom-hardened-ami-updates-for-amazon-eks-managed-nodes/](https://aws.amazon.com/blogs/containers/automating-al2023-custom-hardened-ami-updates-for-amazon-eks-managed-nodes/) |
-
-As we can see from the table above, guidance available are spread across different resources(Workshops/Blog Posts) using different tech and there is no single solution that cover a single process for all the base AMIs available.
+As we can see from the table on the Further Resources Section, guidance available are spread across different resources(Workshops/Blog Posts) using different tech and there is no single solution that cover a single process for all the base AMIs available.
 
 ## 🤯 Why is this problem space complex?
 - There are more than 200 CIS Scripts/Checks
@@ -45,7 +31,7 @@ The solution will consider the following base AMIs(depending on the pattern you 
 - EKS_Optimized_AL2
 - EKS_Optimized_AL2023
 - BOTTLEROCKET
-- CIS_Amazon_Linux_2_Kernel_4_Benchmark_Level_1
+- CIS_Amazon_Linux_2_Benchmark_Level_1
 - CIS_Amazon_Linux_2_Benchmark_Level_2
 - CIS_Amazon_Linux_2023_Benchmark_Level_1
 - CIS_Amazon_Linux_2023_Benchmark_Level_2
@@ -56,17 +42,7 @@ Solution Diagram
 
 ![](./docs/images/solution.png)
 
-Detailed steps are inside each pattern folder, but the overall steps for each pattern are as follows:
-
-**Step 1.** Users run `make run-static-tests` command for static code analysis tests
-
-**Step 2.** Users run `make plan` and `make apply` to deploy VPC resource using Terraform.
-
-**Step 3.** Users run `make create-hardened-ami` to create security-hardened Amazon EKS AMIs using Packer using one of the methods outlined below.
-
-**Step 4.** Users run `make cluster-plan` and `make cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
-
-**Step 5.** Users run `make run-cis-scan` to trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
+Detailed steps are provided within each pattern folder. For a guided experience, follow the prompts when running the file ``create-hardened-ami.sh.``
 
 There are different approaches for hardening the Amazon EKS AMI for CIS Benchmark Level 1 or Level 2 profiles which this automation takes care of:
 
@@ -131,3 +107,20 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## 📄 License
 
 Apache-2.0 Licensed. See [LICENSE](LICENSE).
+
+## 📚 Further Resources
+
+Please see the link below for AWS resources that were used as references for this repository's solution. It includes detailed steps for achieving either Level 1 or Level 2 compliance based on each base AMI:
+
+| Base AMI | Level 1 | Level 2 |
+| --- | --- | --- |
+| EKS Optimized AL2 | [EKS Security Workshop](https://catalog.workshops.aws/eks-security-immersionday/en-US/10-regulatory-compliance/cis-al2-eks) and [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) | [EKS Security Workshop](https://catalog.workshops.aws/eks-security-immersionday/en-US/10-regulatory-compliance/cis-al2-eks) and [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) |
+| EKS Optimized AL 2023 | [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) | [https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/](https://aws.amazon.com/blogs/security/how-to-create-a-pipeline-for-hardening-amazon-eks-nodes-and-automate-updates/) |
+| Bottlerocket AMI | Out of the box compliant | [ https://aws.amazon.com/blogs/containers/validating-amazon-eks-optimized-bottlerocket-ami-against-the-cis-benchmark/]( https://aws.amazon.com/blogs/containers/validating-amazon-eks-optimized-bottlerocket-ami-against-the-cis-benchmark/) and [EKS Security Workshop](https://catalog.workshops.aws/eks-security-immersionday/en-US/10-regulatory-compliance/2-cis-bottlerocket-eks) |
+| CIS Amazon Linux 2 Benchmark | N/A | [https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/](https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/) |
+| CIS Amazon Linux 2 Kernel 4.14 Benchmark | [https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/](https://aws.amazon.com/blogs/containers/building-amazon-linux-2-cis-benchmark-amis-for-amazon-eks/) | N/A |
+| CIS EKS-Optimized Amazon Linux 2 Level 1 Image | Out of the box compliant | No existent resource available so far |
+| CIS EKS-Optimized Amazon Linux 2 Level 2 Image | N/A | Out of the box compliant |
+| CIS Amazon Linux 2023 Benchmark - Level 1 | No existent resource available so far | No existent resource available so far |
+| CIS Amazon Linux 2023 Benchmark - Level 2 | No existent resource available so far | [https://aws.amazon.com/blogs/containers/automating-al2023-custom-hardened-ami-updates-for-amazon-eks-managed-nodes/](https://aws.amazon.com/blogs/containers/automating-al2023-custom-hardened-ami-updates-for-amazon-eks-managed-nodes/) |
+
