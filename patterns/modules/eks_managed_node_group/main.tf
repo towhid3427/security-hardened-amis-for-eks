@@ -16,6 +16,7 @@ module "eks_managed_node_group" {
   capacity_type               = var.capacity_type
   force_update_version        = var.force_update_version
   enable_bootstrap_user_data  = var.enable_bootstrap_user_data
+  pre_bootstrap_user_data     = var.pre_bootstrap_user_data
   cluster_endpoint            = var.cluster_endpoint
   cluster_auth_base64         = var.cluster_auth_base64
   ami_type                    = var.ami_type
