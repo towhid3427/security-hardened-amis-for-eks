@@ -8,30 +8,62 @@ References: <https://aws.amazon.com/bottlerocket/>
 
 ## 🔢 Pre-requisites
 
-1. (Mandatory) Create S3 for storing terraform state files and provide S3 Bucket name on file ``versions.tf`` and ``eks-cluster/versions.tf``
-2. (Mandatory) Ensure you provide the correct region where the bucket was created on ``locals.tf``, ``eks-cluster/locals.tf`` and on ``Makefile``
-3. (Mandatory) Install [Docker](https://docs.docker.com/engine/install/).
-4. (Mandatory) Install Make. make utility is almost universally pre-installed on most Linux distributions.
-5. (Mandatory) Install [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli).
-6. (Optional) For the static tests, install terraform-docs,tflint,checkov,pre-commit and mdl.
+1. (Mandatory) Create S3 for storing terraform state files and provide S3 Bucket name and region on file ``versions.tf``.
+2. (Mandatory) Install [Docker](https://docs.docker.com/engine/install/).
+3. (Mandatory) Install [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli).
+4. (Optional) For the static tests, install terraform-docs,tflint,checkov,pre-commit and mdl.
 
 ## 🚀 How to deploy
 
+### Option 1: Use the guided approach by running the script on the root folder: ``create-hardened-ami.sh``.
+
+or 
+
+### Option 2: Create Complete Infrastructure
+
 **Step 1.** Navigate to the Bottlerocket pattern directory: `cd patterns/BOTTLEROCKET`
 
-**Step 2.** Run `make plan and make apply` to deploy VPC resource using Terraform.
+**Step 2.** Run `terraform init` ,`terraform plan` and `terraform apply` to deploy Complete Infrastructure using Terraform.
+This will include:
 
-**Step 3.** Run `make build-bottlerocket-cis-bootstrap-image` to build and push CIS bootstrap image.
+- VPC and Subnets
+- EKS Cluster 
+- EKS managed node groups with hardened AMI
+- Deploy several different add-ons to check if the workload will run without issues.
+- Trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
 
-**Step 4.** Run `make cluster-plan and cluster-apply` to create EKS Cluster and create EKS managed node groups for each security-hardened Amazon EKS AMI as part of the same EKS Cluster. This also will deploy several different apps and add-ons and will run tests to see if the workload will run without issues.
+or 
 
-**Step 5.** Run `make run-cis-scan` to trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
+### Option 3: Create Only CIS Bootstrape Image
+
+```
+terraform init
+```
+
+and
+
+```
+terraform plan \
+    -var="cis_bootstrape_image=true" \
+    -var="aws_region=$aws_region" \
+    -target=null_resource.docker_build_push-image-only
+```
+
+and
+
+```
+terraform apply \
+    -var="cis_bootstrape_image=true" \
+    -var="aws_region=$aws_region" \
+    -target=null_resource.docker_build_push-image-only \
+    --auto-approve
+```
 
 ## 🧹 How to terminate resources
 
 **Step 1.** Navigate to the Bottlerocket pattern directory: `cd patterns/BOTTLEROCKET`
 
-**Step 2.** Run `make clean` to Terminate Resources
+**Step 2.** Run `terraform destroy` to Terminate Resources
 
 ## 🕵️ How to access the EKS Cluster
 
@@ -99,30 +131,49 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.96 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.14.1 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.96 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.14.1 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.2.4 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | ./../modules/vpc | n/a |
+| <a name="module_eks_blueprints_addons"></a> [eks\_blueprints\_addons](#module\_eks\_blueprints\_addons) | ../modules/eks-addons | n/a |
+| <a name="module_eks_cluster"></a> [eks\_cluster](#module\_eks\_cluster) | ../modules/eks-cluster | n/a |
+| <a name="module_eks_managed_node_group_level_2"></a> [eks\_managed\_node\_group\_level\_2](#module\_eks\_managed\_node\_group\_level\_2) | ../modules/eks_managed_node_group | n/a |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | ../modules/vpc | n/a |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_ecr_repository.bottlerocket_cis_bootstrap_image](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| [aws_ecr_repository.bottlerocket_cis_bootstrap_image](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/resources/ecr_repository) | resource |
+| [null_resource.docker_build_push](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
+| [null_resource.docker_build_push_image_only](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
+| [null_resource.run_cis_scan](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/caller_identity) | data source |
+| [aws_ssm_parameter.bottlerocket_ami](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"us-west-2"` | no |
+| <a name="input_cis_bootstrape_image"></a> [cis\_bootstrape\_image](#input\_cis\_bootstrape\_image) | Flag to create CIS Hardened Bootstrap Image | `bool` | `false` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.33"` | no |
+| <a name="input_ecr_repository_name"></a> [ecr\_repository\_name](#input\_ecr\_repository\_name) | ECR Repository Name | `string` | `"bottlerocket-cis-bootstrap-image"` | no |
+| <a name="input_image_tag"></a> [image\_tag](#input\_image\_tag) | CIS Level 2 Bootstrape Image Tag | `string` | `"latest"` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name Prefix | `string` | `"BOTTLEROCKET"` | no |
 
 ## Outputs
 
