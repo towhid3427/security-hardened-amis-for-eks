@@ -22,12 +22,6 @@ variable "cis_bootstrape_image" {
   default     = false
 }
 
-variable "public_subnet_id" {
-  description = "Public subnet ID for AMI creation"
-  type        = string
-  default     = ""
-}
-
 variable "ecr_repository_name" {
   description = "ECR Repository Name"
   type        = string

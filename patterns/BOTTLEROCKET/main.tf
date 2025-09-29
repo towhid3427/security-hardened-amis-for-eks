@@ -14,7 +14,7 @@ module "vpc" {
 resource "aws_ecr_repository" "bottlerocket_cis_bootstrap_image" {
   name                 = var.ecr_repository_name
   region = var.aws_region
-  image_tag_mutability = "MUTABLE"
+  image_tag_mutability = "IMMUTABLE"
   image_scanning_configuration {
    scan_on_push = true
   }
@@ -130,41 +130,41 @@ module "eks_blueprints_addons" {
 ################################################################################
 # Run CIS SCAN AWS Inspector
 ################################################################################
-#resource "null_resource" "run_cis_scan" {
-#  depends_on = [module.eks_managed_node_group_level_2]
-#  triggers = {
-#    cluster_name = var.name
-#    force_scan   = timestamp()
-#  }
-#
-#  provisioner "local-exec" {
-#    command = <<-EOT
-#      echo "Initiating CIS scan using AWS Inspector..." && \
-#      echo "Account ID: ${data.aws_caller_identity.current.account_id}" && \
-#      SCAN_ARN=$(aws inspector2 create-cis-scan-configuration \
-#        --scan-name "${var.name}" \
-#        --schedule "oneTime={}" \
-#        --security-level LEVEL_2 \
-#        --targets "accountIds=${data.aws_caller_identity.current.account_id},targetResourceTags={eks:cluster-name=${var.name}}" \
-#        --region ${var.aws_region} \
-#        --query 'scanArn' \
-#        --output text) && \
-#      
-#      if [ -z "$SCAN_ARN" ]; then
-#        echo "Error: Failed to create CIS scan configuration"
-#        exit 1
-#      fi && \
-#      
-#      echo "Successfully created CIS scan"
-#    EOT
-#  }
-#}
+resource "null_resource" "run_cis_scan" {
+ depends_on = [module.eks_managed_node_group_level_2]
+ triggers = {
+   cluster_name = var.name
+   force_scan   = timestamp()
+ }
+
+ provisioner "local-exec" {
+   command = <<-EOT
+     echo "Initiating CIS scan using AWS Inspector..." && \
+     echo "Account ID: ${data.aws_caller_identity.current.account_id}" && \
+     SCAN_ARN=$(aws inspector2 create-cis-scan-configuration \
+       --scan-name "${var.name}" \
+       --schedule "oneTime={}" \
+       --security-level LEVEL_2 \
+       --targets "accountIds=${data.aws_caller_identity.current.account_id},targetResourceTags={eks:cluster-name=${var.name}}" \
+       --region ${var.aws_region} \
+       --query 'scanArn' \
+       --output text) && \
+     
+     if [ -z "$SCAN_ARN" ]; then
+       echo "Error: Failed to create CIS scan configuration"
+       exit 1
+     fi && \
+     
+     echo "Successfully created CIS scan"
+   EOT
+ }
+}
 
 ################################################################################
 # Create Hardened AMI EKS_Optimized_AL2023_Level_1 Only
 ################################################################################
 
-resource "null_resource" "docker_build_push-image-only" {
+resource "null_resource" "docker_build_push_image_only" {
   count = var.cis_bootstrape_image ? 1 : 0
 
   triggers = {
