@@ -40,13 +40,13 @@ variable "branch" {
   default     = "v20250920" 
 }
 
-variable "CIS_AMI_NAME_LEVEL_1" {
+variable "cis_ami_name_level_1" {
   description = "CIS AMI Name which will be use to Search the CIS AMI from Market Place" ## Check and Update During Monthly Release.
   type        = string
   default     = "CIS Amazon Linux 2023 Benchmark - Level 1 - v08*"
 }
 
-variable "CIS_AMI_NAME_LEVEL_2" {
+variable "cis_ami_name_level_2" {
   description = "CIS AMI Name which will be use to Search the CIS AMI from Market Place" ## Check and Update During Monthly Release v07 if needed.
   type        = string
   default     = "CIS Amazon Linux 2023 Benchmark - Level 2 - v08*"

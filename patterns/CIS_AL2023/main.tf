@@ -106,7 +106,7 @@ resource "null_resource" "create_hardened_ami_level_1" {
  
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_1}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_1}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -116,7 +116,7 @@ resource "null_resource" "create_hardened_ami_level_1" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_1}" \
+        source_ami_filter_name="${var.cis_ami_name_level_1}" \
         AMI_VARIANT=amazon-eks-cis \
         subnet_id=${module.vpc.public_subnets[0]} \
         associate_public_ip_address=true \
@@ -161,7 +161,7 @@ resource "null_resource" "create_hardened_ami_level_2" {
 
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_2}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_2}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -171,7 +171,7 @@ resource "null_resource" "create_hardened_ami_level_2" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_2}" \
+        source_ami_filter_name="${var.cis_ami_name_level_2}" \
         subnet_id=${module.vpc.public_subnets[0]} \
         associate_public_ip_address=true \
         remote_folder=/home/ec2-user \
@@ -347,7 +347,7 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
 
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_1}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_1}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -357,7 +357,7 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_1}" \
+        source_ami_filter_name="${var.cis_ami_name_level_1}" \
         AMI_VARIANT=amazon-eks-cis \
         subnet_id=${var.public_subnet_id} \
         associate_public_ip_address=true \
@@ -402,7 +402,7 @@ resource "null_resource" "only_create_hardened_ami_level_2" {
         
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_2}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_2}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -412,7 +412,7 @@ resource "null_resource" "only_create_hardened_ami_level_2" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_2}" \
+        source_ami_filter_name="${var.cis_ami_name_level_2}" \
         subnet_id=${var.public_subnet_id} \
         associate_public_ip_address=true \
         remote_folder=/home/ec2-user \
