@@ -10,7 +10,7 @@ module "vpc" {
 ################################################################################
 # SSM Parameters
 ################################################################################
-resource "aws_ssm_parameter" "cis_amazon_linux_2_kernel_4_benchmark_level_1" {
+resource "aws_ssm_parameter" "cis_amazon_linux_2_benchmark_level_1" {
   name  = "/cis_ami/${var.name}/CIS_Amazon_Linux_2_Benchmark_Level_1/ami_id"
   type  = "String"
   value = "placeholder"
@@ -34,7 +34,7 @@ resource "aws_ssm_parameter" "cis_amazon_linux_2_benchmark_level_2" {
 # Create Hardened AMI EKS_Optimized_AL2_Level_1
 ################################################################################
 resource "null_resource" "create_hardened_ami_level_1" {
-  depends_on = [module.vpc, aws_ssm_parameter.cis_amazon_linux_2_kernel_4_benchmark_level_1]
+  depends_on = [module.vpc, aws_ssm_parameter.cis_amazon_linux_2_benchmark_level_1]
 
   triggers = {
     always_run = timestamp()
@@ -60,7 +60,7 @@ resource "null_resource" "create_hardened_ami_level_1" {
 
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_1}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_1}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -69,7 +69,7 @@ resource "null_resource" "create_hardened_ami_level_1" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_1}" \
+        source_ami_filter_name="${var.cis_ami_name_level_1}" \
         AMI_VARIANT=amazon-eks-cis \
         subnet_id=${module.vpc.public_subnets[0]} \
         launch_block_device_mappings_volume_size=15 \
@@ -120,7 +120,7 @@ resource "null_resource" "create_hardened_ami_level_2" {
       
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_2}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_2}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -129,7 +129,7 @@ resource "null_resource" "create_hardened_ami_level_2" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_2}" \
+        source_ami_filter_name="${var.cis_ami_name_level_2}" \
         subnet_id=${module.vpc.public_subnets[0]} \
         launch_block_device_mappings_volume_size=15 \
         associate_public_ip_address=true \
@@ -162,8 +162,8 @@ module "eks_cluster" {
 ################################################################################
 # EKS Managed Node Group Modules For AL2 CIS Level 1
 ################################################################################
-data "aws_ssm_parameter" "cis_amazon_linux_2_kernel_4_benchmark_level_1" {
-  depends_on = [aws_ssm_parameter.cis_amazon_linux_2_kernel_4_benchmark_level_1, null_resource.create_hardened_ami_level_1]
+data "aws_ssm_parameter" "cis_amazon_linux_2_benchmark_level_1" {
+  depends_on = [aws_ssm_parameter.cis_amazon_linux_2_benchmark_level_1, null_resource.create_hardened_ami_level_1]
   name = "/cis_ami/${var.name}/CIS_Amazon_Linux_2_Benchmark_Level_1/ami_id"
 }
 
@@ -172,7 +172,7 @@ module "eks_managed_node_group_level_1" {
   depends_on = [module.eks_cluster, 
                 null_resource.create_hardened_ami_level_1]
 
-  name                              = "CISAL2K4BL1"
+  name                              = "CISAL2BL1"
   cluster_name                      = module.eks_cluster.cluster_name
   cluster_version                   = module.eks_cluster.cluster_version
   kubernetes_version                = module.eks_cluster.cluster_version
@@ -180,7 +180,7 @@ module "eks_managed_node_group_level_1" {
   cluster_primary_security_group_id = module.eks_cluster.cluster_primary_security_group_id
   vpc_security_group_ids            = [module.eks_cluster.node_security_group_id]
   cluster_service_cidr              = module.eks_cluster.cluster_service_cidr
-  ami_id                            = data.aws_ssm_parameter.cis_amazon_linux_2_kernel_4_benchmark_level_1.value
+  ami_id                            = data.aws_ssm_parameter.cis_amazon_linux_2_benchmark_level_1.value
   ami_type                          = "AL2_x86_64"
   cluster_endpoint                  = module.eks_cluster.cluster_endpoint
   cluster_auth_base64               = module.eks_cluster.cluster_certificate_authority_data
@@ -273,7 +273,7 @@ resource "null_resource" "run_cis_scan" {
 # Create Hardened AMI EKS_Optimized_AL2_Level_1 Only
 ################################################################################
 resource "null_resource" "only_create_hardened_ami_level_1" {
-  depends_on = [aws_ssm_parameter.cis_amazon_linux_2_kernel_4_benchmark_level_1]
+  depends_on = [aws_ssm_parameter.cis_amazon_linux_2_benchmark_level_1]
   count = var.create_ami_level1 ? 1 : 0
 
   triggers = {
@@ -300,7 +300,7 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
       
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_1}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_1}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -309,7 +309,7 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_1}" \
+        source_ami_filter_name="${var.cis_ami_name_level_1}" \
         AMI_VARIANT=amazon-eks-cis \
         subnet_id=${var.public_subnet_id} \
         launch_block_device_mappings_volume_size=15 \
@@ -360,7 +360,7 @@ resource "null_resource" "only_create_hardened_ami_level_2" {
 
       AMI_ID=$(aws ec2 describe-images \
         --owners aws-marketplace \
-        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.CIS_AMI_NAME_LEVEL_2}" \
+        --filters "Name=architecture,Values=x86_64" "Name=name,Values=${var.cis_ami_name_level_2}" \
         --query 'sort_by(Images, &CreationDate)[-1].ImageId' \
         --region ${var.aws_region} \
         --output text)
@@ -369,7 +369,7 @@ resource "null_resource" "only_create_hardened_ami_level_2" {
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
         source_ami_owners=679593333241 \
-        source_ami_filter_name="${var.CIS_AMI_NAME_LEVEL_2}" \
+        source_ami_filter_name="${var.cis_ami_name_level_2}" \
         subnet_id=${var.public_subnet_id} \
         launch_block_device_mappings_volume_size=15 \
         associate_public_ip_address=true \
