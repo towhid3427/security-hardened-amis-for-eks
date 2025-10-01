@@ -1,3 +1,28 @@
+terraform {
+  required_version = ">= 1.3"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "6.14.1"
+    }
+    null = {
+      source = "hashicorp/null"
+      version = "3.2.4"
+    }
+
+    helm = {
+      source = "hashicorp/helm"
+      version = "2.17.0"
+    }
+
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = "2.38.0"
+    }
+
+  }
+}
+
 # AWS Provider configuration
 provider "aws" {
   region = var.aws_region
@@ -25,13 +50,10 @@ provider "kubernetes" {
     command     = "aws"
     args        = ["eks", "get-token", "--cluster-name", module.eks_cluster.cluster_name]
   }
+
 }
 
 # Get AWS account ID
 data "aws_caller_identity" "current" {}
 
 data "aws_availability_zones" "available" {}
-
-data "aws_eks_cluster_auth" "cluster_auth" {
-  name = module.eks_cluster.cluster_version
-}
