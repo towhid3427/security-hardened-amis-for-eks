@@ -46,8 +46,6 @@ fi
 echo 'Starting terraform-docs'
 TDOCS="$(terraform-docs --config ${PROJECT_PATH}/.terraform-docs.yaml --lockfile=false ./)"
 git add -N README.md
-TDOCS="$(terraform-docs --config ${PROJECT_PATH}/.terraform-docs.yaml --lockfile=false ./eks-cluster)"
-git add -N ./eks-cluster/README.md
 GDIFF="$(git diff --compact-summary)"
 if [ -z "$GDIFF" ]
 then
