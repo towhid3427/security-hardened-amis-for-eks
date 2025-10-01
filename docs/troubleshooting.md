@@ -25,3 +25,11 @@ For more information, please refer to https://docs.aws.amazon.com/inspector/late
 # AccessDenied errors
 
 1. Please refer to the required IAM Permissions to deploy each of the patterns on [IAM Permissions doc](../../docs/iampermissions.md)
+
+#  ERROR: Cannot connect to the Docker daemon at unix:///Users/alegrm/.docker/run/docker.sock. Is the docker daemon running?
+
+1. Ensure Docker daemon is running.
+
+# Failed to get existing workspaces: Unable to list objects in S3 bucket "BUCKET_NAME" with prefix "env:/": operation error S3: ListObjectsV2, https response error StatusCode: 301,
+
+1. Ensure you have update the BUCKET_NAME to store the Terraform State file on the file versions.tf.
