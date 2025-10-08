@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket  = "security-hardened-amis-for-eks-terraform-state-file"
+    bucket  = "BUCKET_NAME"
     key     = "EKS_Optimized_AL2"
     region  = "us-west-2"
     encrypt = true
