@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -o nounset
+set -o errexit
+set -o pipefail
+
+sudo chmod +x /usr/bin/cache-pause-container
+sudo systemctl start containerd
+sudo cache-pause-container -i ${PAUSE_CONTAINER_IMAGE}
+sudo systemctl stop containerd

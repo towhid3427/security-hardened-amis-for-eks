@@ -53,35 +53,15 @@ resource "null_resource" "update_template" {
       fi
       cd amazon-eks-ami
       echo "Waiting for PR https://github.com/awslabs/amazon-eks-ami/pull/1922"
-      cp ../template.json templates/al2023/template.json
-      cp ../cleanup.sh templates/shared/provisioners/cleanup.sh
-      echo "sudo chmod 755 /usr/bin/kubelet" >> templates/al2023/provisioners/install-worker.sh
-      # Function to apply sed commands based on OS
-      apply_sed_commands() {
-      OS=$(uname)
-      if [ "$OS" = "Darwin" ]; then
-          # Mac OS X commands
-          echo "Applying changes for MacOS..."
-          sed -i '' "s/chmod +x \$binary/chmod 755 \$binary/g" templates/al2023/provisioners/install-worker.sh
-          sed -i '' 's#aws --version#sudo /bin//aws --version#g' templates/shared/provisioners/generate-version-info.sh
-          sed -i '' 's#aws #sudo /bin//aws #g' templates/shared/runtime/bin/cache-pause-container
-          sed -i '' 's#/tmp#/home/ec2-user#g' templates/al2023/variables-default.json
-          sed -i '' 's#cache-pause-container#sudo cache-pause-container#g' templates/al2023/provisioners/cache-pause-container.sh
-          sed -i '' 's#PARTITION=$(imds#sudo chmod 755 /usr/bin/imds\nPARTITION=$(imds#g' templates/al2023/provisioners/install-worker.sh
-      else
-          # Linux commands
-          echo "Applying changes for Linux..."
-          sed -i "s/chmod +x \$binary/chmod 755 \$binary/g" templates/al2023/provisioners/install-worker.sh
-          sed -i 's#aws --version#sudo /bin//aws --version#g' templates/shared/provisioners/generate-version-info.sh
-          sed -i 's#aws #sudo /bin//aws #g' templates/shared/runtime/bin/cache-pause-container
-          sed -i 's#/tmp#/home/ec2-user#g' templates/al2023/variables-default.json
-          sed -i 's#cache-pause-container#sudo cache-pause-container#g' templates/al2023/provisioners/cache-pause-container.sh
-          sed -i 's#PARTITION=$(imds#sudo chmod 755 /usr/bin/imds\nPARTITION=$(imds#g' templates/al2023/provisioners/install-worker.sh
-
-      fi
-}
-      # First apply the sed commands
-      apply_sed_commands
+      cp ../template_files/template.json templates/al2023/template.json
+      cp ../template_files/cleanup.sh templates/shared/provisioners/cleanup.sh
+      cp ../template_files/install-worker.sh templates/al2023/provisioners/install-worker.sh
+      cp ../template_files/variables-default.json templates/al2023/variables-default.json
+      cp ../template_files/cache-pause-container.sh templates/shared/runtime/bin/cache-pause-container.sh
+      cp ../template_files/cache-pause-container.sh templates/al2023/provisioners/cache-pause-container.sh
+      cp ../template_files/configure-selinux.sh templates/al2023/provisioners/configure-selinux.sh
+      cp ../template_files/cache-pause-container templates/shared/runtime/bin/cache-pause-container
+      cp ../template_files/generate-version-info.sh templates/shared/provisioners/generate-version-info.sh
     EOT
   }
 }
@@ -114,7 +94,7 @@ resource "null_resource" "create_hardened_ami_level_1" {
         --region ${var.aws_region} \
         --output text)
       
-      PACKER_BINARY=packer make k8s=1.34 \
+      PACKER_BINARY=packer make k8s=1.35 \
         os_distro=al2023 \
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
@@ -169,7 +149,7 @@ resource "null_resource" "create_hardened_ami_level_2" {
         --region ${var.aws_region} \
         --output text)
       
-      PACKER_BINARY=packer make k8s=1.34 \
+      PACKER_BINARY=packer make k8s=1.35 \
       	os_distro=al2023 \
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
@@ -235,10 +215,18 @@ module "eks_managed_node_group_level_1" {
     {
       content_type = "text/x-shellscript; charset=\"us-ascii\""
       content      = <<-EOT
-        #!/usr/bin/env bash
-        #kubelet runs on port 10250 so need to update iptables 
-        iptables -I INPUT -p tcp -m tcp --dport 10250 -j ACCEPT
-      EOT
+            #!/usr/bin/env bash
+            set -ex # Added to log execution to /var/log/cloud-init-output.log
+            
+            # Update iptables
+            iptables -I INPUT 1 -p tcp --dport 10250 -j ACCEPT
+            
+            # Update nftables - No backslashes before semicolons
+            nft add rule inet filter input tcp dport 10250 accept
+            nft chain inet filter forward { policy accept \; }
+            nft chain inet filter output { policy accept \; }
+
+          EOT
     }
   ]
 }
@@ -273,8 +261,16 @@ module "eks_managed_node_group_level_2" {
       content_type = "text/x-shellscript; charset=\"us-ascii\""
       content      = <<-EOT
             #!/usr/bin/env bash
-            # kubelet runs on port 10250 so need to update iptables 
-            iptables -I INPUT -p tcp -m tcp --dport 10250 -j ACCEPT
+            set -ex # Added to log execution to /var/log/cloud-init-output.log
+            
+            # Update iptables
+            iptables -I INPUT 1 -p tcp --dport 10250 -j ACCEPT
+            
+            # Update nftables - No backslashes before semicolons
+            nft add rule inet filter input tcp dport 10250 accept
+            nft chain inet filter forward { policy accept \; }
+            nft chain inet filter output { policy accept \; }
+
           EOT
     }
   ]
@@ -355,7 +351,7 @@ resource "null_resource" "only_create_hardened_ami_level_1" {
         --region ${var.aws_region} \
         --output text)
 
-      PACKER_BINARY=packer make k8s=1.34 \
+      PACKER_BINARY=packer make k8s=1.35 \
         os_distro=al2023 \
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \
@@ -410,7 +406,7 @@ resource "null_resource" "only_create_hardened_ami_level_2" {
         --region ${var.aws_region} \
         --output text)
       
-      PACKER_BINARY=packer make k8s=1.34 \
+      PACKER_BINARY=packer make k8s=1.35 \
       	os_distro=al2023 \
         aws_region=${var.aws_region} \
         source_ami_id=$AMI_ID \

@@ -161,7 +161,7 @@ resource "null_resource" "run_cis_scan" {
 }
 
 ################################################################################
-# Create Hardened AMI EKS_Optimized_AL2023_Level_1 Only
+# Create Hardened AMI Bottlerocket CIS Bootstrap Image Level_2 Only
 ################################################################################
 
 resource "null_resource" "docker_build_push_image_only" {

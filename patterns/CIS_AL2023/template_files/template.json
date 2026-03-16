@@ -201,7 +201,7 @@
       "type": "shell",
       "remote_folder": "{{ user `remote_folder`}}",
       "expect_disconnect": true,
-      "script": "{{template_dir}}/provisioners/limit-c-states.sh",
+      "script": "{{template_dir}}/../shared/provisioners/limit-c-states.sh",
       "environment_vars": [
         "ENABLE_EFA={{user `enable_efa`}}"
       ]
@@ -228,6 +228,7 @@
     {
       "type": "shell",
       "remote_folder": "{{ user `remote_folder`}}",
+      "expect_disconnect": true,
       "script": "{{template_dir}}/provisioners/install-nodeadm.sh",
       "environment_vars": [
         "AWS_ACCESS_KEY_ID={{user `aws_access_key_id`}}",
@@ -256,7 +257,8 @@
       "script": "{{template_dir}}/provisioners/install-neuron-driver.sh",
       "environment_vars": [
         "AWS_REGION={{user `aws_region`}}",
-        "ENABLE_ACCELERATOR={{user `enable_accelerator`}}"
+        "ENABLE_ACCELERATOR={{user `enable_accelerator`}}",
+        "WORKING_DIR={{user `working_dir`}}"
       ]
     },
     {
@@ -289,18 +291,6 @@
         "BINARY_BUCKET_NAME={{user `binary_bucket_name`}}",
         "BINARY_BUCKET_REGION={{user `binary_bucket_region`}}",
         "ENABLE_EFA={{user `enable_efa`}}"
-      ]
-    },
-    {
-      "type": "shell",
-      "remote_folder": "{{ user `remote_folder`}}",
-      "inline": [
-          "# Given SELINUX=enforcing on the base AMI CIS Amazon Linux 2023 Benchmark - Level 2",
-          "# Fixing SELinux-related permission issues where a binary isn't executing due to incorrect context",
-          "sudo chcon -t bin_t /usr/bin/nodeadm",
-          "sudo chcon -t bin_t /usr/bin/kubelet",
-          "# Until nftables is supported on EKS we recommend disabling it https://github.com/aws/containers-roadmap/issues/2313",
-          "sudo yum remove nftables -y" 
       ]
     },
     {

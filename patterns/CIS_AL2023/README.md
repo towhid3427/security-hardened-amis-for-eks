@@ -122,9 +122,7 @@ terraform apply \
 
 ## 🧹 How to terminate resources
 
-**Step 1.** Navigate to the CIS_AL2 pattern directory: `cd patterns/CIS_AL2023`
-
-**Step 2.** Run `make clean` to Terminate Resources
+### Use the guided approach by running the script on the root folder: ``create-hardened-ami.sh``.
 
 ## 🕵️ How to access the EKS Cluster
 
@@ -160,26 +158,28 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 
 ```#!/bin/bash
 kubectl get nodes -o wide
-NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                    CONTAINER-RUNTIME
-ip-10-0-1-245.us-west-2.compute.internal    Ready    <none>   6m52s   v1.33.0-eks-802817d   10.0.1.245    <none>        Amazon Linux 2023.7.20250512   6.1.134-152.225.amzn2023.x86_64   containerd://1.7.27
-ip-10-0-17-105.us-west-2.compute.internal   Ready    <none>   6m57s   v1.33.0-eks-802817d   10.0.17.105   <none>        Amazon Linux 2023.7.20250512   6.1.134-152.225.amzn2023.x86_64   containerd://1.7.27
+NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                   CONTAINER-RUNTIME
+ip-10-0-40-147.us-west-2.compute.internal   Ready    <none>   9m45s   v1.35.2-eks-f69f56f   10.0.40.147   <none>        Amazon Linux 2023.9.20251208    6.12.58-82.121.amzn2023.x86_64   containerd://2.1.5
+ip-10-0-47-43.us-west-2.compute.internal    Ready    <none>   13m     v1.35.2-eks-f69f56f   10.0.47.43    <none>        Amazon Linux 2023.10.20260302   6.12.68-92.122.amzn2023.x86_64   containerd://2.1.5
+
 ```
 
 Check if all the pods are running:
 
 ```#!/bin/bash
 kubectl get pods -A
-NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-bpjt7                        2/2     Running   0          7m38s
-kube-system   aws-node-rwwbp                        2/2     Running   0          7m33s
-kube-system   coredns-7bf648ff5d-9txkc              1/1     Running   0          12m
-kube-system   coredns-7bf648ff5d-z9ksc              1/1     Running   0          12m
-kube-system   ebs-csi-controller-6f76679c5d-5tbrg   6/6     Running   0          5m58s
-kube-system   ebs-csi-controller-6f76679c5d-v87vq   6/6     Running   0          5m58s
-kube-system   ebs-csi-node-pzrhz                    3/3     Running   0          5m58s
-kube-system   ebs-csi-node-tkklq                    3/3     Running   0          5m58s
-kube-system   kube-proxy-t6rjv                      1/1     Running   0          7m33s
-kube-system   kube-proxy-xr2b2                      1/1     Running   0          7m38s
+NAMESPACE     NAME                                  READY   STATUS    RESTARTS     AGE
+kube-system   aws-node-gfd4m                        2/2     Running   0            10m
+kube-system   aws-node-wvljx                        2/2     Running   0            6m55s
+kube-system   coredns-74d7449c-6mzpg                1/1     Running   0            5m31s
+kube-system   coredns-74d7449c-ttp5g                1/1     Running   0            5m32s
+kube-system   ebs-csi-controller-54cbbc576d-7fkjn   6/6     Running   0            5m30s
+kube-system   ebs-csi-controller-54cbbc576d-8mmvb   6/6     Running   0            43s
+kube-system   ebs-csi-node-4rfzm                    3/3     Running   0            5m30s
+kube-system   ebs-csi-node-6xkqw                    3/3     Running   0            43s
+kube-system   ebs-csi-node-lp5l7                    3/3     Running   0            5m30s
+kube-system   kube-proxy-brzcd                      1/1     Running   0            10m
+kube-system   kube-proxy-hnf9q                      1/1     Running   0            6m55s
 ```
 
 ## Troubleshooting
@@ -187,22 +187,15 @@ kube-system   kube-proxy-xr2b2                      1/1     Running   0         
 Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.14.1 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
-
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.14.1 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.2.4 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.35.1 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
 
 ## Modules
 
@@ -237,10 +230,10 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"us-west-2"` | no |
-| <a name="input_branch"></a> [branch](#input\_branch) | EKS AMI Branch TAG | `string` | `"v20250920"` | no |
-| <a name="input_cis_ami_name_level_1"></a> [cis\_ami\_name\_level\_1](#input\_cis\_ami\_name\_level\_1) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 1 - v08*"` | no |
-| <a name="input_cis_ami_name_level_2"></a> [cis\_ami\_name\_level\_2](#input\_cis\_ami\_name\_level\_2) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 2 - v08*"` | no |
-| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.33"` | no |
+| <a name="input_branch"></a> [branch](#input\_branch) | EKS AMI Branch TAG | `string` | `"v20260304"` | no |
+| <a name="input_cis_ami_name_level_1"></a> [cis\_ami\_name\_level\_1](#input\_cis\_ami\_name\_level\_1) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 1 - v03*"` | no |
+| <a name="input_cis_ami_name_level_2"></a> [cis\_ami\_name\_level\_2](#input\_cis\_ami\_name\_level\_2) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 2 - v03*"` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.35"` | no |
 | <a name="input_create_ami_level1"></a> [create\_ami\_level1](#input\_create\_ami\_level1) | Flag to create Level 1 Hardened AMI | `bool` | `false` | no |
 | <a name="input_create_ami_level2"></a> [create\_ami\_level2](#input\_create\_ami\_level2) | Flag to create Level 2 Hardened AMI | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name Prefix | `string` | `"CIS_AL2023"` | no |
