@@ -17,12 +17,10 @@ select_ami_type() {
     echo -e "${BLUE}Select AMI Type:${NC}"
     echo "-------------------------------------------"
     echo "1. BOTTLEROCKET"
-    echo "2. CIS_AL2"
-    echo "3. CIS_AL2023"
-    echo "4. EKS_Optimized_AL2"
-    echo "5. EKS_Optimized_AL2023"
+    echo "2. CIS_AL2023"
+    echo "3. EKS_Optimized_AL2023"
     echo "-------------------------------------------"
-    echo -n "Enter your choice (1/2/3/4/5): "
+    echo -n "Enter your choice (1/2/3): "
     read -r ami_type_choice
 
     case "$ami_type_choice" in
@@ -30,15 +28,9 @@ select_ami_type() {
             AMI_TYPE="BOTTLEROCKET"
             ;;
         2)
-            AMI_TYPE="CIS_AL2"
-            ;;
-        3)
             AMI_TYPE="CIS_AL2023"
             ;;
-        4)
-            AMI_TYPE="EKS_Optimized_AL2"
-            ;;
-        5)
+        3)
             AMI_TYPE="EKS_Optimized_AL2023"
             ;;
         *)

@@ -1,6 +1,6 @@
 module "eks_managed_node_group" {
   source  = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "21.10.0"
+  version = "21.15.1"
 
   name                              = var.name
   cluster_name                      = var.cluster_name
@@ -20,6 +20,7 @@ module "eks_managed_node_group" {
   cluster_endpoint            = var.cluster_endpoint
   cluster_auth_base64         = var.cluster_auth_base64
   ami_type                    = var.ami_type
+  cloudinit_pre_nodeadm       = var.cloudinit_pre_nodeadm
 
   min_size     = var.min_size
   max_size     = var.max_size

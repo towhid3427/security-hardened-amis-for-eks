@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "cluster_version" {
   description = "EKS Cluster Version"
   type        = string
-  default     = "1.34"
+  default     = "1.35"
 }
 
 variable "name" {
@@ -35,19 +35,19 @@ variable "public_subnet_id" {
 }
 
 variable "branch" {
-  description = "EKS AMI Branch TAG" ## For Example: https://github.com/awslabs/amazon-eks-ami/releases/tag/v20251120 ## Check and Update During Monthly Release.
+  description = "EKS AMI Branch TAG" ## For Example: https://github.com/awslabs/amazon-eks-ami/releases/tag/v20260304 ## Check and Update During Monthly Release.
   type        = string
-  default     = "v20251120" 
+  default     = "v20260304" 
 }
 
 variable "cis_ami_name_level_1" {
   description = "CIS AMI Name which will be use to Search the CIS AMI from Market Place" ## Check and Update During Monthly Release.
   type        = string
-  default     = "CIS Amazon Linux 2023 Benchmark - Level 1 - v11*"
+  default     = "CIS Amazon Linux 2023 Benchmark - Level 1 - v03*"
 }
 
 variable "cis_ami_name_level_2" {
   description = "CIS AMI Name which will be use to Search the CIS AMI from Market Place" ## Check and Update During Monthly Release v07 if needed.
   type        = string
-  default     = "CIS Amazon Linux 2023 Benchmark - Level 2 - v11*"
+  default     = "CIS Amazon Linux 2023 Benchmark - Level 2 - v03*"
 }

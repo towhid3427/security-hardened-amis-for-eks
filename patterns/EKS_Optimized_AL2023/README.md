@@ -254,9 +254,9 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 
 ```#!/bin/bash
 kubectl get nodes -o wide
-NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                    CONTAINER-RUNTIME
-ip-10-0-36-199.us-west-2.compute.internal   Ready    <none>   4m33s   v1.33.0-eks-802817d   10.0.36.199   <none>        Amazon Linux 2023.7.20250512   6.1.134-152.225.amzn2023.x86_64   containerd://1.7.27
-ip-10-0-5-42.us-west-2.compute.internal     Ready    <none>   4m31s   v1.33.0-eks-802817d   10.0.5.42     <none>        Amazon Linux 2023.7.20250512   6.1.134-152.225.amzn2023.x86_64   containerd://1.7.27
+NAME                                        STATUS   ROLES    AGE   VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                   CONTAINER-RUNTIME
+ip-10-0-13-78.us-west-2.compute.internal    Ready    <none>   20s   v1.35.2-eks-f69f56f   10.0.13.78    <none>        Amazon Linux 2023.10.20260302   6.12.68-92.122.amzn2023.x86_64   containerd://2.1.5
+ip-10-0-14-144.us-west-2.compute.internal   Ready    <none>   36s   v1.35.2-eks-f69f56f   10.0.14.144   <none>        Amazon Linux 2023.10.20260216   6.12.68-92.122.amzn2023.x86_64   containerd://2.1.5
 ```
 
 Check if all the pods are running:
@@ -264,16 +264,16 @@ Check if all the pods are running:
 ```#!/bin/bash
 kubectl get pods -A
 NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-477kf                     2/2     Running   0          5m19s
-kube-system   aws-node-bzxgx                     2/2     Running   0          5m21s
-kube-system   coredns-7bf648ff5d-dj57w           1/1     Running   0          9m51s
-kube-system   coredns-7bf648ff5d-m5pz8           1/1     Running   0          9m51s
-kube-system   ebs-csi-controller-c78859b-rm5fd   6/6     Running   0          4m3s
-kube-system   ebs-csi-controller-c78859b-v66fb   6/6     Running   0          4m3s
-kube-system   ebs-csi-node-59w2d                 3/3     Running   0          4m3s
-kube-system   ebs-csi-node-r5cnj                 3/3     Running   0          4m3s
-kube-system   kube-proxy-ntlb2                   1/1     Running   0          5m21s
-kube-system   kube-proxy-vdhd6                   1/1     Running   0          5m19s
+kube-system   aws-node-4tkhs                        2/2     Running   0          41s
+kube-system   aws-node-vmvlc                        2/2     Running   0          57s
+kube-system   coredns-74d7449c-7kkls                1/1     Running   0          3h22m
+kube-system   coredns-74d7449c-ww8b7                1/1     Running   0          3h7m
+kube-system   ebs-csi-controller-7d4c959998-nzr6s   6/6     Running   0          3h7m
+kube-system   ebs-csi-controller-7d4c959998-vt8t5   6/6     Running   0          3h22m
+kube-system   ebs-csi-node-cg8h4                    3/3     Running   0          57s
+kube-system   ebs-csi-node-vqjrq                    3/3     Running   0          41s
+kube-system   kube-proxy-frjvk                      1/1     Running   0          41s
+kube-system   kube-proxy-tq9cr                      1/1     Running   0          57s
 ```
 
 ## Troubleshooting
@@ -281,22 +281,15 @@ kube-system   kube-proxy-vdhd6                   1/1     Running   0          5m
 Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.14.1 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
-
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.14.1 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.2.4 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.35.1 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
 
 ## Modules
 
@@ -312,24 +305,24 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 
 | Name | Type |
 |------|------|
-| [aws_ssm_parameter.eks_optimized_al2023_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.eks_optimized_al2023_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.eks_optimized_al2023_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.eks_optimized_al2023_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/ssm_parameter) | resource |
 | [null_resource.create_hardened_ami_level_1](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.create_hardened_ami_level_2](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.only_create_hardened_ami_level_1](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.only_create_hardened_ami_level_2](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.run_cis_scan](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/availability_zones) | data source |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/caller_identity) | data source |
-| [aws_ssm_parameter.eks_optimized_al2023_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.eks_optimized_al2023_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/ssm_parameter) | data source |
+| [aws_ssm_parameter.eks_optimized_al2023_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/ssm_parameter) | data source |
+| [aws_ssm_parameter.eks_optimized_al2023_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"us-west-2"` | no |
-| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.33"` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.35"` | no |
 | <a name="input_create_ami_level1"></a> [create\_ami\_level1](#input\_create\_ami\_level1) | Flag to create Level 1 Hardened AMI | `bool` | `false` | no |
 | <a name="input_create_ami_level2"></a> [create\_ami\_level2](#input\_create\_ami\_level2) | Flag to create Level 2 Hardened AMI | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name Prefix | `string` | `"EKS_Optimized_AL2023"` | no |

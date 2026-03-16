@@ -7,14 +7,8 @@ variable "ami_name_prefix" {
 variable "eks_version" {
   description = "The EKS cluster version associated with the AMI created"
   type        = string
-  default     = "1.34"
+  default     = "1.35"
 }
-
-#variable "ami_type" {
-#  description = "The type of AMI to create. Valid values are `amazon-linux-2` or `amazon-linux-2-arm64`"
-#  type        = string
-#  default     = "amazon-linux-2"
-#}
 
 variable "ami_name" {
   description = "The AMI name"
