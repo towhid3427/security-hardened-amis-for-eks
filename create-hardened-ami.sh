@@ -159,7 +159,6 @@ get_state_values() {
          select(.name == "only_create_hardened_ami_level_1" or 
                 .name == "only_create_hardened_ami_level_2" or 
                 .name == "create_hardened_ami_level_2" or
-                .name == "docker_build_push-image-only" or
                 .name == "docker_build_push") | 
         {aws_region: .values.triggers.aws_region} | 
 
@@ -193,7 +192,7 @@ if [ "$AMI_TYPE" = "BOTTLEROCKET" ]; then
     echo -e "\n${BLUE}Select Operation for ${GREEN}${AMI_TYPE}${BLUE} AMI:${NC}"
     echo "-------------------------------------------"
     echo "1. Create Complete Infrastructure"
-    echo "2. Create Only CIS Bootstrape Image"
+    echo "2. Create Only CIS Bootstrap Image"
     echo "3. Cleanup Resources"
     echo "-------------------------------------------"
     echo -e "${YELLOW}Note: Option 1 will create VPC, Subnets, and other required resources${NC}"
@@ -232,25 +231,25 @@ case "$choice" in
             fi
         done
         
-        echo -e "${GREEN}Planning CIS Bootstrape Image creation in ${aws_region}...${NC}"
+        echo -e "${GREEN}Planning CIS Bootstrap Image creation in ${aws_region}...${NC}"
         initialize_terraform
         terraform plan \
-            -var="cis_bootstrape_image=true" \
             -var="aws_region=$aws_region" \
-            -target=null_resource.docker_build_push-image-only
-        confirm_operation "CIS Bootstrape Image"
-        echo -e "${GREEN}Creating CIS Bootstrape Image in ${aws_region}...${NC}"
+            -target=aws_ecr_repository.bottlerocket_cis_bootstrap_image \
+            -target=null_resource.docker_build_push
+        confirm_operation "CIS Bootstrap Image"
+        echo -e "${GREEN}Creating CIS Bootstrap Image in ${aws_region}...${NC}"
         terraform apply \
-            -var="cis_bootstrape_image=true" \
             -var="aws_region=$aws_region" \
-            -target=null_resource.docker_build_push-image-only \
+            -target=aws_ecr_repository.bottlerocket_cis_bootstrap_image \
+            -target=null_resource.docker_build_push \
             --auto-approve
         ;;
     3)
         echo -e "${RED}Select Operation for Cleanup? ${NC}"
         echo "-------------------------------------------"
         echo -e "${RED}1. Complete Infrastructure ${NC}"
-        echo "2. CIS Bootstrape Image"
+        echo "2. CIS Bootstrap Image"
         echo "-------------------------------------------"
         echo -e "${YELLOW}Note: Option 2 will only delete the resource from terraform state file. Also none of the options will delete the Docker Image and ECR Repository. You would need to manually delete those resources${NC}"
 
@@ -305,17 +304,15 @@ case "$choice" in
                 done 
 
                 if [ "$cleanup_choice" == "2" ]; then
-                    echo -e "${RED}Planning destruction of CIS Bootstrape Image resources. This will not delete the ECR Repository / Image..${NC}"
+                    echo -e "${RED}Planning destruction of CIS Bootstrap Image resources. This will not delete the ECR Repository / Image..${NC}"
                     terraform plan -destroy \
-                        -var="cis_bootstrape_image=true" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.docker_build_push-image-only
-                    confirm_operation "CIS Bootstrape Image"
-                    echo -e "${RED}Destroying CIS Bootstrape Image resources. This will not delete the ECR Repository / Image....${NC}"
+                        -target=null_resource.docker_build_push
+                    confirm_operation "CIS Bootstrap Image"
+                    echo -e "${RED}Destroying CIS Bootstrap Image resources. This will not delete the ECR Repository / Image....${NC}"
                     terraform destroy \
-                        -var="cis_bootstrape_image=true" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.docker_build_push-image-only \
+                        -target=null_resource.docker_build_push \
                         --auto-approve
                 fi
                 ;;
@@ -392,62 +389,63 @@ case "$choice" in
                 echo -e "${BLUE}Please enter a valid public subnet ID or press Ctrl+C to exit${NC}"
             fi
         done
+
+        # Both EKS_Optimized_AL2023 and CIS_AL2023 expose dedicated `only_create_*`
+        # resources gated by the `create_ami_levelN` flags. These build the
+        # hardened AMI without provisioning a VPC or EKS cluster.
+        ami_resource_l1="null_resource.only_create_hardened_ami_level_1"
+        ami_resource_l2="null_resource.only_create_hardened_ami_level_2"
+        level1_vars=(-var="create_ami_level1=true" -var="public_subnet_id=$subnet_id")
+        level2_vars=(-var="create_ami_level2=true" -var="public_subnet_id=$subnet_id")
+        both_vars=(-var="create_ami_level1=true" -var="create_ami_level2=true" -var="public_subnet_id=$subnet_id")
         
         case "$ami_level" in
             1)
                 echo -e "${GREEN}Planning CIS Level 1 Hardened AMI creation in ${aws_region}...${NC}"
                 initialize_terraform
                 terraform plan \
-                    -var="create_ami_level1=true" \
-                    -var="public_subnet_id=$subnet_id" \
+                    "${level1_vars[@]}" \
                     -var="aws_region=$aws_region" \
-                    -target=null_resource.only_create_hardened_ami_level_1
+                    -target=$ami_resource_l1
                 confirm_operation "Level 1 AMI creation"
                 echo -e "${GREEN}Creating CIS Level 1 Hardened AMI in ${aws_region}...${NC}"
                 terraform apply \
-                    -var="create_ami_level1=true" \
-                    -var="public_subnet_id=$subnet_id" \
+                    "${level1_vars[@]}" \
                     -var="aws_region=$aws_region" \
-                    -target=null_resource.only_create_hardened_ami_level_1 \
+                    -target=$ami_resource_l1 \
                     --auto-approve
                 ;;
             2)
                 echo -e "${GREEN}Planning CIS Level 2 Hardened AMI creation in ${aws_region}...${NC}"
                 initialize_terraform
                 terraform plan \
-                    -var="create_ami_level2=true" \
-                    -var="public_subnet_id=$subnet_id" \
+                    "${level2_vars[@]}" \
                     -var="aws_region=$aws_region" \
-                    -target=null_resource.only_create_hardened_ami_level_2
+                    -target=$ami_resource_l2
                 confirm_operation "Level 2 AMI creation"
                 echo -e "${GREEN}Creating CIS Level 2 Hardened AMI in ${aws_region}...${NC}"
                 terraform apply \
-                    -var="create_ami_level2=true" \
-                    -var="public_subnet_id=$subnet_id" \
+                    "${level2_vars[@]}" \
                     -var="aws_region=$aws_region" \
-                    -target=null_resource.only_create_hardened_ami_level_2 \
+                    -target=$ami_resource_l2 \
                     --auto-approve
                 ;;
             3)
                 echo -e "${GREEN}Creating Both CIS Level 1 and CIS Level 2 Hardened AMIs in ${aws_region}...${NC}"
                 initialize_terraform
                 terraform plan \
-                    -var="create_ami_level1=true" \
-                    -var="create_ami_level2=true" \
-                    -var="public_subnet_id=$subnet_id" \
+                    "${both_vars[@]}" \
                     -var="aws_region=$aws_region" \
-                    -target=null_resource.only_create_hardened_ami_level_1 \
-                    -target=null_resource.only_create_hardened_ami_level_2
+                    -target=$ami_resource_l1 \
+                    -target=$ami_resource_l2
                 confirm_operation "Both Level 1 and Level 2 AMI creation"
                 echo -e "${GREEN}Creating Both CIS Level 1 and CIS Level 2 Hardened AMIs in ${aws_region}...${NC}"
                 initialize_terraform
                 terraform apply \
-                    -var="create_ami_level1=true" \
-                    -var="create_ami_level2=true" \
-                    -var="public_subnet_id=$subnet_id" \
+                    "${both_vars[@]}" \
                     -var="aws_region=$aws_region" \
-                    -target=null_resource.only_create_hardened_ami_level_1 \
-                    -target=null_resource.only_create_hardened_ami_level_2 \
+                    -target=$ami_resource_l1 \
+                    -target=$ami_resource_l2 \
                     --auto-approve
                 ;;
             *)
@@ -516,48 +514,54 @@ case "$choice" in
                     fi
                 done 
 
+                # Both EKS_Optimized_AL2023 and CIS_AL2023 use the same standalone
+                # `only_create_*` resources for image-only builds.
+                ami_resource_l1="null_resource.only_create_hardened_ami_level_1"
+                ami_resource_l2="null_resource.only_create_hardened_ami_level_2"
+                level1_vars=(-var="create_ami_level1=true")
+                level2_vars=(-var="create_ami_level2=true")
+                both_vars=(-var="create_ami_level1=true" -var="create_ami_level2=true")
+
                 if [ "$cleanup_choice" == "2" ]; then
                     echo -e "${RED}Planning destruction of CIS Level 1 AMI resources...${NC}"
                     terraform plan -destroy \
-                        -var="create_ami_level1=true" \
+                        "${level1_vars[@]}" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.only_create_hardened_ami_level_1
+                        -target=$ami_resource_l1
                     confirm_operation "Level 1 AMI resource deletion"
                     echo -e "${RED}Destroying CIS Level 1 AMI resources...${NC}"
                     terraform destroy \
-                        -var="create_ami_level1=true" \
+                        "${level1_vars[@]}" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.only_create_hardened_ami_level_1 \
+                        -target=$ami_resource_l1 \
                         --auto-approve
                 elif [ "$cleanup_choice" == "3" ]; then
                     echo -e "${RED}Planning destruction of CIS Level 2 AMI resources...${NC}"
                     terraform plan -destroy \
-                        -var="create_ami_level2=true" \
+                        "${level2_vars[@]}" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.only_create_hardened_ami_level_2
+                        -target=$ami_resource_l2
                     confirm_operation "Level 2 AMI resource deletion"
                     echo -e "${RED}Destroying CIS Level 2 AMI resources...${NC}"
                     terraform destroy \
-                        -var="create_ami_level2=true" \
+                        "${level2_vars[@]}" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.only_create_hardened_ami_level_2 \
+                        -target=$ami_resource_l2 \
                         --auto-approve
                 else
                     echo -e "${RED}Planning destruction of both CIS Level 1 and CIS Level 2 AMI resources...${NC}"
                     terraform plan -destroy \
-                        -var="create_ami_level1=true" \
-                        -var="create_ami_level2=true" \
+                        "${both_vars[@]}" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.only_create_hardened_ami_level_1 \
-                        -target=null_resource.only_create_hardened_ami_level_2
+                        -target=$ami_resource_l1 \
+                        -target=$ami_resource_l2
                     confirm_operation "Both Level 1 and Level 2 AMI resource deletion"
                     echo -e "${RED}Destroying both CIS Level 1 and CIS Level 2 AMI resources...${NC}"
                     terraform destroy \
-                        -var="create_ami_level1=true" \
-                        -var="create_ami_level2=true" \
+                        "${both_vars[@]}" \
                         -var="aws_region=$aws_region" \
-                        -target=null_resource.only_create_hardened_ami_level_1 \
-                        -target=null_resource.only_create_hardened_ami_level_2 \
+                        -target=$ami_resource_l1 \
+                        -target=$ami_resource_l2 \
                         --auto-approve
                 fi
                 ;;

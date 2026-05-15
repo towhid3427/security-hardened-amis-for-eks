@@ -40,12 +40,14 @@ or
 
 ### Option 3: Create Only Hardened AMIs
 
+Use this when you only need a hardened AMI and don't want to provision a VPC or EKS cluster. You must supply an existing public subnet ID via `-var public_subnet_id=...`.
+
   1. CIS Level 1
 ```
 terraform init
 ```
 and
-``` 
+```
 terraform plan \
   -var="create_ami_level1=true" \
   -var="public_subnet_id=$subnet_id" \
@@ -63,13 +65,13 @@ terraform apply \
 ```
 
  2. CIS Level 2
- 
+
 ```
 terraform init
 ```
 and
 
-```     
+```
 terraform plan \
   -var="create_ami_level2=true" \
   -var="public_subnet_id=$subnet_id" \
@@ -118,6 +120,9 @@ terraform apply \
   -target=null_resource.only_create_hardened_ami_level_2 \
   --auto-approve
 ```
+
+> Note: The `only_create_*` resources are gated by `create_ami_levelN` flags so they remain inert during normal `terraform apply`. They do not depend on `module.vpc`, so targeting them does not provision VPC infrastructure.
+
 ## 🧹 How to terminate resources
 
 **Step 1.** Navigate to the EKS_Optimized_AL2023 pattern directory: `cd patterns/EKS_Optimized_AL2023`
@@ -254,9 +259,9 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 
 ```#!/bin/bash
 kubectl get nodes -o wide
-NAME                                        STATUS   ROLES    AGE   VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                   CONTAINER-RUNTIME
-ip-10-0-13-78.us-west-2.compute.internal    Ready    <none>   20s   v1.35.2-eks-f69f56f   10.0.13.78    <none>        Amazon Linux 2023.10.20260302   6.12.68-92.122.amzn2023.x86_64   containerd://2.1.5
-ip-10-0-14-144.us-west-2.compute.internal   Ready    <none>   36s   v1.35.2-eks-f69f56f   10.0.14.144   <none>        Amazon Linux 2023.10.20260216   6.12.68-92.122.amzn2023.x86_64   containerd://2.1.5
+NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                    CONTAINER-RUNTIME
+ip-10-0-10-158.us-west-2.compute.internal   Ready    <none>   5m28s   v1.35.4-eks-4136f65   10.0.10.158   <none>        Amazon Linux 2023.11.20260505   6.12.80-106.156.amzn2023.x86_64   containerd://2.2.3
+ip-10-0-22-216.us-west-2.compute.internal   Ready    <none>   3m39s   v1.35.4-eks-4136f65   10.0.22.216   <none>        Amazon Linux 2023.11.20260511   6.12.80-106.156.amzn2023.x86_64   containerd://2.2.3
 ```
 
 Check if all the pods are running:
@@ -264,16 +269,16 @@ Check if all the pods are running:
 ```#!/bin/bash
 kubectl get pods -A
 NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-4tkhs                        2/2     Running   0          41s
-kube-system   aws-node-vmvlc                        2/2     Running   0          57s
-kube-system   coredns-74d7449c-7kkls                1/1     Running   0          3h22m
-kube-system   coredns-74d7449c-ww8b7                1/1     Running   0          3h7m
-kube-system   ebs-csi-controller-7d4c959998-nzr6s   6/6     Running   0          3h7m
-kube-system   ebs-csi-controller-7d4c959998-vt8t5   6/6     Running   0          3h22m
-kube-system   ebs-csi-node-cg8h4                    3/3     Running   0          57s
-kube-system   ebs-csi-node-vqjrq                    3/3     Running   0          41s
-kube-system   kube-proxy-frjvk                      1/1     Running   0          41s
-kube-system   kube-proxy-tq9cr                      1/1     Running   0          57s
+kube-system   aws-node-kd222                        2/2     Running   0          6m7s
+kube-system   aws-node-mctw5                        2/2     Running   0          4m18s
+kube-system   coredns-56df6dbd9c-mcqtr              1/1     Running   0          2m41s
+kube-system   coredns-56df6dbd9c-v4687              1/1     Running   0          2m41s
+kube-system   ebs-csi-controller-6b746f7d5b-cfnqt   6/6     Running   0          2m40s
+kube-system   ebs-csi-controller-6b746f7d5b-rdnr5   6/6     Running   0          2m40s
+kube-system   ebs-csi-node-kgs8q                    3/3     Running   0          2m40s
+kube-system   ebs-csi-node-pdclj                    3/3     Running   0          2m40s
+kube-system   kube-proxy-2fbrs                      1/1     Running   0          6m7s
+kube-system   kube-proxy-vphvd                      1/1     Running   0          4m18s
 ```
 
 ## Troubleshooting
@@ -286,7 +291,7 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.35.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.44.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
@@ -305,30 +310,44 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 
 | Name | Type |
 |------|------|
-| [aws_ssm_parameter.eks_optimized_al2023_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.eks_optimized_al2023_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/resources/ssm_parameter) | resource |
 | [null_resource.create_hardened_ami_level_1](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.create_hardened_ami_level_2](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.only_create_hardened_ami_level_1](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.only_create_hardened_ami_level_2](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.run_cis_scan](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/caller_identity) | data source |
-| [aws_ssm_parameter.eks_optimized_al2023_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.eks_optimized_al2023_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.35.1/docs/data-sources/ssm_parameter) | data source |
+| [aws_ami.eks_optimized_al2023_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/ami) | data source |
+| [aws_ami.eks_optimized_al2023_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/ami) | data source |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"us-west-2"` | no |
+| <a name="input_additional_tags"></a> [additional\_tags](#input\_additional\_tags) | Additional tags to merge with common\_tags. Use this to add team, cost-center, project, etc. | `map(string)` | `{}` | no |
+| <a name="input_capacity_type"></a> [capacity\_type](#input\_capacity\_type) | Type of capacity for the EKS managed node groups. ON\_DEMAND for stability (recommended for CIS scanning), SPOT for cost savings. | `string` | `"ON_DEMAND"` | no |
 | <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.35"` | no |
-| <a name="input_create_ami_level1"></a> [create\_ami\_level1](#input\_create\_ami\_level1) | Flag to create Level 1 Hardened AMI | `bool` | `false` | no |
-| <a name="input_create_ami_level2"></a> [create\_ami\_level2](#input\_create\_ami\_level2) | Flag to create Level 2 Hardened AMI | `bool` | `false` | no |
+| <a name="input_create_ami_level1"></a> [create\_ami\_level1](#input\_create\_ami\_level1) | When true and only\_create\_hardened\_ami\_level\_1 is targeted, build a Level 1 hardened AMI without creating VPC/EKS resources. | `bool` | `false` | no |
+| <a name="input_create_ami_level2"></a> [create\_ami\_level2](#input\_create\_ami\_level2) | When true and only\_create\_hardened\_ami\_level\_2 is targeted, build a Level 2 hardened AMI without creating VPC/EKS resources. | `bool` | `false` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment name applied as a tag to all resources (e.g., dev, staging, prod). | `string` | `"dev"` | no |
+| <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | List of EC2 instance types for the EKS managed node groups. Provide multiple types for Spot diversification. | `list(string)` | `["m6i.large", "m5.large", "m5zn.large"]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name Prefix | `string` | `"EKS_Optimized_AL2023"` | no |
-| <a name="input_public_subnet_id"></a> [public\_subnet\_id](#input\_public\_subnet\_id) | Public subnet ID for AMI creation | `string` | `""` | no |
+| <a name="input_public_subnet_id"></a> [public\_subnet\_id](#input\_public\_subnet\_id) | Existing public subnet ID for Packer to use during AMI-only builds. Required when create\_ami\_level1 or create\_ami\_level2 is true. | `string` | `""` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_ami_id_level_1"></a> [ami\_id\_level\_1](#output\_ami\_id\_level\_1) | The AMI ID for the EKS Optimized AL2023 Level 1 hardened image |
+| <a name="output_ami_id_level_2"></a> [ami\_id\_level\_2](#output\_ami\_id\_level\_2) | The AMI ID for the EKS Optimized AL2023 Level 2 hardened image |
+| <a name="output_cluster_certificate_authority_data"></a> [cluster\_certificate\_authority\_data](#output\_cluster\_certificate\_authority\_data) | Base64 encoded certificate data for the EKS cluster |
+| <a name="output_cluster_endpoint"></a> [cluster\_endpoint](#output\_cluster\_endpoint) | Endpoint for the EKS cluster API server |
+| <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | The name of the EKS cluster |
+| <a name="output_cluster_primary_security_group_id"></a> [cluster\_primary\_security\_group\_id](#output\_cluster\_primary\_security\_group\_id) | The primary security group ID of the EKS cluster |
+| <a name="output_cluster_version"></a> [cluster\_version](#output\_cluster\_version) | The Kubernetes version of the EKS cluster |
+| <a name="output_oidc_provider_arn"></a> [oidc\_provider\_arn](#output\_oidc\_provider\_arn) | The ARN of the OIDC provider for the EKS cluster |
+| <a name="output_private_subnets"></a> [private\_subnets](#output\_private\_subnets) | List of private subnet IDs |
+| <a name="output_public_subnets"></a> [public\_subnets](#output\_public\_subnets) | List of public subnet IDs |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC |
 <!-- END_TF_DOCS -->

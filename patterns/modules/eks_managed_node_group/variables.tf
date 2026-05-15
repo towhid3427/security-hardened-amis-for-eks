@@ -133,3 +133,9 @@ variable "cloudinit_pre_nodeadm" {
   }))
   default = []
 }
+
+variable "tags" {
+  description = "A map of tags to add to the node group resources"
+  type        = map(string)
+  default     = {}
+}
