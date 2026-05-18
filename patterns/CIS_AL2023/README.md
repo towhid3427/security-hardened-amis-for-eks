@@ -15,7 +15,7 @@ For Level 1:
 
 For Level 2:
 
-- [CIS Amazon Linux 2023 - Level 2](https://aws.amazon.com/marketplace/pp/prodview-uis4wvkb7g3wq?sr=0-19&ref_=beagle&applicationId=AWSMPContessa)
+- [CIS Amazon Linux 2023 Benchmark - Level 2](https://aws.amazon.com/marketplace/pp/prodview-uis4wvkb7g3wq?sr=0-19&ref_=beagle&applicationId=AWSMPContessa)
 
 5. (Optional) For the static tests, install terraform-docs, tflint, checkov, pre-commit and mdl.
 
@@ -158,7 +158,7 @@ Because the base is the CIS Marketplace AMI, the host OS controls (auditd, file 
 - CIS_Amazon_Linux_2023_Benchmark_Level_1
 - CIS_Amazon_Linux_2023_Benchmark_Level_2
 
-Packer is invoked from the cloned `awslabs/amazon-eks-ami` repository (under `patterns/CIS_AL2023/amazon-eks-ami/`) after `null_resource.update_template` overlays the files in `template_files/`. The source AMI is selected by `var.cis_ami_name_level_{1,2}` from the AWS Marketplace owner ID `679593333241`.
+Packer is invoked from the cloned `awslabs/amazon-eks-ami` repository (under `patterns/CIS_AL2023/amazon-eks-ami/`) after `null_resource.update_template` overlays the files in `template_files/`. The source AMI is selected by `var.cis_ami_name_level_{1,2}` from the AWS Marketplace.
 
 ## 🕵️ How to access the EKS Cluster
 

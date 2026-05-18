@@ -42,6 +42,19 @@ resource "null_resource" "docker_build_push" {
   provisioner "local-exec" {
     command = <<-EOT
       set -euo pipefail
+
+      # Skip if the immutable tag already exists in ECR. The tag is a
+      # content-hash of the Dockerfile, so its presence means an identical
+      # image was already built and pushed by a prior run. Re-pushing would
+      # fail because the repository is IMMUTABLE.
+      if aws ecr describe-images \
+           --repository-name "$ECR_REPO_NAME" \
+           --image-ids imageTag="$IMAGE_TAG" \
+           --region "$AWS_REGION" >/dev/null 2>&1; then
+        echo "Image $ECR_REPO_NAME:$IMAGE_TAG already exists in ECR. Skipping build and push."
+        exit 0
+      fi
+
       cd "$BUILD_CONTEXT_DIR"
       DOCKER_BUILDKIT=1 docker build \
         --build-arg BUILDKIT_INLINE_CACHE=1 \
