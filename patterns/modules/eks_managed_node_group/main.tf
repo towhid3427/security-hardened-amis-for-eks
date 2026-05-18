@@ -1,6 +1,6 @@
 module "eks_managed_node_group" {
   source  = "terraform-aws-modules/eks/aws//modules/eks-managed-node-group"
-  version = "21.15.1"
+  version = "21.20.0"
 
   name                              = var.name
   cluster_name                      = var.cluster_name
@@ -32,4 +32,6 @@ module "eks_managed_node_group" {
     http_put_response_hop_limit = 2          # Set hop limit to 2
     instance_metadata_tags      = "enabled"
   }
+
+  tags = var.tags
 }

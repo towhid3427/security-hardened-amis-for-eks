@@ -1,22 +1,38 @@
 ---
 fail_fast: false
 minimum_pre_commit_version: "2.6.0"
-# repos:
-#   -
-#     repo: https://github.com/terraform-docs/terraform-docs
-#     # To update run:
-#     # pre-commit autoupdate --freeze
-#     rev: 212db41760d7fc45d736d5eb94a483d0d2a12049  # frozen: v0.16.0
-#     hooks:
-#       - id: terraform-docs-go
-#         args: 
-#           - "--config=.terraform-docs.yaml"
-#           - "--lockfile=false"
-#           - "--recursive"
-#           - "--recursive-path=examples/"
-#           - "./"
 
 repos:
+  # Generic file hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '\.terraform/.*$'
+      - id: end-of-file-fixer
+        exclude: '\.terraform/.*$'
+      - id: check-yaml
+        exclude: '\.terraform/.*$'
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+
+  # Terraform fmt, validate, tflint, checkov via terraform-pre-commit
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.96.1
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+        args:
+          - --hook-config=--retry-once-with-cleanup=true
+      - id: terraform_tflint
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+      - id: terraform_checkov
+        args:
+          - --args=--quiet
+          - --args=--skip-path .terraform/
+
+  # Auto-generate README.md sections from Terraform code
   - repo: https://github.com/terraform-docs/terraform-docs
     rev: "v0.19.0"
     hooks:
@@ -27,7 +43,7 @@ repos:
       - id: terraform-docs-go
         args: ["markdown", "table", "--output-file", "README.md", "./patterns/CIS_AL2", "--recursive-path", "."]
       - id: terraform-docs-go
-        args: ["markdown", "table", "--output-file", "README.md", "./patterns/CIS_AL2/eks-cluster", "--recursive-path", "."] 
+        args: ["markdown", "table", "--output-file", "README.md", "./patterns/CIS_AL2/eks-cluster", "--recursive-path", "."]
       - id: terraform-docs-go
         args: ["markdown", "table", "--output-file", "README.md", "./patterns/CIS_AL2023", "--recursive-path", "."]
       - id: terraform-docs-go
@@ -46,7 +62,16 @@ repos:
         args: ["markdown", "table", "--output-file", "README.md", "./patterns/modules/eks-cluster", "--recursive-path", "."]
       - id: terraform-docs-go
         args: ["markdown", "table", "--output-file", "README.md", "./patterns/modules/vpc", "--recursive-path", "."]
+
+  # Secret scanning
   - repo: https://github.com/awslabs/git-secrets
     rev: 99d01d5
     hooks:
       - id: git-secrets
+
+  # Markdown linting (uses .mdlrc)
+  - repo: https://github.com/markdownlint/markdownlint
+    rev: v0.13.0
+    hooks:
+      - id: markdownlint
+        args: ['-r', '~MD013,~MD033']

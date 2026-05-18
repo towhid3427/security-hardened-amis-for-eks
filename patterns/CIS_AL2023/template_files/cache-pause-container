@@ -24,6 +24,8 @@ PULL_ARGS=""
 if [[ "${PAUSE_CONTAINER_IMAGE}" == *"dkr.ecr"* ]]; then
   PULL_ARGS="${PULL_ARGS} --user AWS:$(sudo /bin//aws ecr get-login-password)"
 elif [[ "${PAUSE_CONTAINER_IMAGE}" == *"public.ecr.aws"* ]]; then
+  # ECR public authentication must always be through us-east-1
+  # https://docs.aws.amazon.com/AmazonECR/latest/public/public-registry-auth.html
   if ECR_PUBLIC_PASSWORD=$(sudo /bin//aws ecr-public get-login-password); then
     PULL_ARGS="${PULL_ARGS} --user AWS:${ECR_PUBLIC_PASSWORD}"
   else

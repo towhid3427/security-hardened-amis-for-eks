@@ -1,4 +1,3 @@
-
 ################################################################################
 # VPC and Networking Resources
 ################################################################################
@@ -13,41 +12,68 @@ module "vpc" {
 ################################################################################
 resource "aws_ecr_repository" "bottlerocket_cis_bootstrap_image" {
   name                 = var.ecr_repository_name
-  region = var.aws_region
   image_tag_mutability = "IMMUTABLE"
   image_scanning_configuration {
-   scan_on_push = true
+    scan_on_push = true
   }
   encryption_configuration {
     encryption_type = "KMS"
   }
-  force_delete         = true
+  force_delete = true
 }
 
 ################################################################################
-# Create Bottlerocket CIS Bootstrap Image
+# Build and Push Bottlerocket CIS Bootstrap Image to ECR
 ################################################################################
+locals {
+  # Content-hash tag: changes only when the Dockerfile changes.
+  # Keeps ECR repo IMMUTABLE while avoiding "latest" anti-pattern.
+  dockerfile_hash = filemd5("${path.module}/bottlerocket-cis-bootstrap-image/Dockerfile")
+  image_tag      = var.image_tag != "" ? var.image_tag : local.dockerfile_hash
+}
+
 resource "null_resource" "docker_build_push" {
   triggers = {
-    docker_file = filemd5("${path.module}/bottlerocket-cis-bootstrap-image/Dockerfile")
-    aws_region        = var.aws_region
-
+    docker_file = local.dockerfile_hash
+    aws_region  = var.aws_region
+    image_tag   = local.image_tag
   }
 
   provisioner "local-exec" {
     command = <<-EOT
-      cd ${path.module}/bottlerocket-cis-bootstrap-image && \
+      set -euo pipefail
+
+      # Skip if the immutable tag already exists in ECR. The tag is a
+      # content-hash of the Dockerfile, so its presence means an identical
+      # image was already built and pushed by a prior run. Re-pushing would
+      # fail because the repository is IMMUTABLE.
+      if aws ecr describe-images \
+           --repository-name "$ECR_REPO_NAME" \
+           --image-ids imageTag="$IMAGE_TAG" \
+           --region "$AWS_REGION" >/dev/null 2>&1; then
+        echo "Image $ECR_REPO_NAME:$IMAGE_TAG already exists in ECR. Skipping build and push."
+        exit 0
+      fi
+
+      cd "$BUILD_CONTEXT_DIR"
       DOCKER_BUILDKIT=1 docker build \
         --build-arg BUILDKIT_INLINE_CACHE=1 \
-        --cache-from ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url}:${var.image_tag} \
-        --tag ${var.ecr_repository_name}:${var.image_tag} \
-        --tag ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url}:${var.image_tag} \
+        --cache-from "$ECR_REPO_URL:$IMAGE_TAG" \
+        --tag "$ECR_REPO_NAME:$IMAGE_TAG" \
+        --tag "$ECR_REPO_URL:$IMAGE_TAG" \
         --progress=plain \
-        . && \
-      aws ecr get-login-password --region ${var.aws_region} | \
-        docker login --username AWS --password-stdin ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url} && \
-      docker push ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url}:${var.image_tag}
+        .
+      aws ecr get-login-password --region "$AWS_REGION" | \
+        docker login --username AWS --password-stdin "$ECR_REPO_URL"
+      docker push "$ECR_REPO_URL:$IMAGE_TAG"
     EOT
+    environment = {
+      AWS_REGION        = var.aws_region
+      ECR_REPO_URL      = aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url
+      ECR_REPO_NAME     = var.ecr_repository_name
+      IMAGE_TAG         = local.image_tag
+      BUILD_CONTEXT_DIR = "${path.module}/bottlerocket-cis-bootstrap-image"
+    }
   }
 
   depends_on = [aws_ecr_repository.bottlerocket_cis_bootstrap_image]
@@ -56,25 +82,20 @@ resource "null_resource" "docker_build_push" {
 ################################################################################
 # EKS Cluster
 ################################################################################
-
 module "eks_cluster" {
-  source = "../modules/eks-cluster"
-  depends_on = [module.vpc, null_resource.docker_build_push]
-  name   = var.name
+  source          = "../modules/eks-cluster"
+  depends_on      = [module.vpc, null_resource.docker_build_push]
+  name            = var.name
   cluster_version = var.cluster_version
 }
 
 ################################################################################
 # EKS Managed Node Group Modules For CIS Bottlerocket
 ################################################################################
-data "aws_ssm_parameter" "bottlerocket_ami" {
-  name = "/aws/service/bottlerocket/aws-k8s-${module.eks_cluster.cluster_version}/x86_64/latest/image_id"
-}
-
 module "eks_managed_node_group_level_2" {
   source = "../modules/eks_managed_node_group"
-  depends_on = [module.eks_cluster, 
-                null_resource.docker_build_push]
+  depends_on = [module.eks_cluster,
+  null_resource.docker_build_push]
 
   name                              = "BOTTLEROCKETL2"
   cluster_name                      = module.eks_cluster.cluster_name
@@ -88,9 +109,9 @@ module "eks_managed_node_group_level_2" {
   ami_type                          = "BOTTLEROCKET_x86_64"
   cluster_endpoint                  = module.eks_cluster.cluster_endpoint
   cluster_auth_base64               = module.eks_cluster.cluster_certificate_authority_data
-  bootstrap_extra_args = <<-EOT
+  bootstrap_extra_args              = <<-EOT
           [settings.bootstrap-containers.cis-bootstrap]
-          source = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/var.ecr_repository_name:latest"
+          source = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${var.ecr_repository_name}:${local.image_tag}"
           mode = "always"
 
           [settings.kernel]
@@ -116,7 +137,6 @@ module "eks_managed_node_group_level_2" {
 ################################################################################
 # EKS Add-ons
 ################################################################################
-
 module "eks_blueprints_addons" {
   depends_on = [module.eks_cluster, module.eks_managed_node_group_level_2]
   source     = "../modules/eks-addons"
@@ -125,68 +145,4 @@ module "eks_blueprints_addons" {
   cluster_endpoint  = module.eks_cluster.cluster_endpoint
   cluster_version   = module.eks_cluster.cluster_version
   oidc_provider_arn = module.eks_cluster.oidc_provider_arn
-}
-
-################################################################################
-# Run CIS SCAN AWS Inspector
-################################################################################
-resource "null_resource" "run_cis_scan" {
- depends_on = [module.eks_managed_node_group_level_2]
- triggers = {
-   cluster_name = var.name
-   force_scan   = timestamp()
- }
-
- provisioner "local-exec" {
-   command = <<-EOT
-     echo "Initiating CIS scan using AWS Inspector..." && \
-     echo "Account ID: ${data.aws_caller_identity.current.account_id}" && \
-     SCAN_ARN=$(aws inspector2 create-cis-scan-configuration \
-       --scan-name "${var.name}" \
-       --schedule "oneTime={}" \
-       --security-level LEVEL_2 \
-       --targets "accountIds=${data.aws_caller_identity.current.account_id},targetResourceTags={eks:cluster-name=${var.name}}" \
-       --region ${var.aws_region} \
-       --query 'scanArn' \
-       --output text) && \
-     
-     if [ -z "$SCAN_ARN" ]; then
-       echo "Error: Failed to create CIS scan configuration"
-       exit 1
-     fi && \
-     
-     echo "Successfully created CIS scan"
-   EOT
- }
-}
-
-################################################################################
-# Create Hardened AMI Bottlerocket CIS Bootstrap Image Level_2 Only
-################################################################################
-
-resource "null_resource" "docker_build_push_image_only" {
-  count = var.cis_bootstrape_image ? 1 : 0
-
-  triggers = {
-    docker_file = filemd5("${path.module}/bottlerocket-cis-bootstrap-image/Dockerfile")
-    aws_region        = var.aws_region
-  }
-
-  provisioner "local-exec" {
-    command = <<-EOT
-      cd ${path.module}/bottlerocket-cis-bootstrap-image && \
-      DOCKER_BUILDKIT=1 docker build \
-        --build-arg BUILDKIT_INLINE_CACHE=1 \
-        --cache-from ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url}:${var.image_tag} \
-        --tag ${var.ecr_repository_name}:${var.image_tag} \
-        --tag ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url}:${var.image_tag} \
-        --progress=plain \
-        . && \
-      aws ecr get-login-password --region ${var.aws_region} | \
-        docker login --username AWS --password-stdin ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url} && \
-      docker push ${aws_ecr_repository.bottlerocket_cis_bootstrap_image.repository_url}:${var.image_tag}
-    EOT
-  }
-
-  depends_on = [aws_ecr_repository.bottlerocket_cis_bootstrap_image]
 }

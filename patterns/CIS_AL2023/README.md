@@ -7,7 +7,7 @@ This pattern provides a fully automated solution to create security-hardened Ama
 1. (Mandatory) Create S3 for storing terraform state files and provide S3 Bucket name and region on file ``versions.tf``.
 2. (Mandatory) Install [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli).
 3. (Mandatory) Install [Packer](https://developer.hashicorp.com/packer/tutorials/docker-get-started/get-started-install-cli).
-4. (Mandatory) Subscribe to CIS AMIs from AWS Marketplaces :
+4. (Mandatory) Subscribe to CIS AMIs from AWS Marketplace:
 
 For Level 1:
 
@@ -15,38 +15,41 @@ For Level 1:
 
 For Level 2:
 
-- [CIS Amazon Linux 2023 - Level 2](https://aws.amazon.com/marketplace/pp/prodview-uis4wvkb7g3wq?sr=0-19&ref_=beagle&applicationId=AWSMPContessa)
+- [CIS Amazon Linux 2023 Benchmark - Level 2](https://aws.amazon.com/marketplace/pp/prodview-uis4wvkb7g3wq?sr=0-19&ref_=beagle&applicationId=AWSMPContessa)
 
-7. (Optional) For the static tests, install terraform-docs,tflint,checkov,pre-commit and mdl.
+5. (Optional) For the static tests, install terraform-docs, tflint, checkov, pre-commit and mdl.
 
 ## 🚀 How to deploy
 
 ### Option 1: Use the guided approach by running the script on the root folder: ``create-hardened-ami.sh``.
 
-or 
+or
 
 ### Option 2: Create Complete Infrastructure
+
 **Step 1.** Navigate to the CIS_AL2023 pattern directory: `cd patterns/CIS_AL2023`
 
-**Step 2.** Run `terraform init` ,`terraform plan` and `terraform apply` to deploy Complete Infrastructure using Terraform.
+**Step 2.** Run `terraform init`, `terraform plan` and `terraform apply` to deploy Complete Infrastructure using Terraform.
 This will include:
 
 - VPC and Subnets
-- EKS Cluster 
-- EKS managed node groups with EKS CIS Level1 and Level2 Hardened AMIs using CIS AMIs as a base AMI
-- Deploy several different add-ons to check if the workload will run without issues.
-- Trigger AWS Inspector CIS scans to scan EKS manages nodes and generate reports about checks which Passed, are Skipped or Failed.
+- EKS Cluster
+- EKS managed node groups with EKS CIS Level 1 and Level 2 Hardened AMIs using CIS Marketplace AMIs as the base
+- Deploy several different add-ons to check if the workload will run without issues
+- Trigger AWS Inspector CIS scans against the EKS managed nodes and generate reports about checks which Passed, are Skipped or Failed
 
-or 
+or
 
 ### Option 3: Create Only Hardened AMIs
+
+Use this when you only need a hardened AMI and don't want to provision a VPC or EKS cluster. You must supply an existing public subnet ID via `-var public_subnet_id=...`.
 
   1. CIS Level 1
 ```
 terraform init
 ```
 and
-``` 
+```
 terraform plan \
   -var="create_ami_level1=true" \
   -var="public_subnet_id=$subnet_id" \
@@ -64,13 +67,13 @@ terraform apply \
 ```
 
  2. CIS Level 2
- 
+
 ```
 terraform init
 ```
 and
 
-```     
+```
 terraform plan \
   -var="create_ami_level2=true" \
   -var="public_subnet_id=$subnet_id" \
@@ -120,9 +123,42 @@ terraform apply \
   --auto-approve
 ```
 
+> Note: The `only_create_*` resources are gated by `create_ami_levelN` flags so they remain inert during normal `terraform apply`. They do not depend on `module.vpc`, so targeting them does not provision VPC infrastructure.
+
 ## 🧹 How to terminate resources
 
-### Use the guided approach by running the script on the root folder: ``create-hardened-ami.sh``.
+**Step 1.** Navigate to the CIS_AL2023 pattern directory: `cd patterns/CIS_AL2023`
+
+**Step 2.** Run `terraform destroy` to Terminate Resources
+
+## Technical details
+
+### How the AMI is built
+
+This pattern uses `awslabs/amazon-eks-ami` Packer scripts as the build framework, with a small set of overrides shipped in `template_files/`:
+
+- `template.json` — Packer build definition (provisioners and execution order)
+- `install-worker.sh` — installs containerd, kubelet, nodeadm, ECR credential provider, SOCI snapshotter, and SSM Agent on top of the CIS base AMI
+- `install-efa.sh` — installs Elastic Fabric Adapter packages when `enable_efa=true`
+- `cleanup.sh` — runs at the end of the build only (dnf cache cleanup, host-key removal, machine-id reset)
+- `configure-selinux.sh` — relabels `/usr/bin` and `/etc/systemd/system` so EKS binaries match the SELinux policy applied by the CIS base
+- `cache-pause-container.sh` / `cache-pause-container` — pre-pulls the EKS pause image so first-pod-launch doesn't pay an ECR round-trip
+- `variables-default.json` — pinned defaults for `containerd_version`, `runc_version`, `enable_efa`, source AMI filter, and the working directory
+
+`null_resource.update_template` clones `awslabs/amazon-eks-ami` at the tag specified by `var.branch` (default `v20260505`) into `patterns/CIS_AL2023/amazon-eks-ami/` and then overlays the files above before Packer runs.
+
+### CIS controls already applied by the base AMI
+
+Because the base is the CIS Marketplace AMI, the host OS controls (auditd, file permissions, kernel sysctls, services disabled, etc.) are applied by CIS before this pattern adds EKS components. The EKS overlay is intentionally narrow so it does not regress those controls.
+
+## 🧑🏿‍💻 Packer scripts
+
+`template_files/template.json` is the Packer build definition used to produce both AMIs:
+
+- CIS_Amazon_Linux_2023_Benchmark_Level_1
+- CIS_Amazon_Linux_2023_Benchmark_Level_2
+
+Packer is invoked from the cloned `awslabs/amazon-eks-ami` repository (under `patterns/CIS_AL2023/amazon-eks-ami/`) after `null_resource.update_template` overlays the files in `template_files/`. The source AMI is selected by `var.cis_ami_name_level_{1,2}` from the AWS Marketplace.
 
 ## 🕵️ How to access the EKS Cluster
 
@@ -158,28 +194,26 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 
 ```#!/bin/bash
 kubectl get nodes -o wide
-NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                   CONTAINER-RUNTIME
-ip-10-0-40-147.us-west-2.compute.internal   Ready    <none>   9m45s   v1.35.2-eks-f69f56f   10.0.40.147   <none>        Amazon Linux 2023.9.20251208    6.12.58-82.121.amzn2023.x86_64   containerd://2.1.5
-ip-10-0-47-43.us-west-2.compute.internal    Ready    <none>   13m     v1.35.2-eks-f69f56f   10.0.47.43    <none>        Amazon Linux 2023.10.20260302   6.12.68-92.122.amzn2023.x86_64   containerd://2.1.5
-
+NAME                                        STATUS   ROLES    AGE   VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                   CONTAINER-RUNTIME
+ip-10-0-33-0.us-west-2.compute.internal     Ready    <none>   35m   v1.35.4-eks-7fcd7ec   10.0.33.0     <none>        Amazon Linux 2023.11.20260511   6.18.20-41.237.amzn2023.x86_64   containerd://2.2.3
+ip-10-0-42-203.us-west-2.compute.internal   Ready    <none>   12m   v1.35.4-eks-7fcd7ec   10.0.42.203   <none>        Amazon Linux 2023.11.20260505   6.18.20-41.237.amzn2023.x86_64   containerd://2.2.3
 ```
 
 Check if all the pods are running:
 
 ```#!/bin/bash
 kubectl get pods -A
-NAMESPACE     NAME                                  READY   STATUS    RESTARTS     AGE
-kube-system   aws-node-gfd4m                        2/2     Running   0            10m
-kube-system   aws-node-wvljx                        2/2     Running   0            6m55s
-kube-system   coredns-74d7449c-6mzpg                1/1     Running   0            5m31s
-kube-system   coredns-74d7449c-ttp5g                1/1     Running   0            5m32s
-kube-system   ebs-csi-controller-54cbbc576d-7fkjn   6/6     Running   0            5m30s
-kube-system   ebs-csi-controller-54cbbc576d-8mmvb   6/6     Running   0            43s
-kube-system   ebs-csi-node-4rfzm                    3/3     Running   0            5m30s
-kube-system   ebs-csi-node-6xkqw                    3/3     Running   0            43s
-kube-system   ebs-csi-node-lp5l7                    3/3     Running   0            5m30s
-kube-system   kube-proxy-brzcd                      1/1     Running   0            10m
-kube-system   kube-proxy-hnf9q                      1/1     Running   0            6m55s
+NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
+kube-system   aws-node-bn82c                        2/2     Running   0          12m
+kube-system   aws-node-mcbmz                        2/2     Running   0          35m
+kube-system   coredns-56df6dbd9c-657ft              1/1     Running   0          10m
+kube-system   coredns-56df6dbd9c-tsvvn              1/1     Running   0          10m
+kube-system   ebs-csi-controller-7bd5c476f8-m949z   6/6     Running   0          10m
+kube-system   ebs-csi-controller-7bd5c476f8-v9hdp   6/6     Running   0          10m
+kube-system   ebs-csi-node-dg9h7                    3/3     Running   0          10m
+kube-system   ebs-csi-node-n84hn                    3/3     Running   0          10m
+kube-system   kube-proxy-22dkm                      1/1     Running   0          12m
+kube-system   kube-proxy-kc4hk                      1/1     Running   0          35m
 ```
 
 ## Troubleshooting
@@ -192,7 +226,7 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.35.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.44.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
@@ -212,34 +246,49 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 
 | Name | Type |
 |------|------|
-| [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/resources/ssm_parameter) | resource |
 | [null_resource.create_hardened_ami_level_1](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.create_hardened_ami_level_2](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.only_create_hardened_ami_level_1](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.only_create_hardened_ami_level_2](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.run_cis_scan](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.update_template](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/caller_identity) | data source |
-| [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.cis_amazon_linux_2023_benchmark_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.14.1/docs/data-sources/ssm_parameter) | data source |
+| [aws_ami_ids.cis_amazon_linux_2023_benchmark_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/ami_ids) | data source |
+| [aws_ami_ids.cis_amazon_linux_2023_benchmark_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/ami_ids) | data source |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_additional_tags"></a> [additional\_tags](#input\_additional\_tags) | Additional tags to merge with common\_tags. Use this to add team, cost-center, project, etc. | `map(string)` | `{}` | no |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"us-west-2"` | no |
-| <a name="input_branch"></a> [branch](#input\_branch) | EKS AMI Branch TAG | `string` | `"v20260304"` | no |
-| <a name="input_cis_ami_name_level_1"></a> [cis\_ami\_name\_level\_1](#input\_cis\_ami\_name\_level\_1) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 1 - v03*"` | no |
-| <a name="input_cis_ami_name_level_2"></a> [cis\_ami\_name\_level\_2](#input\_cis\_ami\_name\_level\_2) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 2 - v03*"` | no |
+| <a name="input_branch"></a> [branch](#input\_branch) | EKS AMI Branch TAG | `string` | `"v20260505"` | no |
+| <a name="input_capacity_type"></a> [capacity\_type](#input\_capacity\_type) | Type of capacity for the EKS managed node groups. ON\_DEMAND for stability (recommended for CIS scanning), SPOT for cost savings. | `string` | `"ON_DEMAND"` | no |
+| <a name="input_cis_ami_name_level_1"></a> [cis\_ami\_name\_level\_1](#input\_cis\_ami\_name\_level\_1) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 1 - v05*"` | no |
+| <a name="input_cis_ami_name_level_2"></a> [cis\_ami\_name\_level\_2](#input\_cis\_ami\_name\_level\_2) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 2 - v05*"` | no |
 | <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.35"` | no |
 | <a name="input_create_ami_level1"></a> [create\_ami\_level1](#input\_create\_ami\_level1) | Flag to create Level 1 Hardened AMI | `bool` | `false` | no |
 | <a name="input_create_ami_level2"></a> [create\_ami\_level2](#input\_create\_ami\_level2) | Flag to create Level 2 Hardened AMI | `bool` | `false` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment name applied as a tag to all resources (e.g., dev, staging, prod). | `string` | `"dev"` | no |
+| <a name="input_instance_types"></a> [instance\_types](#input\_instance\_types) | List of EC2 instance types for the EKS managed node groups. Provide multiple types for Spot diversification. | `list(string)` | `["m6i.large", "m5.large", "m5zn.large"]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name Prefix | `string` | `"CIS_AL2023"` | no |
 | <a name="input_public_subnet_id"></a> [public\_subnet\_id](#input\_public\_subnet\_id) | Public subnet ID for AMI creation | `string` | `""` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_ami_id_level_1"></a> [ami\_id\_level\_1](#output\_ami\_id\_level\_1) | The AMI ID for the CIS Amazon Linux 2023 Benchmark Level 1 hardened image |
+| <a name="output_ami_id_level_2"></a> [ami\_id\_level\_2](#output\_ami\_id\_level\_2) | The AMI ID for the CIS Amazon Linux 2023 Benchmark Level 2 hardened image |
+| <a name="output_cluster_certificate_authority_data"></a> [cluster\_certificate\_authority\_data](#output\_cluster\_certificate\_authority\_data) | Base64 encoded certificate data for the EKS cluster |
+| <a name="output_cluster_endpoint"></a> [cluster\_endpoint](#output\_cluster\_endpoint) | Endpoint for the EKS cluster API server |
+| <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | The name of the EKS cluster |
+| <a name="output_cluster_primary_security_group_id"></a> [cluster\_primary\_security\_group\_id](#output\_cluster\_primary\_security\_group\_id) | The primary security group ID of the EKS cluster |
+| <a name="output_cluster_version"></a> [cluster\_version](#output\_cluster\_version) | The Kubernetes version of the EKS cluster |
+| <a name="output_oidc_provider_arn"></a> [oidc\_provider\_arn](#output\_oidc\_provider\_arn) | The ARN of the OIDC provider for the EKS cluster |
+| <a name="output_packer_instance_profile"></a> [packer\_instance\_profile](#output\_packer\_instance\_profile) | Name of the IAM instance profile created for Packer builds |
+| <a name="output_private_subnets"></a> [private\_subnets](#output\_private\_subnets) | List of private subnet IDs |
+| <a name="output_public_subnets"></a> [public\_subnets](#output\_public\_subnets) | List of public subnet IDs |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC |
 <!-- END_TF_DOCS -->
