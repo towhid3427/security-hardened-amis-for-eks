@@ -93,8 +93,8 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 ```
 #!/bin/bash
 kubectl get nodes -o wide
-NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                                KERNEL-VERSION   CONTAINER-RUNTIME
-ip-10-0-31-231.us-west-2.compute.internal   Ready    <none>   5m57s   v1.35.2-eks-f69f56f   10.0.31.231   <none>        Bottlerocket OS 1.60.0 (aws-k8s-1.35)   6.12.79          containerd://2.1.6+bottlerocket
+NAME                                        STATUS   ROLES    AGE     VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                                KERNEL-VERSION    CONTAINER-RUNTIME
+ip-10-0-7-32.us-west-2.compute.internal     Ready    <none>   4m46s   v1.36.1-eks-a3a0722   10.0.7.32     <none>        Bottlerocket OS 1.63.0 (aws-k8s-1.36)   6.18.36 (amd64)   containerd://2.2.5+bottlerocket
 ```
 
 Check if all the pods are running:
@@ -103,13 +103,13 @@ Check if all the pods are running:
 #!/bin/bash
 kubectl get pods -A
 NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-n4z76                        2/2     Running   0          5m37s
-kube-system   coredns-56df6dbd9c-6fbz8              1/1     Running   0          4m
-kube-system   coredns-56df6dbd9c-pngpk              1/1     Running   0          4m
-kube-system   ebs-csi-controller-7c65dfcbcb-bv45x   6/6     Running   0          3m59s
-kube-system   ebs-csi-controller-7c65dfcbcb-xkf6g   6/6     Running   0          3m59s
-kube-system   ebs-csi-node-69fvp                    3/3     Running   0          3m59s
-kube-system   kube-proxy-fv2fz                      1/1     Running   0          5m37s
+kube-system   aws-node-8sbkp                        2/2     Running   0          4m47s
+kube-system   coredns-6d9864d4bb-q9pws              1/1     Running   0          3m14s
+kube-system   coredns-6d9864d4bb-tpvjd              1/1     Running   0          3m14s
+kube-system   ebs-csi-controller-78df65994-jj454    6/6     Running   0          3m12s
+kube-system   ebs-csi-controller-78df65994-vbcbd    6/6     Running   0          3m12s
+kube-system   ebs-csi-node-zd9l2                    3/3     Running   0          3m13s
+kube-system   kube-proxy-dfswl                      1/1     Running   0          4m47s
 ```
 
 ## Troubleshooting
@@ -122,8 +122,8 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.44.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.56.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 3.2.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
 
@@ -140,18 +140,18 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 
 | Name | Type |
 |------|------|
-| [aws_ecr_repository.bottlerocket_cis_bootstrap_image](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/resources/ecr_repository) | resource |
+| [aws_ecr_repository.bottlerocket_cis_bootstrap_image](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/resources/ecr_repository) | resource |
 | [null_resource.docker_build_push](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/caller_identity) | data source |
-| [aws_ssm_parameter.bottlerocket_ami](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/data-sources/caller_identity) | data source |
+| [aws_ssm_parameter.bottlerocket_ami](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"us-west-2"` | no |
-| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.35"` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.36"` | no |
 | <a name="input_ecr_repository_name"></a> [ecr\_repository\_name](#input\_ecr\_repository\_name) | ECR Repository Name | `string` | `"bottlerocket-cis-bootstrap-image"` | no |
 | <a name="input_image_tag"></a> [image\_tag](#input\_image\_tag) | CIS Level 2 Bootstrap Image Tag. If empty, a content-hash of the Dockerfile is used (recommended for IMMUTABLE repos). | `string` | `""` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name Prefix | `string` | `"BOTTLEROCKET"` | no |

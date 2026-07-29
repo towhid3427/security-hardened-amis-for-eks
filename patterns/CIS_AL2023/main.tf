@@ -97,6 +97,8 @@ resource "null_resource" "update_template" {
       cp ../template_files/configure-selinux.sh templates/al2023/provisioners/configure-selinux.sh
       cp ../template_files/generate-version-info.sh templates/al2023/provisioners/generate-version-info.sh
       cp ../template_files/install-efa.sh templates/al2023/provisioners/install-efa.sh
+      cp ../template_files/set-clocksource.sh templates/al2023/provisioners/set-clocksource.sh
+      cp ../template_files/limit-c-states.sh templates/al2023/provisioners/limit-c-states.sh
       cp ../template_files/cleanup.sh templates/al2023/provisioners/cleanup.sh
     EOT
     environment = {
