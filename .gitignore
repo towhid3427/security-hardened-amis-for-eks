@@ -50,3 +50,42 @@ terraform.rc
 # Generated files
 builds
 __pycache__
+
+# Release automation (internal tooling — never pushed to GitHub)
+release-automation/
+
+# Release notes are kept outside version control (also live in the parent dir)
+Release-NOTE-*
+
+# Dated/backup copies of CIS_AL2023 template_files (keep only the live template_files/)
+patterns/*/template_files_backup*/
+patterns/*/template_files_20*/
+
+# =====================================================================
+# Never commit: local docs, vendored clones, member content, build junk
+# =====================================================================
+
+# Local scratch / working docs (not part of the project)
+/OS_Command_Injection_Mitigation_Plan.md
+/chat-history-os-cmd-injection.md
+
+# Local-only repo config that should not be shared
+.gitattributes
+
+# Per-pattern local .gitignore files (root .gitignore is the source of truth)
+patterns/*/.gitignore
+
+# Deprecated patterns (no longer maintained or released)
+patterns/CIS_AL2/
+patterns/EKS_Optimized_AL2/
+
+# Upstream amazon-eks-ami repo cloned during CIS builds (re-cloned each run)
+patterns/*/amazon-eks-ami/
+
+# CIS SecureSuite Build Kit content (license-restricted, downloaded per build)
+patterns/*/cis-scripts/CIS-LBK/
+
+# Packer build artifacts
+patterns/*/packer-files/download/
+patterns/*/packer-files/toupload/
+patterns/*/packer-files/manifest.json

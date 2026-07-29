@@ -145,7 +145,7 @@ This pattern uses `awslabs/amazon-eks-ami` Packer scripts as the build framework
 - `cache-pause-container.sh` / `cache-pause-container` — pre-pulls the EKS pause image so first-pod-launch doesn't pay an ECR round-trip
 - `variables-default.json` — pinned defaults for `containerd_version`, `runc_version`, `enable_efa`, source AMI filter, and the working directory
 
-`null_resource.update_template` clones `awslabs/amazon-eks-ami` at the tag specified by `var.branch` (default `v20260505`) into `patterns/CIS_AL2023/amazon-eks-ami/` and then overlays the files above before Packer runs.
+`null_resource.update_template` clones `awslabs/amazon-eks-ami` at the tag specified by `var.branch` (default `v20260724`) into `patterns/CIS_AL2023/amazon-eks-ami/` and then overlays the files above before Packer runs.
 
 ### CIS controls already applied by the base AMI
 
@@ -194,9 +194,9 @@ Then you can check nodes that joined the cluster and troubleshoot issues if requ
 
 ```#!/bin/bash
 kubectl get nodes -o wide
-NAME                                        STATUS   ROLES    AGE   VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                   CONTAINER-RUNTIME
-ip-10-0-33-0.us-west-2.compute.internal     Ready    <none>   35m   v1.35.4-eks-7fcd7ec   10.0.33.0     <none>        Amazon Linux 2023.11.20260511   6.18.20-41.237.amzn2023.x86_64   containerd://2.2.3
-ip-10-0-42-203.us-west-2.compute.internal   Ready    <none>   12m   v1.35.4-eks-7fcd7ec   10.0.42.203   <none>        Amazon Linux 2023.11.20260505   6.18.20-41.237.amzn2023.x86_64   containerd://2.2.3
+NAME                                        STATUS   ROLES    AGE    VERSION               INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                        KERNEL-VERSION                           CONTAINER-RUNTIME
+ip-10-0-26-39.us-west-2.compute.internal    Ready    <none>   112m   v1.36.2-eks-bca9cf6   10.0.26.39    <none>        Amazon Linux 2023.12.20260629   6.18.35-68.129.amzn2023.x86_64 (amd64)   containerd://2.2.4+unknown
+ip-10-0-43-125.us-west-2.compute.internal   Ready    <none>   14m    v1.36.2-eks-bca9cf6   10.0.43.125   <none>        Amazon Linux 2023.12.20260629   6.18.35-68.129.amzn2023.x86_64 (amd64)   containerd://2.2.4+unknown
 ```
 
 Check if all the pods are running:
@@ -204,16 +204,16 @@ Check if all the pods are running:
 ```#!/bin/bash
 kubectl get pods -A
 NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-bn82c                        2/2     Running   0          12m
-kube-system   aws-node-mcbmz                        2/2     Running   0          35m
-kube-system   coredns-56df6dbd9c-657ft              1/1     Running   0          10m
-kube-system   coredns-56df6dbd9c-tsvvn              1/1     Running   0          10m
-kube-system   ebs-csi-controller-7bd5c476f8-m949z   6/6     Running   0          10m
-kube-system   ebs-csi-controller-7bd5c476f8-v9hdp   6/6     Running   0          10m
-kube-system   ebs-csi-node-dg9h7                    3/3     Running   0          10m
-kube-system   ebs-csi-node-n84hn                    3/3     Running   0          10m
-kube-system   kube-proxy-22dkm                      1/1     Running   0          12m
-kube-system   kube-proxy-kc4hk                      1/1     Running   0          35m
+kube-system   aws-node-6g5zg                        2/2     Running   0          112m
+kube-system   aws-node-vdrcg                        2/2     Running   0          14m
+kube-system   coredns-6d9864d4bb-cvxct              1/1     Running   0          13m
+kube-system   coredns-6d9864d4bb-v2vpn              1/1     Running   0          13m
+kube-system   ebs-csi-controller-5d8776459b-4gwwm   6/6     Running   0          13m
+kube-system   ebs-csi-controller-5d8776459b-6sd52   6/6     Running   0          13m
+kube-system   ebs-csi-node-d5gdj                    3/3     Running   0          13m
+kube-system   ebs-csi-node-t57vv                    3/3     Running   0          13m
+kube-system   kube-proxy-hdlwq                      1/1     Running   0          14m
+kube-system   kube-proxy-mwfdl                      1/1     Running   0          112m
 ```
 
 ## Troubleshooting
@@ -226,8 +226,8 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.44.0 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.17.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.56.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 3.2.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.38.0 |
 | <a name="requirement_null"></a> [null](#requirement\_null) | 3.2.4 |
 
@@ -252,10 +252,10 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 | [null_resource.only_create_hardened_ami_level_2](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.run_cis_scan](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
 | [null_resource.update_template](https://registry.terraform.io/providers/hashicorp/null/3.2.4/docs/resources/resource) | resource |
-| [aws_ami_ids.cis_amazon_linux_2023_benchmark_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/ami_ids) | data source |
-| [aws_ami_ids.cis_amazon_linux_2023_benchmark_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/ami_ids) | data source |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.44.0/docs/data-sources/caller_identity) | data source |
+| [aws_ami_ids.cis_amazon_linux_2023_benchmark_level_1](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/data-sources/ami_ids) | data source |
+| [aws_ami_ids.cis_amazon_linux_2023_benchmark_level_2](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/data-sources/ami_ids) | data source |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.56.0/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
 
@@ -263,11 +263,11 @@ Please refer to the [troubleshooting docs](../../docs/troubleshooting.md)
 |------|-------------|------|---------|:--------:|
 | <a name="input_additional_tags"></a> [additional\_tags](#input\_additional\_tags) | Additional tags to merge with common\_tags. Use this to add team, cost-center, project, etc. | `map(string)` | `{}` | no |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"us-west-2"` | no |
-| <a name="input_branch"></a> [branch](#input\_branch) | EKS AMI Branch TAG | `string` | `"v20260505"` | no |
+| <a name="input_branch"></a> [branch](#input\_branch) | EKS AMI Branch TAG | `string` | `"v20260724"` | no |
 | <a name="input_capacity_type"></a> [capacity\_type](#input\_capacity\_type) | Type of capacity for the EKS managed node groups. ON\_DEMAND for stability (recommended for CIS scanning), SPOT for cost savings. | `string` | `"ON_DEMAND"` | no |
-| <a name="input_cis_ami_name_level_1"></a> [cis\_ami\_name\_level\_1](#input\_cis\_ami\_name\_level\_1) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 1 - v05*"` | no |
-| <a name="input_cis_ami_name_level_2"></a> [cis\_ami\_name\_level\_2](#input\_cis\_ami\_name\_level\_2) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 2 - v05*"` | no |
-| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.35"` | no |
+| <a name="input_cis_ami_name_level_1"></a> [cis\_ami\_name\_level\_1](#input\_cis\_ami\_name\_level\_1) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 1 - v07*"` | no |
+| <a name="input_cis_ami_name_level_2"></a> [cis\_ami\_name\_level\_2](#input\_cis\_ami\_name\_level\_2) | CIS AMI Name which will be use to Search the CIS AMI from Market Place | `string` | `"CIS Amazon Linux 2023 Benchmark - Level 2 - v07*"` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | EKS Cluster Version | `string` | `"1.36"` | no |
 | <a name="input_create_ami_level1"></a> [create\_ami\_level1](#input\_create\_ami\_level1) | Flag to create Level 1 Hardened AMI | `bool` | `false` | no |
 | <a name="input_create_ami_level2"></a> [create\_ami\_level2](#input\_create\_ami\_level2) | Flag to create Level 2 Hardened AMI | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name applied as a tag to all resources (e.g., dev, staging, prod). | `string` | `"dev"` | no |
